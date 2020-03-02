@@ -1,4 +1,3 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,13 +7,13 @@
         <title>Loja de Artigos Esportivos</title>
     </head>
 <body>
-    <form method="post" action="${pageContext.request.contextPath}/cadastrar-produto">
-                <br>
-                
-                    <label for="inputNome" >Nome*:</label>
-                    <div class="col-sm-4">
+   <form action="${pageContext.request.contextPath}/cadastrar-produto" method="post" enctype="multipart/form-data">
+        
+
+    <label for="inputNome" method="post" action="servletupload" enctype="multipart/form-data">Nome*:</label>
+                    
                         <input type="text" name="nome" id="nome" placeholder="Digite o nome do Produto" required>
-                    </div>
+                    
                     <br>
                     <br>
                     <label for=inputDesc > Descrição*:</label>
@@ -39,12 +38,17 @@
                     <input type="number" name="quantidade" id="quantidade" placeholder="9,99" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" required>
                     <br>
                     <br>
-                    <label for="inputImage"> Imagens*:<label>
-                    <input type="file" id="image" name="image"accept="image/png, image/jpeg">
-                    <img alt="Image" src="" id="target" width="200" height="200">
-                    <br>
-                    <br>
-                    <button  type="submit">Cadastrar</button> 
+    <br/>
+    <br/>
+
+    <input type="file" name="file" id="file"/> 
+        <input type="submit" value="Enviar" />
+    </form>
+    <label>${message}</label>
+    <br/>
+    <br/>
+    <form action="upload" method="get" >
+        <input type="submit" value="Visalizar imagem" />
     </form>
 </body>
 </html>
