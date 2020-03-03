@@ -52,7 +52,7 @@ public class ProdutoDAO {
 	            		 comando = connection.prepareStatement("INSERT INTO imagem_produto (IdProduto, caminho_imagem)"
 	            		 		+ "VALUES(?,?);");
 	            		 comando.setInt(1, idProduto);
-	            		 comando.setString(2, file.getFieldName());
+	            		 comando.setString(2, file.getName());
 	            		 int qtd  = comando.executeUpdate();
 	            		 
 	            		 if(qtd >0) {

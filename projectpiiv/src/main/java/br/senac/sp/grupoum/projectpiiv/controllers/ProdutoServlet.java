@@ -13,7 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
+import javax.servlet.http.Part;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -42,24 +43,24 @@ public class ProdutoServlet extends HttpServlet {
     	/*Identifica se o formulario é do tipo multipart/form-data*/
         if (ServletFileUpload.isMultipartContent(request)) {
             try {request.setCharacterEncoding("UTF-8");
-    		
+ 
     		String nome = request.getParameter("nome");
     		String descricao = request.getParameter("descricao");
     		String tipo = request.getParameter("tipo");
     		double preco = Double.valueOf(request.getParameter("preco"));
     		double quantidade = Double.valueOf(request.getParameter("quantidade"));
-    		
-    		
+
+    		Part part = request.getPart("file");
     		
     		Produto produto = new Produto(nome, descricao, tipo, preco, quantidade);
-            	ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
-                List<FileItem> multiparts = sf.parseRequest(request);
+            ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
+            List<FileItem> multiparts = sf.parseRequest(request);
  
                 /*Escreve a o arquivo na pasta img*/
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
                     	
-                        item.write(new File( request.getServletContext().getRealPath("img")+ File.separator + "uploadfile"));
+                        item.write(new File( request.getServletContext().getRealPath("img")+ File.separator));
                     }
                 }
                 ProdutoDAO salvarProduto = new ProdutoDAO();

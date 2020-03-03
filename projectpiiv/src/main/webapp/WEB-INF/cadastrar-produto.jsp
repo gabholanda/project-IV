@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,17 +8,17 @@
         <title>Loja de Artigos Esportivos</title>
     </head>
 <body>
-   <form action="${pageContext.request.contextPath}/cadastrar-produto" method="post" enctype="multipart/form-data">
+   <form action="${pageContext.request.contextPath}/cadastrar-produto" method="post" enctype="multipart/form-data" novalidate>
         
 
-    <label for="inputNome" method="post" action="servletupload" enctype="multipart/form-data">Nome*:</label>
+    <label for="inputNome">Nome*:</label>
                     
                         <input type="text" name="nome" id="nome" placeholder="Digite o nome do Produto" required>
                     
                     <br>
                     <br>
                     <label for=inputDesc > Descrição*:</label>
-                    <textarea id="descricao" name="descicao"></textarea>
+                    <textarea id="descricao" name="descricao"></textarea>
                     <br>
                     <br>
                     <label for="inputTipo">Tipo*:</label>
@@ -38,11 +39,11 @@
                     <input type="number" name="quantidade" id="quantidade" placeholder="9,99" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" required>
                     <br>
                     <br>
-    <br/>
-    <br/>
+        <br/>
+        <br/>
 
-    <input type="file" name="file" id="file"/> 
-        <input type="submit" value="Enviar" />
+     <input type="file" name="file" id="file"/> 
+        <button type="submit">Enviar </button>
     </form>
     <label>${message}</label>
     <br/>
