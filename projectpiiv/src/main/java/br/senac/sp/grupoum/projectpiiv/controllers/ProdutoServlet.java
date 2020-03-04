@@ -40,7 +40,7 @@ public class ProdutoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /*Identifica se o formulario é do tipo multipart/form-data*/
-        MultipartRequest m = new MultipartRequest(request, "C:/Users/gabriel.hsantos21/Desktop/teste");
+        MultipartRequest m = new MultipartRequest(request, "C:/Users/Pablo de Oliveira/Desktop/teste");
         String nome = m.getParameter("nome");
         String descricao = m.getParameter("descricao");
         String tipo = m.getParameter("tipo");
@@ -51,13 +51,13 @@ public class ProdutoServlet extends HttpServlet {
                 request.setCharacterEncoding("UTF-8");
 
                 Produto produto = new Produto(nome, descricao, tipo, preco, quantidade);
-//                List<Part> fileParts = request.getParts().stream().filter(part -> "file".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
-//
-//                for (Part filePart : fileParts) {
-//                    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-//                    InputStream fileContent = filePart.getInputStream();
-//                    // ... (do your job here)
-//                };;
+                List<Part> fileParts = request.getParts().stream().filter(part -> "file".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
+
+                for (Part filePart : fileParts) {
+                    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+                    InputStream fileContent = filePart.getInputStream();
+                    // ... (do your job here)
+                };
 //                ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
 //                List<FileItem> multiparts = upload.parseRequest(request); // this is where is kil
 //
