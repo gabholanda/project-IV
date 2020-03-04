@@ -74,7 +74,7 @@ public class ProdutoServlet extends HttpServlet {
 //
 //                    dispatcher.forward(request, response);
 //                }
-
+//
                 request.setAttribute("message", "Arquivo carregado com sucesso");
             } catch (Exception ex) {
                 request.setAttribute("message", "Upload de arquivo falhou devido a " + ex);
