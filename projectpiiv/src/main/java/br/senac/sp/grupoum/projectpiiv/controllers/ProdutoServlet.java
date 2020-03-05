@@ -40,7 +40,7 @@ public class ProdutoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /*Identifica se o formulario é do tipo multipart/form-data*/
-        MultipartRequest m = new MultipartRequest(request, "C:/Users/Pablo de Oliveira/Desktop/teste");
+        MultipartRequest m = new MultipartRequest(request, "C:\\Users\\marcelo.moraes\\Desktop\\teste");
         String nome = m.getParameter("nome");
         String descricao = m.getParameter("descricao");
         String tipo = m.getParameter("tipo");
@@ -74,7 +74,7 @@ public class ProdutoServlet extends HttpServlet {
 //
 //                    dispatcher.forward(request, response);
 //                }
-
+//
                 request.setAttribute("message", "Arquivo carregado com sucesso");
             } catch (Exception ex) {
                 request.setAttribute("message", "Upload de arquivo falhou devido a " + ex);
