@@ -53,11 +53,11 @@ public class ProdutoServlet extends HttpServlet {
                 Produto produto = new Produto(nome, descricao, tipo, preco, quantidade);
                 //List<Part> fileParts = request.getParts().stream().filter(part -> "file".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
 
-                for (Part filePart : fileParts) {
-                    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-                    InputStream fileContent = filePart.getInputStream();
-                    // ... (do your job here)
-                };
+//                for (Part filePart : fileParts) {
+//                    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+//                    InputStream fileContent = filePart.getInputStream();
+//                    // ... (do your job here)
+//                };
 //                ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
 //                List<FileItem> multiparts = upload.parseRequest(request); // this is where is kil
 //
