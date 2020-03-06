@@ -90,7 +90,7 @@
 
             <br>
              <div class="button-group">
-                <button class="btn  btn-success" type="submit">Editar</button>
+                <button class="btn  btn-success offset-md-5" type="submit">Editar</button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="#" class="btn btn-danger">Cancelar</a>
             </div>

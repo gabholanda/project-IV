@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class ProdutoDAO {
 	
-    public static boolean salvar(Produto produto /*, List<FileItem> filesUpload */) {
+    public static boolean salvar(Produto produto) {
         boolean retorno = false; 
         Connection connection = null;
         try {

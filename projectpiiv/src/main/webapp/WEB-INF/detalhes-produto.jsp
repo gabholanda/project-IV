@@ -33,56 +33,29 @@
     </header>
     <body>
         <div class="page-title">
-            <h1>Produtos</h1>
+            <h1>Detalhes Produto</h1>
         </div>
-        <c:if test="${excluidoAttr}">
-          <div class="alert alert-success">
-              Produto excluído com sucesso!
-          </div>
-        </c:if>
-        
-        <c:if test="${not empty produtosAttr}">
+        <c:if test="${not empty produtoAttr}">
             <table class="table table-sm offset-md-2" style="width: 75%;">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">Descrição</th>
                         <th scope="col">Preco</th>
                         <th scope="col">Quantidade</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                     <c:forEach items="${produtosAttr}" var="produto">
+                     
                     <tr>
-                        <th> <c:out value="${produto.getId()}"/></th>
-                        <td ><c:out value="${produto.getNome()}"/></td>
-                        <td><c:out value="${produto.getPreco()}"/></td>
-                        <td> <c:out value="${produto.getQuantidade()}"/></td>
-                        <td><a data-method="get" href="${pageContext.request.contextPath}/admin/detalhes-produto?id=${produto.getId()}" class="btn btn-primary mb-1" >Detalhes</a></td>
-                        <td><a data-method="get" href="${pageContext.request.contextPath}/admin/editar-produto?id=${produto.getId()}" class="btn btn-primary mb-1" >Editar</a></td>
-                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#p${produto.getId()}">Excluir</button></td> 
+                        <th> <c:out value="${produtoAttr.getId()}"/></th>
+                        <td><c:out value="${produtoAttr.getNome()}"/></td>
+                        <td><c:out value="${produtoAttr.getDescricao()}"/></td>
+                        <td><c:out value="${produtoAttr.getPreco()}"/></td>
+                        <td> <c:out value="${produtoAttr.getQuantidade()}"/></td>
                      </tr>  
                 </tbody>
-                <div class="modal fade" id="p${produto.getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-body">
-                          Tem certeza que deseja excluir o produto <c:out value="${produto.getNome()}"/>
-                      </div>
-                      <div class="modal-footer">
-                        <form action="${pageContext.request.contextPath}/admin/excluir-produto" method="post">
-                            <button class="btn btn-success" type="submit" name="id" id="confirmDeleteButton" value="${produto.getId()}">Confirmar</button>
-                        </form>
-                        
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-               </c:forEach>
             </table>
         </c:if>
 
