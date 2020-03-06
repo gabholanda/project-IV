@@ -22,14 +22,26 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import br.senac.sp.grupoum.projectpiiv.models.Produto;
 import com.oreilly.servlet.MultipartRequest;
 import dao.ProdutoDAO;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.stream.Collectors;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebListener;
 import org.apache.commons.fileupload.FileItemFactory;
 
+@MultipartConfig
 @WebServlet(name = "ProdutoServlet", urlPatterns = {"/admin/cadastrar-produto"})
 public class ProdutoServlet extends HttpServlet {
-
+    private final String UPLOAD_PATH = "/home/gabriel";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -37,27 +49,48 @@ public class ProdutoServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-
-        String nome = request.getParameter("nome");
-        String tipo = request.getParameter("tipo");
-        String descricao = request.getParameter("descricao");
-        double preco = Double.parseDouble(request.getParameter("preco"));
-        double quantidade = Double.parseDouble(request.getParameter("quantidade"));
-       
-        Produto produto = new Produto(nome, descricao, tipo, preco, quantidade);
+     MultipartRequest m = new MultipartRequest(request, UPLOAD_PATH, 1024 * 1024 * 1024);
     
-        boolean salvou = ProdutoDAO.salvar(produto);
+        if (ServletFileUpload.isMultipartContent(request)) {
+            try {
+                request.setCharacterEncoding("UTF-8");
+                
+                Enumeration files = m.getFileNames();
+                ArrayList <File> uploadedFiles = new ArrayList<>();
+                while(files.hasMoreElements()) {
+                    String name = (String) files.nextElement();
+                    String fileName = m.getFilesystemName(name);
+                    File uploadedFile = m.getFile("file");
+                    uploadedFiles.add(uploadedFile);
+                }
+                String nome = m.getParameter("nome");
+                String descricao = m.getParameter("descricao");
+                String tipo = m.getParameter("tipo");
+                double preco = Double.valueOf(m.getParameter("preco"));
+                double quantidade = Double.valueOf(m.getParameter("quantidade"));
+                Produto produto = new Produto(nome, descricao, tipo, preco, quantidade);
+                ProdutoDAO salvarProduto = new ProdutoDAO();
+                boolean salvar = salvarProduto.salvar(produto, uploadedFiles);
+                if (salvar) {
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cadastrar-produto.jsp");
 
-        if (salvou) {
-            request.setAttribute("criadoAttr", true);
-             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin.jsp");
-            dispatcher.forward(request, response);
+                    dispatcher.forward(request, response);
+                }
+
+                request.setAttribute("message", "Arquivo carregado com sucesso");
+            } catch (Exception ex) {
+                request.setAttribute("message", "Upload de arquivo falhou devido a " + ex);
+            }
+
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cadastrar-produto.jsp");
-            dispatcher.forward(request, response);
+            request.setAttribute("message", "E necessario o upload de alguma imagem");
         }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cadastrar-produto.jsp");
+        dispatcher.forward(request, response);
     }
 }
+

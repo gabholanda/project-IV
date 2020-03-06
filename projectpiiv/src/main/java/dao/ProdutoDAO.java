@@ -2,16 +2,19 @@ package dao;
 
 
 import br.senac.sp.grupoum.projectpiiv.models.Produto;
+import java.io.File;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import org.apache.commons.fileupload.FileItem;
 
 public class ProdutoDAO {
 	
-    public static boolean salvar(Produto produto /*, List<FileItem> filesUpload */) {
+    public static boolean salvar(Produto produto , List<File> filesUpload ) {
         boolean retorno = false; 
         Connection connection = null;
         try {
@@ -30,29 +33,28 @@ public class ProdutoDAO {
 
 
                 if(salvar > 0) {
-//	            	 ResultSet resultSet = comando.getGeneratedKeys();
-//	            	 int idProduto = 0;
-//	            	 
-//	            	 while (resultSet.next()) {
-//	            		 idProduto = resultSet.getInt(1);
-//	                    }
-//	            	 
-//	            	 for (FileItem file : filesUpload) {
-//	            		 
-//	            		 comando = connection.prepareStatement("INSERT INTO imagem_produto (IdProduto, caminho_imagem)"
-//	            		 		+ "VALUES(?,?);");
-//	            		 comando.setInt(1, idProduto);
-//	            		 comando.setString(2, file.getName());
-//	            		 int qtd  = comando.executeUpdate();
-//	            		 
-//	            		 if(qtd >0) {
-//	            			 return true;
-//	            		 }
-//	            		 else {
-//	            			 return false;
-//	            		 }
-//	            	 }
-//	            	 
+	            	 ResultSet resultSet = comando.getGeneratedKeys();
+	            	 int idProduto = 0;
+	            	 
+	            	 while (resultSet.next()) {
+	            		 idProduto = resultSet.getInt(1);
+	                    }
+	            	 
+	            	 for (File file : filesUpload) {
+	            		 comando = connection.prepareStatement("INSERT INTO imagem_produto (IdProduto, caminho_imagem)"
+	            		 		+ "VALUES(?,?);");
+	            		 comando.setInt(1, idProduto);
+	            		 comando.setString(2, file.getName());
+	            		 int qtd  = comando.executeUpdate();
+	            		 
+	            		 if(qtd >0) {
+	            			 return true;
+	            		 }
+	            		 else {
+	            			 return false;
+	            		 }
+	            	 }
+	            	 
                     retorno = true;
                     DbConnectionDAO.closeConnection(connection);
                 }else {
