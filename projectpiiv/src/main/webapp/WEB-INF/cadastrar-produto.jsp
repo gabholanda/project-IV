@@ -36,7 +36,7 @@
             <h1>Cadastrar Produto</h1>
         </div>
         
-        <form action="${pageContext.request.contextPath}/admin/cadastrar-produto" method="post" novalidate>         
+        <form action="${pageContext.request.contextPath}/admin/cadastrar-produto" method="post" enctype="multipart/form-data" novalidate>         
             <div class="form-group row">
                 <label for="inputNome" class="col-sm-1 offset-md-3">Nome*:</label>
                 <input type="text" class="form-control col-md-4" name="nome" id="nome" placeholder="Digite o nome do Produto" required>
@@ -81,10 +81,10 @@
                 </div>
             </div>
             
-            <!--<div class="form-group row">
+            <div class="form-group row">
               <label for="exampleFormControlFile1" class="col-sm-1 offset-md-3">Imagem</label>
-              <input type="file" class="form-control-file col-sm-4" id="file" name=""file>
-            </div> -->
+              <input type="file" class="form-control-file col-sm-4" id="file" name="file" multiple>
+            </div> 
 
             <br>
              <div class="button-group">
