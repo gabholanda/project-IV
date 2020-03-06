@@ -27,7 +27,7 @@ import java.nio.file.Paths;
 import java.util.stream.Collectors;
 import org.apache.commons.fileupload.FileItemFactory;
 
-@WebServlet(name = "ProdutoServlet", urlPatterns = {"/cadastrar-produto"})
+@WebServlet(name = "ProdutoServlet", urlPatterns = {"/admin/cadastrar-produto"})
 public class ProdutoServlet extends HttpServlet {
 
     @Override
@@ -39,52 +39,25 @@ public class ProdutoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /*Identifica se o formulario é do tipo multipart/form-data*/
-        MultipartRequest m = new MultipartRequest(request, "C:\\Users\\marcelo.moraes\\Desktop\\teste");
-        String nome = m.getParameter("nome");
-        String descricao = m.getParameter("descricao");
-        String tipo = m.getParameter("tipo");
-        double preco = Double.valueOf(m.getParameter("preco"));
-        double quantidade = Double.valueOf(m.getParameter("quantidade"));
-        if (ServletFileUpload.isMultipartContent(request)) {
-            try {
-                request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
 
-                Produto produto = new Produto(nome, descricao, tipo, preco, quantidade);
-                //List<Part> fileParts = request.getParts().stream().filter(part -> "file".equals(part.getName()) && part.getSize() > 0).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
+        String nome = request.getParameter("nome");
+        String tipo = request.getParameter("tipo");
+        String descricao = request.getParameter("descricao");
+        double preco = Double.parseDouble(request.getParameter("preco"));
+        double quantidade = Double.parseDouble(request.getParameter("quantidade"));
+       
+        Produto produto = new Produto(nome, descricao, tipo, preco, quantidade);
+    
+        boolean salvou = ProdutoDAO.salvar(produto);
 
-//                for (Part filePart : fileParts) {
-//                    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-//                    InputStream fileContent = filePart.getInputStream();
-//                    // ... (do your job here)
-//                };
-//                ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
-//                List<FileItem> multiparts = upload.parseRequest(request); // this is where is kil
-//
-//                /*Escreve a o arquivo na pasta img*/
-//                for (FileItem item : multiparts) {
-//                    if (!item.isFormField()) {
-//                        item.write(new File(request.getServletContext().getRealPath("img") + File.separator));
-//                    }
-//                }
-//                ProdutoDAO salvarProduto = new ProdutoDAO();
-//                boolean salvar = salvarProduto.salvar(produto, multiparts);
-//                if (salvar) {
-//                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cadastrar-produto.jsp");
-//
-//                    dispatcher.forward(request, response);
-//                }
-//
-                request.setAttribute("message", "Arquivo carregado com sucesso");
-            } catch (Exception ex) {
-                request.setAttribute("message", "Upload de arquivo falhou devido a " + ex);
-            }
-
+        if (salvou) {
+            request.setAttribute("criadoAttr", true);
+             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin.jsp");
+            dispatcher.forward(request, response);
         } else {
-            request.setAttribute("message", "Desculpe este Servlet lida apenas com pedido de upload de arquivos");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cadastrar-produto.jsp");
+            dispatcher.forward(request, response);
         }
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cadastrar-produto.jsp");
-        dispatcher.forward(request, response);
     }
 }

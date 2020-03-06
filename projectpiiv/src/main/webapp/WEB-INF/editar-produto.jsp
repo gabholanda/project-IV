@@ -33,13 +33,15 @@
     </header>
     <body>
         <div class="page-title">
-            <h1>Cadastrar Produto</h1>
+            <h1>Editar Produto</h1>
         </div>
         
-        <form action="${pageContext.request.contextPath}/admin/cadastrar-produto" method="post" novalidate>         
+        <form action="${pageContext.request.contextPath}/admin/editar-produto" method="post" novalidate>
+            <input type="hidden" name="id" value="${idAttr}">
+             
             <div class="form-group row">
                 <label for="inputNome" class="col-sm-1 offset-md-3">Nome*:</label>
-                <input type="text" class="form-control col-md-4" name="nome" id="nome" placeholder="Digite o nome do Produto" required>
+                <input type="text" value="${nomeAttr}" class="form-control col-md-4" name="nome" id="nome" placeholder="Digite o nome do Produto" required>
                 <div class="invalid-feedback">
                     Digite um nome
                 </div>
@@ -47,7 +49,7 @@
 
             <div class="form-group row">
                 <label for="inputDesc" class="col-sm-1 offset-md-3">Descrição</label>
-                <textarea class="form-control col-sm-4" id="inputDesc" name="descricao" rows="3"></textarea>
+                <textarea class="form-control col-sm-4" id="inputDesc" name="descricao" rows="3">${descricaoAttr}</textarea>
             </div>
             
             <div class="form-group row">
@@ -67,7 +69,7 @@
             
             <div class="form-group row">
                 <label for="inputPreco" class="col-sm-1 offset-md-3">Preço*:</label>
-                <input type="number" class="form-control col-sm-4" name="preco" id="inputPreco" placeholder="9,99" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" required>
+                <input value="${precoAttr}" type="number" class="form-control col-sm-4" name="preco" id="inputPreco" placeholder="9,99" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" required>
                 <div class="invalid-feedback">
                     Digite um Preço
                 </div>
@@ -75,7 +77,7 @@
           
             <div class="form-group row">
                 <label for="inputQtd" class="col-sm-1 offset-md-3">Quantidade*:</label>
-                <input type="number" class="form-control col-sm-4" name="quantidade" id="inputQtd" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" required>
+                <input value="${qtdAttr}" type="number" class="form-control col-sm-4" name="quantidade" id="inputQtd" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" required>
                 <div class="invalid-feedback">
                     Digite uma quantidade
                 </div>
@@ -88,15 +90,12 @@
 
             <br>
              <div class="button-group">
-                <button class="btn  btn-success" type="submit">Cadastrar</button>
+                <button class="btn  btn-success" type="submit">Editar</button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="#" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
         <br>
-        <!-- <form action="upload" method="get" >
-            <input type="submit" value="Visalizar imagem" />
-        </form> -->
     </body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
 <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
