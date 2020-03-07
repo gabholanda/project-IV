@@ -8,13 +8,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.fileupload.FileItem;
 
 public class ProdutoDAO {
 	
-    public static boolean salvar(Produto produto , List<File> filesUpload ) {
+    public static boolean salvar(Produto produto , List<File> filesUpload) {
         boolean retorno = false; 
         Connection connection = null;
         try {
@@ -22,7 +23,7 @@ public class ProdutoDAO {
                connection = DbConnectionDAO.openConnection();
                 PreparedStatement comando = connection.prepareStatement("INSERT INTO produto "
                         + "(nome, descricao, tipo_produto, qtd_estoque, preco) "
-                        + "VALUES (?, ?, ?, ?, ?);");
+                        + "VALUES (?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
                 comando.setString(1, produto.getNome());
                 comando.setString(2, produto.getDescricao());
                 comando.setString(3, produto.getTipo());
@@ -41,18 +42,16 @@ public class ProdutoDAO {
 	                    }
 	            	 
 	            	 for (File file : filesUpload) {
-	            		 comando = connection.prepareStatement("INSERT INTO imagem_produto (IdProduto, caminho_imagem)"
+	            		 comando = connection.prepareStatement("INSERT INTO imagem_produto (id_produto, caminho_imagem)"
 	            		 		+ "VALUES(?,?);");
 	            		 comando.setInt(1, idProduto);
 	            		 comando.setString(2, file.getName());
 	            		 int qtd  = comando.executeUpdate();
 	            		 
-	            		 if(qtd >0) {
-	            			 return true;
+	            		 if(qtd > 0) {
+	            			 retorno = true;
 	            		 }
-	            		 else {
-	            			 return false;
-	            		 }
+	            		 
 	            	 }
 	            	 
                     retorno = true;
@@ -122,6 +121,14 @@ public class ProdutoDAO {
                 produto.setTipo(rs.getString("tipo_produto"));
                 produto.setQuantidade(rs.getDouble("qtd_estoque"));
                 produto.setPreco(rs.getDouble("preco"));
+                
+                comando = connection.prepareStatement("SELECT caminho_imagem FROM imagem_produto WHERE id_produto = ?");
+                comando.setInt(1, produto.getId());
+                rs = comando.executeQuery();
+                
+                while(rs.next()) {
+                    produto.getImagens().add(rs.getString("caminho_imagem"));
+                }
             }
             
             DbConnectionDAO.closeConnection(connection);

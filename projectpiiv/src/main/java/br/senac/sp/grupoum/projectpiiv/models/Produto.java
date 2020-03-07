@@ -17,7 +17,7 @@ public class Produto {
     String nome;
     String descricao;
     String tipo;
-    ArrayList<String> troll = new ArrayList<>();
+    ArrayList<String> imagens = new ArrayList<>();
     double preco;
     double quantidade;
 
@@ -44,6 +44,18 @@ public class Produto {
         this.tipo = tipo;
         this.preco = preco;
         this.quantidade = quantidade;
+    }
+    
+    public Produto(int id, String nome, String descricao, String tipo, double preco,
+            double quantidade, ArrayList<String> imagens) {
+
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.tipo = tipo;
+        this.preco = preco;
+        this.quantidade = quantidade;
+        this.imagens = imagens;
     }
 
     public int getId() {
@@ -78,8 +90,8 @@ public class Produto {
         this.tipo = tipo;
     }
 
-    public ArrayList<String> getTroll() {
-        return troll;
+    public ArrayList<String> getImagens() {
+        return imagens;
     }
 
     public double getPreco() {

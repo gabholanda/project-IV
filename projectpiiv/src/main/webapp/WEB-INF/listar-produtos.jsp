@@ -51,6 +51,7 @@
                         <th scope="col">Quantidade</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,6 +61,7 @@
                         <td ><c:out value="${produto.getNome()}"/></td>
                         <td><c:out value="${produto.getPreco()}"/></td>
                         <td> <c:out value="${produto.getQuantidade()}"/></td>
+                        <td><a data-method="get" href="${pageContext.request.contextPath}/admin/detalhes-produto?id=${produto.getId()}" class="btn btn-primary mb-1" >Detalhes</a></td>
                         <td><a data-method="get" href="${pageContext.request.contextPath}/admin/editar-produto?id=${produto.getId()}" class="btn btn-primary mb-1" >Editar</a></td>
                         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#p${produto.getId()}">Excluir</button></td> 
                      </tr>  
