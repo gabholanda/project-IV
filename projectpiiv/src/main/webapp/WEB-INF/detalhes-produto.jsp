@@ -14,22 +14,22 @@
         <nav class="navbar navbar-expand-lg navbar-light nav-color">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/admin">Loja Esportiva</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-produto">Cadastrar Produto</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-produtos">Listar Produtos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Sair</a>
-                </li>
-              </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-produto">Cadastrar Produto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-produtos">Listar Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sair</a>
+                    </li>
+                </ul>
             </div>
-          </nav>
+        </nav>
     </header>
     <body>
         <div class="page-title">
@@ -47,24 +47,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                     
+
                     <tr>
                         <th> <c:out value="${produtoAttr.getId()}"/></th>
                         <td><c:out value="${produtoAttr.getNome()}"/></td>
                         <td><c:out value="${produtoAttr.getDescricao()}"/></td>
                         <td><c:out value="${produtoAttr.getPreco()}"/></td>
                         <td> <c:out value="${produtoAttr.getQuantidade()}"/></td>
-                     </tr>  
+                    </tr>  
                 </tbody>
             </table>
-        </c:if>
+            <br>
+            <h3 style="text-align: center;">Imagens</h3>
+            <div class="d-flex justify-content-around">
+                <c:forEach items="${produtoAttr.getImagens()}" var="imagem">
 
+                    <img src="${pageContext.request.contextPath}/img/${imagem}" style="width: 200px; height: 200px;">
+
+
+                </c:forEach>
+            </div>
+        </c:if>
     </body>
 
-<script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-<script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
 </html>
