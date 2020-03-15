@@ -8,6 +8,7 @@ import java.sql.SQLException;
 public class DbConnectionDAO {
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    //MY SQL RDS NA AWS
     private static final String SERVER = "aws-database.cohykcyaldy0.us-east-1.rds.amazonaws.com:3306";
     private static final String DATABASE = "loja_esporte";
     private static final String LOGIN = "admin";
