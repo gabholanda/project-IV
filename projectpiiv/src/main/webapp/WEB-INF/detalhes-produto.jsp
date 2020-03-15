@@ -58,7 +58,7 @@
                 </tbody>
             </table>
             <br>
-            <h3 style="text-align: center;">Imagens</h3>
+
             <div class="d-flex justify-content-around">
                 <c:forEach items="${produtoAttr.getImagens()}" var="imagem">
 
@@ -67,6 +67,40 @@
 
                 </c:forEach>
             </div>
+            <div class="container"> 
+                <div class="text-center-hv">
+                    <br>
+                    <h4 id="questions" class="questions">Perguntas e respostas</h4>
+                </div>
+
+                <div class="text-center-hv2"> 
+                    <span id="continued"><strong>Formas de Pagamento</strong></span>
+                    <span id="readmore"><strong>Boleto Bancário</strong>, ao comprar explicaremos como fazer o pagamento em qualquer agência bancária, caixa eletrônico, internet banking ou correspondentes bancários.
+                        Pague e será aprovado de 1 a 2 dias úteis.</span>
+                    <button onclick="readMore()" id="readmore1"</button>
+                    <script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts.js"></script>
+                </div>
+
+                <div class="text-center-hv3">
+                    <span id="garantia"><strong>Garantia</strong></span>
+                    <span id="readmoreGarantia"><strong>Compra Garantida</strong>
+                        <p>
+                            Se houver algum problema ou se não receber o produto que comprou, devolveremos o dinheiro. 
+                            <strong>Você sempre terá a nossa ajuda.</strong>
+                            Estaremos ao seu lado até você receber o que comprou e nos avisar que está tudo correto. Se tiver algum problema, basta nos avisar.</p></span>
+                    <button onclick="readMoreGarantia()" id="readmoreGarantias"</button>
+                    <script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts.js"></script>
+                </div>
+
+                <div class="text-center-hv4">
+                    <span id="frete"><strong>Frete</strong></span>
+                    <span id="readmoreFrete"><strong>Não oferecemos frete grátis em nossos produtos</strong>
+                        <p>Estaremos ao seu lado até você receber o que comprou e nos avisar que está tudo correto. Se tiver algum problema, basta nos avisar.</p></span>
+                    <button onclick="readMoreFrete()" id="readmoreFretes"</button>
+                    <script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts.js"></script>
+                </div>
+            </div>
+
         </c:if>
     </body>
 

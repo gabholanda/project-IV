@@ -8,3 +8,65 @@
     text-align: center;
     padding: 10px;
 }
+
+
+.text-center-hv {
+    position: absolute;
+    top: 500px;
+    float: left: 50px; 
+    width: 96%; 
+    height: 300px; 
+    margin-left: 2%; 
+    margin-bottom: 20x; 
+}
+.text-center-hv2 {
+    position: absolute;
+    top: 580px;
+    float: left: 50px;
+    width: 96%; 
+    height: 300px; 
+    margin-left: 2%; 
+    margin-bottom: 20x; 
+
+}
+
+.text-center-hv3 {
+    position: absolute;
+    top: 640px;
+    float: left: 50px; 
+    width: 96%; 
+    height: 300px; 
+    margin-left: 2%; 
+    margin-bottom: 20x; 
+
+}
+
+.text-center-hv4 {
+    position: absolute;
+    top: 700px;
+    float: left: 50px
+    width: 96%; 
+    height: 300px; 
+    margin-left: 2%; 
+    margin-bottom: 20x; 
+}
+
+body { 
+    margin: 0px; 
+    padding: 0px; 
+}
+
+
+
+#readmore{display: none} 
+
+#readmoreGarantia{display: none}
+
+#readmoreFrete{display: none}
+
+.container { 
+    width: 100%; 
+}
+
+
+
