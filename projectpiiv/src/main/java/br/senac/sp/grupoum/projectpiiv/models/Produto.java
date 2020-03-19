@@ -58,6 +58,16 @@ public class Produto {
         this.imagens = imagens;
     }
 
+    public Produto(int id, double quantidade) {
+        this.id = id;
+        this.quantidade = quantidade;
+    }
+
+    public void setImagens(ArrayList<String> imagens) {
+        this.imagens = imagens;
+    }
+    
+    
     public int getId() {
         return id;
     }
@@ -91,7 +101,7 @@ public class Produto {
     }
 
     public ArrayList<String> getImagens() {
-        return imagens;
+        return this.imagens;
     }
 
     public double getPreco() {

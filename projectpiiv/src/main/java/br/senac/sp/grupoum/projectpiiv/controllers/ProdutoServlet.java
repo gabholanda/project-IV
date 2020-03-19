@@ -37,7 +37,7 @@ public class ProdutoServlet extends HttpServlet {
        request.setCharacterEncoding("UTF-8");
         ServletContext servletContext = request.getServletContext();
         
-       String UPLOAD_PATH =  servletContext.getRealPath("/img").replace("/target/projectpiiv-1.0-SNAPSHOT", "/src/main/webapp");
+       String UPLOAD_PATH =  servletContext.getRealPath("img").replaceAll("/target/projectpiiv-1.0-SNAPSHOT", "/src/main/webapp");
         MultipartRequest m = new MultipartRequest(request, UPLOAD_PATH, 1024 * 1024 * 1024);
     
         if (ServletFileUpload.isMultipartContent(request)) {

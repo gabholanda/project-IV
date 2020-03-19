@@ -10,10 +10,10 @@ public class DbConnectionDAO {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String SERVER = "localhost:3306";
     private static final String DATABASE = "loja_esporte";
-    private static final String LOGIN = "erick";
-    private static final String PASSWORD = "123456";
-//    private static final String LOGIN = "root";
-//    private static final String PASSWORD = "";
+//    private static final String LOGIN = "erick";
+//    private static final String PASSWORD = "123456";
+    private static final String LOGIN = "root";
+    private static final String PASSWORD = "";
     private static final String URL = "jdbc:mysql://" + SERVER + "/" + DATABASE + "?useTimezone=true&serverTimezone=UTC";
 
     public static Connection openConnection() throws SQLException, ClassNotFoundException {
