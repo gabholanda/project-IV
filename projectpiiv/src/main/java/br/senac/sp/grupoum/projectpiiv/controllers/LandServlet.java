@@ -32,17 +32,18 @@ public class LandServlet extends HttpServlet {
         dispatcher.forward(request, response);
         
         
-        ArrayList<Produto> produtos = ProdutoDAO.produtosCadastrados();
+            ArrayList<Produto> produtos = ProdutoDAO.produtosCadastrados();
         ArrayList<Produto> produtosI = new ArrayList<>();
-        for(int i = 0; i <= produtos.size(); i++){
+        for(int i = 0; i < produtos.size(); i++){
             Produto produto = ProdutoDAO.pesquisarPorId(produtos.get(i).getId());
-            
+            produto.get
             produtosI.add(produto);
         }
          try {
-            if (produtos != null) {
-                request.setAttribute("produtoAttr", produtosI);
-            }  } catch (Exception ex) {
+            if (produtosI !=null) {
+                request.setAttribute("produtosAttr", produtosI);
+            }else{}
+         } catch (Exception ex) {
             System.out.println(ex);
         }
           dispatcher.forward(request, response);

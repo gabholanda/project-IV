@@ -7,470 +7,304 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Loja Artigos Esportivos</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head>
+		<meta charset="utf-8">
+		<title>Bootstrap E-commerce Templates</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">      
+		<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">		
+		<link href="${pageContext.request.contextPath}}/themes/css/bootstrappage.css" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="${pageContext.request.contextPath}/themes/css/flexslider.css" rel="stylesheet"/>
+		<link href="${pageContext.request.contextPath}/themes/css/main.css" rel="stylesheet"/>
 
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-
-        <link rel="stylesheet" href="land/css/open-iconic-bootstrap.min.css">
-        <link rel="stylesheet" href="land/css/animate.css">
-
-        <link rel="stylesheet" href="land/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="land/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="land/css/magnific-popup.css">
-
-        <link rel="stylesheet" href="land/css/aos.css">
-
-        <link rel="stylesheet" href="land/css/ionicons.min.css">
-
-        <link rel="stylesheet" href="land/css/bootstrap-datepicker.css">
-        <link rel="stylesheet" href="land/css/jquery.timepicker.css">
-
-
-        <link rel="stylesheet" href="land/css/flaticon.css">
-        <link rel="stylesheet" href="land/css/icomoon.css">
-        <link rel="stylesheet" href="land/css/style.css">
-    </head>
-    <body class="goto-here">
-        <div class="py-1 bg-black">
-            <div class="container">
-                <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
-                    <div class="col-lg-12 d-block">
-                        <div class="row d-flex">
-                            <div class="col-md pr-4 d-flex topper align-items-center">
-                                <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                                <span class="text">+ 1235 2355 98</span>
-                            </div>
-                            <div class="col-md pr-4 d-flex topper align-items-center">
-                                <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                                <span class="text">youremail@email.com</span>
-                            </div>
-                            <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-                                <span class="text">3-5 Business days delivery &amp; Free Returns</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">Minishop</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="oi oi-menu"></span> Menu
-                </button>
-
-                <div class="collapse navbar-collapse" id="ftco-nav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="shop.html">Shop</a>
-                                <a class="dropdown-item" href="product-single.html">Single Product</a>
-                                <a class="dropdown-item" href="cart.html">Cart</a>
-                                <a class="dropdown-item" href="checkout.html">Checkout</a>
-                            </div>
-                        </li>
-                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                        <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- END nav -->
-
-        <div class="hero-wrap hero-bread" style="background-image: url('images/bg_6.jpg');">
-            <div class="container">
-                <div class="row no-gutters slider-text align-items-center justify-content-center">
-                    <div class="col-md-9 ftco-animate text-center">
-                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Shop</span></p>
-                        <h1 class="mb-0 bread">Shop</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <section class="ftco-section bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-lg-10 order-md-last">
-                        <div class="row">
-                            <c:if test="${not empty produtosAttr}">
+		<!-- scripts -->
+		<script src="${pageContext.request.contextPath}/themes/js/jquery-1.7.2.min.js"></script>
+		<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>				
+		<script src="${pageContext.request.contextPath}/themes/js/superfish.js"></script>	
+		<script src="${pageContext.request.contextPath}/themes/js/jquery.scrolltotop.js"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		<div id="top-bar" class="container">
+			<div class="row">
+				<div class="span4">
+					<form method="POST" class="search_form">
+						<input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
+					</form>
+				</div>
+				<div class="span8">
+					<div class="account pull-right">
+						<ul class="user-menu">				
+							<li><a href="#">My Account</a></li>
+							<li><a href="cart.html">Your Cart</a></li>
+							<li><a href="checkout.html">Checkout</a></li>					
+							<li><a href="register.html">Login</a></li>			
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="wrapper" class="container">
+			<section class="navbar main-menu">
+				<div class="navbar-inner main-menu">				
+					<a href="index.html" class="logo pull-left"><img src="${pageContext.request.contextPath}/themes/images/logo.png" class="site_logo" alt=""></a>
+					<nav id="menu" class="pull-right">
+						<ul>
+							<li><a href="./products.html">Woman</a>					
+								<ul>
+									<li><a href="./products.html">Lacinia nibh</a></li>									
+									<li><a href="./products.html">Eget molestie</a></li>
+									<li><a href="./products.html">Varius purus</a></li>									
+								</ul>
+							</li>															
+							<li><a href="./products.html">Man</a></li>			
+							<li><a href="./products.html">Sport</a>
+								<ul>									
+									<li><a href="./products.html">Gifts and Tech</a></li>
+									<li><a href="./products.html">Ties and Hats</a></li>
+									<li><a href="./products.html">Cold Weather</a></li>
+								</ul>
+							</li>							
+							<li><a href="./products.html">Hangbag</a></li>
+							<li><a href="./products.html">Best Seller</a></li>
+							<li><a href="./products.html">Top Seller</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>	
+			<section class="header_text sub">
+			<img class="pageBanner" src="${pageContext.request.contextPath}/themes/images/pageBanner.png" alt="New products" >
+				<h4><span>New products</span></h4>
+			</section>
+			<section class="main-content">
+				
+				<div class="row">						
+					<div class="span9">								
+						<ul class="thumbnails listing-products">
+							<c:if test="${not empty produtosAttr}">
                                 <c:forEach items="${produtosAttr}" var="produto">
-                                    <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-                                        <div class="product d-flex flex-column">
-                                            <c:forEach items="${produtoAttr.getImagens()}" var="imagem">
-                                                <a href="#" class="img-prod"><img src="${pageContext.request.contextPath}/img/${imagem}" alt="Colorlib Template">
-                                                </c:forEach>
-                                                <div class="overlay"></div>
-                                            </a>
-                                            <div class="text py-3 pb-4 px-3">
-                                                <div class="d-flex">
-                                                    <div class="cat">
-                                                        <span>Lifestyle</span>
-                                                    </div>
-                                                    <div class="rating">
-                                                        <p class="text-right mb-0">
-                                                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <h3><a href="#"><c:out value="${produto.getNome()}"/></a></h3>
-                                                <div class="pricing">
-                                                    <p class="price"><span><c:out value="${produtoAttr.getPreco()}"/></span></p>
-                                                </div>
-                                                <p class="bottom-area d-flex px-3">
-                                                    <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                                    <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-                                                </p>
-                                            </div>
+                                    <li class="span3">
+                                        <div class="product-box">
+                                           <span class="sale_tag"></span>											
+                                            <a href="product_detail.html">
+                                              <c:forEach items="${produto.getImagens()}" var="imagem">
+                                                    <img src="${pageContext.request.contextPath}/img/${imagem}" style="width: 200px; height: 200px;">
+                                                </c:forEach></a><br/> 
+                                            <a href="product_detail.html" class="title"><c:out value="${produto.getNome()}"/></a><br/>
+                                            <a href="#" class="category">Phasellus consequat</a>
+                                            <p class="price"><c:out value="${produto.getPreco()}"/></p>
                                         </div>
-                                    </div>
-                                </c:forEach>
-                            </c:if>
-                            <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-                                <div class="product d-flex flex-column">
-                                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.png" alt="Colorlib Template">
-                                        <span class="status">50% Off</span>
-                                        <div class="overlay"></div>
-                                    </a>
-                                    <div class="text py-3 pb-4 px-3">
-                                        <div class="d-flex">
-                                            <div class="cat">
-                                                <span>Lifestyle</span>
-                                            </div>
-                                            <div class="rating">
-                                                <p class="text-right mb-0">
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <h3><a href="#">Nike Free RN 2019 iD</a></h3>
-                                        <div class="pricing">
-                                            <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
-                                        </div>
-                                        <p class="bottom-area d-flex px-3">
-                                            <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                            <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="col text-center">
-                                <div class="block-27">
-                                    <ul>
-                                        <li><a href="#">&lt;</a></li>
-                                        <li class="active"><span>1</span></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">&gt;</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-lg-2">
-                        <div class="sidebar">
-                            <div class="sidebar-box-2">
-                                <h2 class="heading">Categories</h2>
-                                <div class="fancy-collapse-panel">
-                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id="headingOne">
-                                                <h4 class="panel-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Men's Shoes
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                                <div class="panel-body">
-                                                    <ul>
-                                                        <li><a href="#">Sport</a></li>
-                                                        <li><a href="#">Casual</a></li>
-                                                        <li><a href="#">Running</a></li>
-                                                        <li><a href="#">Jordan</a></li>
-                                                        <li><a href="#">Soccer</a></li>
-                                                        <li><a href="#">Football</a></li>
-                                                        <li><a href="#">Lifestyle</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id="headingTwo">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Women's Shoes
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                <div class="panel-body">
-                                                    <ul>
-                                                        <li><a href="#">Sport</a></li>
-                                                        <li><a href="#">Casual</a></li>
-                                                        <li><a href="#">Running</a></li>
-                                                        <li><a href="#">Jordan</a></li>
-                                                        <li><a href="#">Soccer</a></li>
-                                                        <li><a href="#">Football</a></li>
-                                                        <li><a href="#">Lifestyle</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id="headingThree">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Accessories
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                <div class="panel-body">
-                                                    <ul>
-                                                        <li><a href="#">Jeans</a></li>
-                                                        <li><a href="#">T-Shirt</a></li>
-                                                        <li><a href="#">Jacket</a></li>
-                                                        <li><a href="#">Shoes</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id="headingFour">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">Clothing
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                                <div class="panel-body">
-                                                    <ul>
-                                                        <li><a href="#">Jeans</a></li>
-                                                        <li><a href="#">T-Shirt</a></li>
-                                                        <li><a href="#">Jacket</a></li>
-                                                        <li><a href="#">Shoes</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sidebar-box-2">
-                                <h2 class="heading">Price Range</h2>
-                                <form method="post" class="colorlib-form-2">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="guests">Price from:</label>
-                                                <div class="form-field">
-                                                    <i class="icon icon-arrow-down3"></i>
-                                                    <select name="people" id="people" class="form-control">
-                                                        <option value="#">1</option>
-                                                        <option value="#">200</option>
-                                                        <option value="#">300</option>
-                                                        <option value="#">400</option>
-                                                        <option value="#">1000</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="guests">Price to:</label>
-                                                <div class="form-field">
-                                                    <i class="icon icon-arrow-down3"></i>
-                                                    <select name="people" id="people" class="form-control">
-                                                        <option value="#">2000</option>
-                                                        <option value="#">4000</option>
-                                                        <option value="#">6000</option>
-                                                        <option value="#">8000</option>
-                                                        <option value="#">10000</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="ftco-gallery">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 heading-section text-center mb-4 ftco-animate">
-                        <h2 class="mb-4">Follow Us On Instagram</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid px-0">
-                <div class="row no-gutters">
-                    <div class="col-md-4 col-lg-2 ftco-animate">
-                        <a href="images/gallery-1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-1.jpg);">
-                            <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                                <span class="icon-instagram"></span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-lg-2 ftco-animate">
-                        <a href="images/gallery-2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-2.jpg);">
-                            <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                                <span class="icon-instagram"></span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-lg-2 ftco-animate">
-                        <a href="images/gallery-3.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-3.jpg);">
-                            <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                                <span class="icon-instagram"></span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-lg-2 ftco-animate">
-                        <a href="images/gallery-4.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-4.jpg);">
-                            <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                                <span class="icon-instagram"></span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-lg-2 ftco-animate">
-                        <a href="images/gallery-5.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-5.jpg);">
-                            <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                                <span class="icon-instagram"></span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-lg-2 ftco-animate">
-                        <a href="images/gallery-6.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(images/gallery-6.jpg);">
-                            <div class="icon mb-4 d-flex align-items-center justify-content-center">
-                                <span class="icon-instagram"></span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer class="ftco-footer ftco-section">
-            <div class="container">
-                <div class="row">
-                    <div class="mouse">
-                        <a href="#" class="mouse-icon">
-                            <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="row mb-5">
-                    <div class="col-md">
-                        <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">Minishop</h2>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-                            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="ftco-footer-widget mb-4 ml-md-5">
-                            <h2 class="ftco-heading-2">Menu</h2>
-                            <ul class="list-unstyled">
-                                <li><a href="#" class="py-2 d-block">Shop</a></li>
-                                <li><a href="#" class="py-2 d-block">About</a></li>
-                                <li><a href="#" class="py-2 d-block">Journal</a></li>
-                                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">Help</h2>
-                            <div class="d-flex">
-                                <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-                                    <li><a href="#" class="py-2 d-block">Shipping Information</a></li>
-                                    <li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>
-                                    <li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>
-                                    <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
-                                </ul>
-                                <ul class="list-unstyled">
-                                    <li><a href="#" class="py-2 d-block">FAQs</a></li>
-                                    <li><a href="#" class="py-2 d-block">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">Have a Questions?</h2>
-                            <div class="block-23 mb-3">
-                                <ul>
-                                    <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                                    <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-center">
-
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-
-
-        <!-- loader -->
-        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-        <script src="land/js/jquery.min.js"></script>
-        <script src="land/js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="land/js/popper.min.js"></script>
-        <script src="land/js/bootstrap.min.js"></script>
-        <script src="land/js/jquery.easing.1.3.js"></script>
-        <script src="land/js/jquery.waypoints.min.js"></script>
-        <script src="land/js/jquery.stellar.min.js"></script>
-        <script src="land/js/owl.carousel.min.js"></script>
-        <script src="land/js/jquery.magnific-popup.min.js"></script>
-        <script src="land/js/aos.js"></script>
-        <script src="land/js/jquery.animateNumber.min.js"></script>
-        <script src="land/js/bootstrap-datepicker.js"></script>
-        <script src="land/js/scrollax.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="land/js/google-map.js"></script>
-        <script src="land/js/main.js"></script>
-
+                                    </li>  
+                                </c:forEach>  
+                            </c:if>        
+							<li class="span3">
+								<div class="product-box">												
+									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/8.jpg"></a><br/>
+									<a href="product_detail.html" class="title">Praesent tempor sem</a><br/>
+									<a href="#" class="category">Erat gravida</a>
+									<p class="price">$28</p>
+								</div>
+							</li>
+							<li class="span3">
+								<div class="product-box">
+									<span class="sale_tag"></span>												
+									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/7.jpg"></a><br/>
+									<a href="product_detail.html" class="title">Wuam ultrices rutrum</a><br/>
+									<a href="#" class="category">Suspendisse aliquet</a>
+									<p class="price">$341</p>
+								</div>
+							</li>
+							<li class="span3">
+								<div class="product-box">												
+									<span class="sale_tag"></span>
+									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/6.jpg"></a><br/>
+									<a href="product_detail.html" class="title">Praesent tempor sem sodales</a><br/>
+									<a href="#" class="category">Nam imperdiet</a>
+									<p class="price">$49</p>
+								</div>
+							</li>
+							<li class="span3">
+								<div class="product-box">                                        												
+									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/1.jpg"></a><br/>
+									<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
+									<a href="#" class="category">Congue diam congue</a>
+									<p class="price">$35</p>
+								</div>
+							</li>       
+							<li class="span3">
+								<div class="product-box">												
+									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/2.jpg"></a><br/>
+									<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
+									<a href="#" class="category">Gravida placerat</a>
+									<p class="price">$61</p>
+								</div>
+							</li>
+							<li class="span3">
+								<div class="product-box">												
+									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/3.jpg"></a><br/>
+									<a href="product_detail.html" class="title">Quam ultrices rutrum</a><br/>
+									<a href="#" class="category">Orci et nisl iaculis</a>
+									<p class="price">$233</p>
+								</div>
+							</li>
+							<li class="span3">
+								<div class="product-box">												
+									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/4.jpg"></a><br/>
+									<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
+									<a href="#" class="category">Urna nec lectus mollis</a>
+									<p class="price">$134</p>
+								</div>
+							</li>
+							<li class="span3">
+								<div class="product-box">												
+									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/5.jpg"></a><br/>
+									<a href="product_detail.html" class="title">Luctus quam ultrices</a><br/>
+									<a href="#" class="category">Suspendisse aliquet</a>
+									<p class="price">$261</p>
+								</div>
+							</li>
+						</ul>								
+						<hr>
+						<div class="pagination pagination-small pagination-centered">
+							<ul>
+								<li><a href="#">Prev</a></li>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">Next</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="span3 col">
+						<div class="block">	
+							<ul class="nav nav-list">
+								<li class="nav-header">SUB CATEGORIES</li>
+								<li><a href="products.html">Nullam semper elementum</a></li>
+								<li class="active"><a href="products.html">Phasellus ultricies</a></li>
+								<li><a href="products.html">Donec laoreet dui</a></li>
+								<li><a href="products.html">Nullam semper elementum</a></li>
+								<li><a href="products.html">Phasellus ultricies</a></li>
+								<li><a href="products.html">Donec laoreet dui</a></li>
+							</ul>
+							<br/>
+							<ul class="nav nav-list below">
+								<li class="nav-header">MANUFACTURES</li>
+								<li><a href="products.html">Adidas</a></li>
+								<li><a href="products.html">Nike</a></li>
+								<li><a href="products.html">Dunlop</a></li>
+								<li><a href="products.html">Yamaha</a></li>
+							</ul>
+						</div>
+						<div class="block">
+							<h4 class="title">
+								<span class="pull-left"><span class="text">Randomize</span></span>
+								<span class="pull-right">
+									<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+								</span>
+							</h4>
+							<div id="myCarousel" class="carousel slide">
+								<div class="carousel-inner">
+									<div class="active item">
+										<ul class="thumbnails listing-products">
+											<li class="span3">
+												<div class="product-box">
+													<span class="sale_tag"></span>												
+													<img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/1.jpg"><br/>
+													<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
+													<a href="#" class="category">Suspendisse aliquet</a>
+													<p class="price">$261</p>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="item">
+										<ul class="thumbnails listing-products">
+											<li class="span3">
+												<div class="product-box">												
+													<img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/2.jpg"><br/>
+													<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
+													<a href="#" class="category">Urna nec lectus mollis</a>
+													<p class="price">$134</p>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="block">								
+							<h4 class="title"><strong>Best</strong> Seller</h4>								
+							<ul class="small-product">
+								<li>
+									<a href="#" title="Praesent tempor sem sodales">
+										<img src="${pageContext.request.contextPath}/themes/images/ladies/3.jpg" alt="Praesent tempor sem sodales">
+									</a>
+									<a href="#">Praesent tempor sem</a>
+								</li>
+								<li>
+									<a href="#" title="Luctus quam ultrices rutrum">
+										<img src="${pageContext.request.contextPath}/themes/images/ladies/4.jpg" alt="Luctus quam ultrices rutrum">
+									</a>
+									<a href="#">Luctus quam ultrices rutrum</a>
+								</li>
+								<li>
+									<a href="#" title="Fusce id molestie massa">
+										<img src="${pageContext.request.contextPath}/themes/images/ladies/5.jpg" alt="Fusce id molestie massa">
+									</a>
+									<a href="#">Fusce id molestie massa</a>
+								</li>   
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="footer-bar">
+				<div class="row">
+					<div class="span3">
+						<h4>Navigation</h4>
+						<ul class="nav">
+							<li><a href="./index.html">Homepage</a></li>  
+							<li><a href="./about.html">About Us</a></li>
+							<li><a href="./contact.html">Contac Us</a></li>
+							<li><a href="./cart.html">Your Cart</a></li>
+							<li><a href="./register.html">Login</a></li>							
+						</ul>					
+					</div>
+					<div class="span4">
+						<h4>My Account</h4>
+						<ul class="nav">
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Order History</a></li>
+							<li><a href="#">Wish List</a></li>
+							<li><a href="#">Newsletter</a></li>
+						</ul>
+					</div>
+					<div class="span5">
+						<p class="logo"><img src="${pageContext.request.contextPath}/${pageContext.request.contextPath}/themes/images/logo.png" class="site_logo" alt=""></p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+						<br/>
+						<span class="social_icons">
+							<a class="facebook" href="#">Facebook</a>
+							<a class="twitter" href="#">Twitter</a>
+							<a class="skype" href="#">Skype</a>
+							<a class="vimeo" href="#">Vimeo</a>
+						</span>
+					</div>					
+				</div>	
+			</section>
+			<section id="copyright">
+				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
+			</section>
+		</div>
+		<script src="${pageContext.request.contextPath}/${pageContext.request.contextPath}/themes/js/common.js"></script>	
     </body>
 </html>
