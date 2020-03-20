@@ -7,10 +7,7 @@ package br.senac.sp.grupoum.projectpiiv.models;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author
- */
+
 public class Produto {
 
     int id;
