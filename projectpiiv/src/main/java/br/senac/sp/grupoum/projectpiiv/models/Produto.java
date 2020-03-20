@@ -6,11 +6,8 @@
 package br.senac.sp.grupoum.projectpiiv.models;
 
 import java.util.ArrayList;
+//
 
-/**
- *
- * @author
- */
 public class Produto {
 
     int id;
@@ -23,6 +20,10 @@ public class Produto {
 
     public Produto() {
 
+    }
+     public Produto(int id, double quantidade) {
+        this.id = id;
+        this.quantidade = quantidade;
     }
 
     public Produto(String nome, String descricao, String tipo, double preco,
@@ -58,16 +59,6 @@ public class Produto {
         this.imagens = imagens;
     }
 
-    public Produto(int id, double quantidade) {
-        this.id = id;
-        this.quantidade = quantidade;
-    }
-
-    public void setImagens(ArrayList<String> imagens) {
-        this.imagens = imagens;
-    }
-    
-    
     public int getId() {
         return id;
     }
@@ -101,7 +92,7 @@ public class Produto {
     }
 
     public ArrayList<String> getImagens() {
-        return this.imagens;
+        return imagens;
     }
 
     public double getPreco() {

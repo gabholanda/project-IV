@@ -18,11 +18,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
+               
                 <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-produtos">Listar Produtos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/estoquista/listar-produtos">Listar Produtos</a>
+                  <a class="nav-link" href="${pageContext.request.contextPath}/estoquista/listar-produtos-estoquista">Listar Produtos</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Sair</a>

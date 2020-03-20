@@ -62,10 +62,10 @@ public class AtualizarQuantidadeServlet extends HttpServlet {
 
         if (editou) {
             request.setAttribute("editadoAttr", true);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/estoquista.jsp");
             dispatcher.forward(request, response);
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/editar-produto.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/atualizar-quantidade.jsp");
             dispatcher.forward(request, response);
             
         }

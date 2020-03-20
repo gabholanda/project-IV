@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author pablo.santana
  */
-@WebServlet(name = "ListarProdutosServlet", urlPatterns = {"/estoquista/listar-produtos"})
+@WebServlet(name = "ListarProdutosEstoqServlet", urlPatterns = {"/estoquista/listar-produtos-estoquista"})
 public class ListarProdutosEstoq extends HttpServlet {
 
     @Override

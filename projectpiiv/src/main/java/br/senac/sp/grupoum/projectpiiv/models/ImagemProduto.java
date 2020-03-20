@@ -1,9 +1,6 @@
 package br.senac.sp.grupoum.projectpiiv.models;
 
-/**
- *
- * @author erick
- */
+
 public class ImagemProduto {
     private int id;
     private int id_produto;

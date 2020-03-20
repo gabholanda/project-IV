@@ -36,7 +36,7 @@
             <h1>Editar Produto</h1>
         </div>
         
-        <form action="${pageContext.request.contextPath}/admin/editar-produto" method="post" novalidate>
+        <form action="${pageContext.request.contextPath}/admin/editar-produto" method="post"  enctype="multipart/form-data" novalidate>
             <input type="hidden" name="id" value="${idAttr}">
              
             <div class="form-group row">
@@ -83,10 +83,10 @@
                 </div>
             </div>
             
-            <!--<div class="form-group row">
-              <label for="exampleFormControlFile1" class="col-sm-1 offset-md-3">Imagem</label>
-              <input type="file" class="form-control-file col-sm-4" id="file" name=""file>
-            </div> -->
+          <div class="form-group row">
+                <label for="exampleFormControlFile1" class="col-sm-1 offset-md-3">Imagem</label>
+                <input type="file" class="form-control-file col-sm-4" id="file" name="file" multiple>
+            </div> 
 
             <br>
              <div class="button-group">
