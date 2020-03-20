@@ -87,22 +87,26 @@
 			<section class="main-content">
 				
 				<div class="row">						
-					<div class="span9">								
+					<div class="span9">								<a data-method="get" href="${pageContext.request.contextPath}/land/detalhe-produto?id=${produto.getId()}">
 						<ul class="thumbnails listing-products">
-							<c:if test="${not empty produtosAttr}">
+                            <c:if test="${not empty produtosAttr}">
                                 <c:forEach items="${produtosAttr}" var="produto">
-                                    <li class="span3">
-                                        <div class="product-box">
-                                           <span class="sale_tag"></span>											
-                                            <a href="product_detail.html">
-                                              <c:forEach items="${produto.getImagens()}" var="imagem">
-                                                    <img src="${pageContext.request.contextPath}/img/${imagem}" style="width: 200px; height: 200px;">
-                                                </c:forEach></a><br/> 
-                                            <a href="product_detail.html" class="title"><c:out value="${produto.getNome()}"/></a><br/>
-                                            <a href="#" class="category">Phasellus consequat</a>
-                                            <p class="price"><c:out value="${produto.getPreco()}"/></p>
-                                        </div>
-                                    </li>  
+                                    <a data-method="get" href="${pageContext.request.contextPath}/land/detalhe-produto?id=${produto.getId()}"> 
+                                        <li class="span3">
+                                            <div class="product-box">
+                                            <span class="sale_tag"></span>											
+                                                <a data-method="get" href="${pageContext.request.contextPath}/land/detalhe-produto?id=${produto.getId()}">
+                                                    <c:forEach items="${produto.getImagens()}" var="imagem">
+                                                        <img src="${pageContext.request.contextPath}/img/${imagem}" style="width: 250px; height: 250px;">
+                                                    </c:forEach>
+                                                </a>
+                                                <br/> 
+                                                <a href="product_detail.html" class="title"><c:out value="${produto.getNome()}"/></a><br/>
+                                                <a href="#" class="category">Phasellus consequat</a>
+                                                <p class="price"><c:out value="${produto.getPreco()}"/></p>
+                                            </div>
+                                        </li>  
+                                   </a> 
                                 </c:forEach>  
                             </c:if>        
 							<li class="span3">
@@ -289,7 +293,7 @@
 						</ul>
 					</div>
 					<div class="span5">
-						<p class="logo"><img src="${pageContext.request.contextPath}/${pageContext.request.contextPath}/themes/images/logo.png" class="site_logo" alt=""></p>
+						<p class="logo"><img src="${pageContext.request.contextPath}/themes/images/logo.png" class="site_logo" alt=""></p>
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
 						<br/>
 						<span class="social_icons">
@@ -305,6 +309,6 @@
 				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
 			</section>
 		</div>
-		<script src="${pageContext.request.contextPath}/${pageContext.request.contextPath}/themes/js/common.js"></script>	
+		<script src="${pageContext.request.contextPath}/themes/js/common.js"></script>	
     </body>
 </html>
