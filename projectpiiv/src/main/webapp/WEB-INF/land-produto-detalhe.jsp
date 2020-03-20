@@ -3,7 +3,7 @@
     Created on : Mar 20, 2020, 12:07:23 AM
     Author     : Pablo de Oliveira
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -67,7 +67,7 @@
                                     <li><a href="./products.html">Lacinia nibh</a></li>									
                                     <li><a href="./products.html">Eget molestie</a></li>
                                     <li><a href="./products.html">Varius purus</a></li>									
-                                </ul>
+                                </ul>       
                             </li>															
                             <li><a href="./products.html">Man</a></li>			
                             <li><a href="./products.html">Sport</a>
@@ -171,70 +171,6 @@
                                         <a class="left button" href="#myCarousel-1" data-slide="prev"></a><a class="right button" href="#myCarousel-1" data-slide="next"></a>
                                     </span>
                                 </h4>
-                                <div id="myCarousel-1" class="carousel slide">
-                                    <div class="carousel-inner">
-                                        <div class="active item">
-                                            <ul class="thumbnails listing-products">
-                                                <li class="span3">
-                                                    <div class="product-box">
-                                                        <span class="sale_tag"></span>												
-                                                        <a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/6.jpg"></a><br/>
-                                                        <a href="product_detail.html" class="title">Wuam ultrices rutrum</a><br/>
-                                                        <a href="#" class="category">Suspendisse aliquet</a>
-                                                        <p class="price">$341</p>
-                                                    </div>
-                                                </li>
-                                                <li class="span3">
-                                                    <div class="product-box">
-                                                        <span class="sale_tag"></span>												
-                                                        <a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/5.jpg"></a><br/>
-                                                        <a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-                                                        <a href="#" class="category">Phasellus consequat</a>
-                                                        <p class="price">$341</p>
-                                                    </div>
-                                                </li>       
-                                                <li class="span3">
-                                                    <div class="product-box">												
-                                                        <a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/4.jpg"></a><br/>
-                                                        <a href="product_detail.html" class="title">Praesent tempor sem</a><br/>
-                                                        <a href="#" class="category">Erat gravida</a>
-                                                        <p class="price">$28</p>
-                                                    </div>
-                                                </li>												
-                                            </ul>
-                                        </div>
-                                        <div class="item">
-                                            <ul class="thumbnails listing-products">
-                                                <li class="span3">
-                                                    <div class="product-box">
-                                                        <span class="sale_tag"></span>												
-                                                        <a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/1.jpg"></a><br/>
-                                                        <a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-                                                        <a href="#" class="category">Phasellus consequat</a>
-                                                        <p class="price">$341</p>
-                                                    </div>
-                                                </li>       
-                                                <li class="span3">
-                                                    <div class="product-box">												
-                                                        <a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/2.jpg"></a><br/>
-                                                        <a href="product_detail.html">Praesent tempor sem</a><br/>
-                                                        <a href="#" class="category">Erat gravida</a>
-                                                        <p class="price">$28</p>
-                                                    </div>
-                                                </li>
-                                                <li class="span3">
-                                                    <div class="product-box">
-                                                        <span class="sale_tag"></span>												
-                                                        <a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/3.jpg"></a><br/>
-                                                        <a href="product_detail.html" class="title">Wuam ultrices rutrum</a><br/>
-                                                        <a href="#" class="category">Suspendisse aliquet</a>
-                                                        <p class="price">$341</p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -268,55 +204,7 @@
                             <div id="myCarousel" class="carousel slide">
                                 <div class="carousel-inner">
                                     <div class="active item">
-                                        <ul class="thumbnails listing-products">
-                                            <li class="span3">
-                                                <div class="product-box">
-                                                    <span class="sale_tag"></span>												
-                                                    <a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/7.jpg"></a><br/>
-                                                    <a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-                                                    <a href="#" class="category">Suspendisse aliquet</a>
-                                                    <p class="price">$261</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="item">
-                                        <ul class="thumbnails listing-products">
-                                            <li class="span3">
-                                                <div class="product-box">												
-                                                    <a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/8.jpg"></a><br/>
-                                                    <a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
-                                                    <a href="#" class="category">Urna nec lectus mollis</a>
-                                                    <p class="price">$134</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block">								
-                            <h4 class="title"><strong>Best</strong> Seller</h4>								
-                            <ul class="small-product">
-                                <li>
-                                    <a href="#" title="Praesent tempor sem sodales">
-                                        <img src="${pageContext.request.contextPath}/themes/images/ladies/1.jpg" alt="Praesent tempor sem sodales">
-                                    </a>
-                                    <a href="#">Praesent tempor sem</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Luctus quam ultrices rutrum">
-                                        <img src="${pageContext.request.contextPath}/themes/images/ladies/2.jpg" alt="Luctus quam ultrices rutrum">
-                                    </a>
-                                    <a href="#">Luctus quam ultrices rutrum</a>
-                                </li>
-                                <li>
-                                    <a href="#" title="Fusce id molestie massa">
-                                        <img src="${pageContext.request.contextPath}/themes/images/ladies/3.jpg" alt="Fusce id molestie massa">
-                                    </a>
-                                    <a href="#">Fusce id molestie massa</a>
-                                </li>   
-                            </ul>
+                                       
                         </div>
                     </div>
                 </div>

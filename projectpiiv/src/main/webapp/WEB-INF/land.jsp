@@ -44,9 +44,9 @@
 					<div class="account pull-right">
 						<ul class="user-menu">				
 							<li><a href="#">My Account</a></li>
-							<li><a href="cart.html">Your Cart</a></li>
-							<li><a href="checkout.html">Checkout</a></li>					
-							<li><a href="register.html">Login</a></li>			
+							<li><a href="#">Your Cart</a></li>
+							<li><a href="#">Checkout</a></li>					
+							<li><a href="#">Login</a></li>			
 						</ul>
 					</div>
 				</div>
@@ -60,22 +60,22 @@
 						<ul>
 							<li><a href="./products.html">Woman</a>					
 								<ul>
-									<li><a href="./products.html">Lacinia nibh</a></li>									
-									<li><a href="./products.html">Eget molestie</a></li>
-									<li><a href="./products.html">Varius purus</a></li>									
+									<li><a href="#">Lacinia nibh</a></li>									
+									<li><a href="#">Eget molestie</a></li>
+									<li><a href="#">Varius purus</a></li>									
 								</ul>
 							</li>															
-							<li><a href="./products.html">Man</a></li>			
-							<li><a href="./products.html">Sport</a>
+							<li><a href="#">Man</a></li>			
+							<li><a href="#">Sport</a>
 								<ul>									
-									<li><a href="./products.html">Gifts and Tech</a></li>
-									<li><a href="./products.html">Ties and Hats</a></li>
-									<li><a href="./products.html">Cold Weather</a></li>
+									<li><a href="#">Gifts and Tech</a></li>
+									<li><a href="#">Ties and Hats</a></li>
+									<li><a href="#">Cold Weather</a></li>
 								</ul>
 							</li>							
-							<li><a href="./products.html">Hangbag</a></li>
-							<li><a href="./products.html">Best Seller</a></li>
-							<li><a href="./products.html">Top Seller</a></li>
+							<li><a href="#">Hangbag</a></li>
+							<li><a href="#">Best Seller</a></li>
+							<li><a href="#">Top Seller</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -108,73 +108,7 @@
                                         </li>  
                                    </a> 
                                 </c:forEach>  
-                            </c:if>        
-							<li class="span3">
-								<div class="product-box">												
-									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/8.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Praesent tempor sem</a><br/>
-									<a href="#" class="category">Erat gravida</a>
-									<p class="price">$28</p>
-								</div>
-							</li>
-							<li class="span3">
-								<div class="product-box">
-									<span class="sale_tag"></span>												
-									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/7.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Wuam ultrices rutrum</a><br/>
-									<a href="#" class="category">Suspendisse aliquet</a>
-									<p class="price">$341</p>
-								</div>
-							</li>
-							<li class="span3">
-								<div class="product-box">												
-									<span class="sale_tag"></span>
-									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/6.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Praesent tempor sem sodales</a><br/>
-									<a href="#" class="category">Nam imperdiet</a>
-									<p class="price">$49</p>
-								</div>
-							</li>
-							<li class="span3">
-								<div class="product-box">                                        												
-									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/1.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-									<a href="#" class="category">Congue diam congue</a>
-									<p class="price">$35</p>
-								</div>
-							</li>       
-							<li class="span3">
-								<div class="product-box">												
-									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/2.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
-									<a href="#" class="category">Gravida placerat</a>
-									<p class="price">$61</p>
-								</div>
-							</li>
-							<li class="span3">
-								<div class="product-box">												
-									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/3.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Quam ultrices rutrum</a><br/>
-									<a href="#" class="category">Orci et nisl iaculis</a>
-									<p class="price">$233</p>
-								</div>
-							</li>
-							<li class="span3">
-								<div class="product-box">												
-									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/4.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
-									<a href="#" class="category">Urna nec lectus mollis</a>
-									<p class="price">$134</p>
-								</div>
-							</li>
-							<li class="span3">
-								<div class="product-box">												
-									<a href="product_detail.html"><img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/5.jpg"></a><br/>
-									<a href="product_detail.html" class="title">Luctus quam ultrices</a><br/>
-									<a href="#" class="category">Suspendisse aliquet</a>
-									<p class="price">$261</p>
-								</div>
-							</li>
+                            </c:if>
 						</ul>								
 						<hr>
 						<div class="pagination pagination-small pagination-centered">
@@ -192,20 +126,20 @@
 						<div class="block">	
 							<ul class="nav nav-list">
 								<li class="nav-header">SUB CATEGORIES</li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
+								<li><a href="#">Nullam semper elementum</a></li>
 								<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
+								<li><a href="#">Donec laoreet dui</a></li>
+								<li><a href="#">Nullam semper elementum</a></li>
+								<li><a href="#">Phasellus ultricies</a></li>
+								<li><a href="#">Donec laoreet dui</a></li>
 							</ul>
 							<br/>
 							<ul class="nav nav-list below">
 								<li class="nav-header">MANUFACTURES</li>
-								<li><a href="products.html">Adidas</a></li>
-								<li><a href="products.html">Nike</a></li>
-								<li><a href="products.html">Dunlop</a></li>
-								<li><a href="products.html">Yamaha</a></li>
+								<li><a href="#">Adidas</a></li>
+								<li><a href="#">Nike</a></li>
+								<li><a href="#">Dunlop</a></li>
+								<li><a href="#">Yamaha</a></li>
 							</ul>
 						</div>
 						<div class="block">
@@ -218,29 +152,7 @@
 							<div id="myCarousel" class="carousel slide">
 								<div class="carousel-inner">
 									<div class="active item">
-										<ul class="thumbnails listing-products">
-											<li class="span3">
-												<div class="product-box">
-													<span class="sale_tag"></span>												
-													<img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/1.jpg"><br/>
-													<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-													<a href="#" class="category">Suspendisse aliquet</a>
-													<p class="price">$261</p>
-												</div>
-											</li>
-										</ul>
-									</div>
-									<div class="item">
-										<ul class="thumbnails listing-products">
-											<li class="span3">
-												<div class="product-box">												
-													<img alt="" src="${pageContext.request.contextPath}/themes/images/ladies/2.jpg"><br/>
-													<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
-													<a href="#" class="category">Urna nec lectus mollis</a>
-													<p class="price">$134</p>
-												</div>
-											</li>
-										</ul>
+										
 									</div>
 								</div>
 							</div>
@@ -248,24 +160,7 @@
 						<div class="block">								
 							<h4 class="title"><strong>Best</strong> Seller</h4>								
 							<ul class="small-product">
-								<li>
-									<a href="#" title="Praesent tempor sem sodales">
-										<img src="${pageContext.request.contextPath}/themes/images/ladies/3.jpg" alt="Praesent tempor sem sodales">
-									</a>
-									<a href="#">Praesent tempor sem</a>
-								</li>
-								<li>
-									<a href="#" title="Luctus quam ultrices rutrum">
-										<img src="${pageContext.request.contextPath}/themes/images/ladies/4.jpg" alt="Luctus quam ultrices rutrum">
-									</a>
-									<a href="#">Luctus quam ultrices rutrum</a>
-								</li>
-								<li>
-									<a href="#" title="Fusce id molestie massa">
-										<img src="${pageContext.request.contextPath}/themes/images/ladies/5.jpg" alt="Fusce id molestie massa">
-									</a>
-									<a href="#">Fusce id molestie massa</a>
-								</li>   
+								
 							</ul>
 						</div>
 					</div>
@@ -276,11 +171,11 @@
 					<div class="span3">
 						<h4>Navigation</h4>
 						<ul class="nav">
-							<li><a href="./index.html">Homepage</a></li>  
-							<li><a href="./about.html">About Us</a></li>
-							<li><a href="./contact.html">Contac Us</a></li>
-							<li><a href="./cart.html">Your Cart</a></li>
-							<li><a href="./register.html">Login</a></li>							
+							<li><a href="#">Homepage</a></li>  
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">Contac Us</a></li>
+							<li><a href="#">Your Cart</a></li>
+							<li><a href="#">Login</a></li>							
 						</ul>					
 					</div>
 					<div class="span4">

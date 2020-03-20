@@ -36,7 +36,7 @@ public class LandServlet extends HttpServlet {
         }
         try {
                 request.setAttribute("produtosAttr", produtosI);
-                dispatcher.forward(request, response);
+               
         } catch (ExceptionInInitializerError ex) {
             System.out.println("AQUI O ERRO" + ex);
         }

@@ -26,17 +26,18 @@ public class LandDetalheProdutoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         int id = Integer.parseInt(request.getParameter("id"));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/land-produto-detalhe.jsp");
         Produto produto = ProdutoDAO.pesquisarPorId(id);
 
         try {
-            
             request.setAttribute("produtosAttr", produto);
-            dispatcher.forward(request, response);
-        } catch (ExceptionInInitializerError ex) {
+
+        } catch (Exception ex) {
             System.out.println(ex);
         }
+
         dispatcher.forward(request, response);
     }
 
