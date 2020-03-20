@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author erick
+ * @author pablo.santana
  */
-@WebServlet(name = "ListarProdutosServlet", urlPatterns = {"/admin/listar-produtos"})
-public class ListarProdutosServlet extends HttpServlet {
+@WebServlet(name = "ListarProdutosEstoqServlet", urlPatterns = {"/estoquista/listar-produtos-estoquista"})
+public class ListarProdutosEstoq extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listar-produtos.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/listar-produto-estoquista.jsp");
 
         ArrayList<Produto> produtos = ProdutoDAO.produtosCadastrados();
 

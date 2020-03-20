@@ -221,4 +221,76 @@ public class ProdutoDAO {
         return retorno;
 
     }
+    
+     public static boolean atualizarQtd(Produto produto){
+         Connection connection = null;
+        boolean retorno = false;
+
+        try {
+            connection = DbConnectionDAO.openConnection();
+            PreparedStatement comando = connection.prepareStatement("UPDATE produto "
+                    + "SET qtd_estoque = ?"
+                    + "WHERE id_produto = ?");
+
+          
+            comando.setDouble(1, produto.getQuantidade());
+            comando.setInt(2, produto.getId());
+
+            int linhasAfetadas = comando.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+
+                retorno = true;
+
+            } else {
+                retorno = false;
+            }
+
+        } catch (ClassNotFoundException ex) {
+            retorno = false;
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            retorno = false;
+        }
+
+        DbConnectionDAO.closeConnection(connection);
+        return retorno;
+     }
+     
+      public static ArrayList<Produto> produtosCadastradosI() {
+        ArrayList<Produto> produtos = new ArrayList<Produto>();
+        Connection connection = null;
+
+        try {
+            connection = DbConnectionDAO.openConnection();
+            PreparedStatement comando = connection.prepareStatement("SELECT * FROM produto");
+ 
+            ResultSet rs = comando.executeQuery();
+
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setId(rs.getInt("id_produto"));
+                produto.setNome(rs.getString("nome"));
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setTipo(rs.getString("tipo_produto"));
+                produto.setQuantidade(rs.getDouble("qtd_estoque"));
+                produto.setPreco(rs.getDouble("preco"));
+
+                produtos.add(produto);
+                
+                
+            }
+
+            DbConnectionDAO.closeConnection(connection);
+            return produtos;
+
+        } catch (ClassNotFoundException ex) {
+            return null;
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
+        }
+    }
 }
