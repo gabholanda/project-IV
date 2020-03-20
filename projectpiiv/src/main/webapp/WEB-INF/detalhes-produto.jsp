@@ -82,24 +82,28 @@
                 </div>
 
                 <div class="text-center-hv3">
-                    <span id="garantia"><strong>Garantia</strong></span>
-                    <span id="readmoreGarantia"><strong>Compra Garantida</strong>
-                        <p>
-                            Se houver algum problema ou se não receber o produto que comprou, devolveremos o dinheiro. 
-                            <strong>Você sempre terá a nossa ajuda.</strong>
-                            Estaremos ao seu lado até você receber o que comprou e nos avisar que está tudo correto. Se tiver algum problema, basta nos avisar.</p></span>
-                    <button onclick="readMoreGarantia()" id="readmoreGarantias"</button>
-                    <script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts.js"></script>
-                </div>
-
-                <div class="text-center-hv4">
                     <span id="frete"><strong>Frete</strong></span>
                     <span id="readmoreFrete"><strong>Não oferecemos frete grátis em nossos produtos</strong>
-                        <p>Estaremos ao seu lado até você receber o que comprou e nos avisar que está tudo correto. Se tiver algum problema, basta nos avisar.</p></span>
+                        Estaremos ao seu lado até você receber o que comprou e nos avisar que está tudo correto. Se tiver algum problema, basta nos avisar.</span>
                     <button onclick="readMoreFrete()" id="readmoreFretes"</button>
                     <script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts.js"></script>
                 </div>
             </div>
+
+
+            <div class="text-center-hv4">
+                <span id="garantia"><strong>Garantia</strong></span>
+                <span id="readmoreGarantia"><strong>Compra Garantida</strong>
+                    <p>
+                        Se houver algum problema ou se não receber o produto que comprou, devolveremos o dinheiro. 
+                        <strong>Você sempre terá a nossa ajuda.</strong>
+                        Estaremos ao seu lado até você receber o que comprou e nos avisar que está tudo correto. Se tiver algum problema, basta nos avisar.</p></span>
+                <button onclick="readMoreGarantia()" id="readmoreGarantias"</button>
+                <script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts.js"></script>
+            </div>
+            <br>
+            <br>
+
 
         </c:if>
     </body>

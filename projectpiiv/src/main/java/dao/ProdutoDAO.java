@@ -146,9 +146,9 @@ public class ProdutoDAO {
 
         try {
             connection = DbConnectionDAO.openConnection();
-            PreparedStatement comando = connection.prepareStatement("UPDATE produto "
-                    + "SET nome = ?, tipo_produto = ?, qtd_estoque = ?, preco = ?, "
-                    + "descricao = ? WHERE id_produto = ?;");
+            PreparedStatement comando = connection.prepareStatement("UPDATE loja_esporte.produto "
+                    + "SET Nome = ?, tipo_produto = ?, qtd_estoque = ?, preco = ?, "
+                    + "descricao = ? WHERE id_produto = ?;", Statement.RETURN_GENERATED_KEYS);
 
             comando.setString(1, produto.getNome());
             comando.setString(2, produto.getTipo());
@@ -161,16 +161,14 @@ public class ProdutoDAO {
 
             if (linhasAfetadas > 0) {
                 ResultSet resultSet = comando.getGeneratedKeys();
-                int idProduto = 0;
+                
 
-                while (resultSet.next()) {
-                    idProduto = resultSet.getInt(1);
-                }
 
                 for (File file : filesUpload) {
-                    comando = connection.prepareStatement("UPDATE imagem_produto (id_produto, caminho_imagem)"
+                    comando = connection.prepareStatement("INSERT INTO imagem_produto (id_produto, caminho_imagem)"
                             + "VALUES(?,?);");
-                    comando.setInt(1, idProduto);
+
+                    comando.setInt(1, produto.getId());
                     comando.setString(2, file.getName());
                     int qtd = comando.executeUpdate();
 

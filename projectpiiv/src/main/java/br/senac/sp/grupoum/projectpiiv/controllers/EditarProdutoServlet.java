@@ -61,7 +61,6 @@ public class EditarProdutoServlet extends HttpServlet {
         UPLOAD_PATH = UPLOAD_PATH.replace("/target/projectpiiv-1.0-SNAPSHOT", "/src/main/webapp");
         MultipartRequest m = new MultipartRequest(request, UPLOAD_PATH, 1024 * 1024 * 1024);
 
-        //\target\projectpiiv-1.0-SNAPSHOT\img
         if (ServletFileUpload.isMultipartContent(request)) {
             try {
 
@@ -74,16 +73,18 @@ public class EditarProdutoServlet extends HttpServlet {
                     uploadedFiles.add(uploadedFile);
                 }
 
+                int id = Integer.parseInt(m.getParameter("id"));
                 String nome = m.getParameter("nome");
                 String descricao = m.getParameter("descricao");
                 String tipo = m.getParameter("tipo");
                 double preco = Double.valueOf(m.getParameter("preco"));
                 double quantidade = Double.valueOf(m.getParameter("quantidade"));
-                Produto produto = new Produto(nome, descricao, tipo, preco, quantidade);
+                Produto produto = new Produto(id, nome, descricao, tipo, preco, quantidade);
+                
 
                 boolean salvar = ProdutoDAO.editar(produto, uploadedFiles);
                 if (salvar) {
-                    request.setAttribute("criadoAttr", true);
+                    request.setAttribute("editadoAttr", true);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin.jsp");
 
                     dispatcher.forward(request, response);
