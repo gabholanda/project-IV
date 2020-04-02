@@ -44,6 +44,15 @@ body {
     padding: 0px; 
 }
 
+.logo-size {
+    font-size: 30px;
+    margin-top: 4px;
+}
+
+.logo-size-endpage {
+    font-size: 15px;
+}
+
 
 
 #readmore{display: none} 
