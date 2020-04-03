@@ -11,12 +11,12 @@ public class Admin extends Funcionario {
 
     }
 
-    public Admin(String email, String senha, int id, String nome) {
-        super(email, senha, id, nome);
+    public Admin(String email, String senha, int id, String nome, String tipo, boolean status) {
+        super(email, senha, id, nome, tipo, status);
     }
 
-    public Admin(String email, String senha, String nome) {
-        super(email, senha, senha);
+    public Admin(String email, String senha, String nome, String tipo, boolean status) {
+        super(email, senha, nome,tipo, status );
     }
 
 }
