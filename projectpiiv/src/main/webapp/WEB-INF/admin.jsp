@@ -24,6 +24,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-produtos">Listar Produtos</a>
                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-usuario">Cadastrar Usuario</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Sair</a>
                 </li>
@@ -37,17 +40,17 @@
         </div>
         <c:if test="${criadoAttr}">
           <div class="alert alert-success">
-              Produto cadastrado com sucesso!
+              Cadastrado com sucesso!
           </div>
       </c:if>
         <c:if test="${editadoAttr}">
           <div class="alert alert-success">
-              Produto editado com sucesso!
+              Editado com sucesso!
           </div>
         </c:if>
         <c:if test="${excluidoAttr}">
           <div class="alert alert-success">
-              Produto excluído com sucesso!
+              Excluído com sucesso!
           </div>
         </c:if>
         
