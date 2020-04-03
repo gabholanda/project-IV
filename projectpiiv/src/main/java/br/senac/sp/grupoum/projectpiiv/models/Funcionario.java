@@ -9,20 +9,42 @@ public class Funcionario extends Usuario {
 
     private int idUser;
     private String nome;
+    private String tipo; 
+    private boolean status; 
 
-    public Funcionario(String email, String senha, int idUser, String nome) {
+    public Funcionario(String email, String senha, int idUser, String nome, String tipo, boolean status) {
 
         super(email, senha);
         this.idUser = idUser;
         this.nome = nome;
+        this.tipo = tipo; 
+        this.status = status; 
 
     }
 
-    public Funcionario(String email, String senha, String nome) {
+    public Funcionario(String email, String senha, String nome, String tipo, boolean status) {
 
         super(email, senha);
         this.nome = nome;
+        this.tipo = tipo; 
+        this.status = status; 
 
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public Funcionario() {
