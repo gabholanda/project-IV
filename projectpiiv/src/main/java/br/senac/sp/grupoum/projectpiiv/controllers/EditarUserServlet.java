@@ -64,7 +64,7 @@ public class EditarUserServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/editar-usuario.jsp")
                     .forward(request, response);
         }
-        
+        //
         if (tipo.equals("admin")) {
             funcionario = new Admin(id, senha, nome, tipo, salvou);
             salvou = FuncionarioDAO.editar(funcionario);
