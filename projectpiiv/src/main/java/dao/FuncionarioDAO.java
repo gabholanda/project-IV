@@ -27,7 +27,7 @@ public class FuncionarioDAO {
             connection = DbConnectionDAO.openConnection();
             PreparedStatement comando = connection.prepareStatement("INSERT INTO funcionario "
                     + "(Nome, Tipo, status) "
-                    + "VALUES (?, ?, 0);", Statement.RETURN_GENERATED_KEYS);
+                    + "VALUES (?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
             comando.setString(1, f.getNome());
             comando.setString(2, f.getTipo());
             comando.setBoolean(3, f.isStatus());

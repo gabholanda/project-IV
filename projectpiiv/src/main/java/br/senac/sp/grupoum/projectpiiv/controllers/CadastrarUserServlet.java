@@ -58,8 +58,7 @@ public class CadastrarUserServlet extends HttpServlet {
         if (tamanhoNome < 5) {
             boolean erroNome = false;
             request.setAttribute("ErroNome", erroNome);
-            request.getRequestDispatcher("/WEB-INF/cadastrar-usuario.jsp")
-                    .forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/cadastrar-usuario.jsp").forward(request, response);
         } else {
 
             AutenticadorEmail autenticar = new AutenticadorEmail();
@@ -70,11 +69,6 @@ public class CadastrarUserServlet extends HttpServlet {
             } else {
                 validar = true;
             }
-            boolean erroEmail = false;
-            request.setAttribute("ErroEmail", erroEmail);
-            request.getRequestDispatcher("/WEB-INF/cadastrar-usuario.jsp")
-                    .forward(request, response);
-
         }
 
         if (tipo.equals("admin")) {
@@ -84,6 +78,7 @@ public class CadastrarUserServlet extends HttpServlet {
             funcionario = new Estoquista(email, senha, nome, tipo, salvou);
             salvou = FuncionarioDAO.salvar(funcionario);
         }
+        
         if (salvou) {
             request.setAttribute("criadoAttr", true);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin.jsp");
