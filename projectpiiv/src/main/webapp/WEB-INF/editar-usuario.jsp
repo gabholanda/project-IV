@@ -17,14 +17,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-usuarios">Listar Usuarios</a>
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-produto">Cadastrar Produto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sair</a>
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-produtos">Listar Produtos</a>
                 </li>
-            </ul>
+                 <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-usuario">Cadastrar Usuario</a>
+                </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-usuarios">Listar Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sair</a>
+                </li>
+              </ul>
         </div>
     </nav>
 </header>
@@ -56,15 +64,15 @@
             </div>
         </div>
 
-        <div class="form-groupUser d-flex flex-column justify-content-center align-items-center">
-            <label class="col-md-1 offset-md-2">Tipo*:</label>
+        <div class="form-group row">
+            <label class="col-sm-1 offset-md-3">Tipo*:</label>
             <div class="form-check-inline">
                 <input class="form-check-input" type="radio" name="tipo" id="admin" value="admin" required>
-                <label class="form-check-label" for="inlineRadio1">Admin</label>
+                <label class="form-check-label" for="inlineRadio1">Admin</label>&nbsp;&nbsp;
                 <input class="form-check-input" type="radio" name="tipo" id="estoquista" value="estoquista" required>
                 <label class="form-check-label" for="inlineRadio1">Estoquista</label>                   
             </div>
-
+        </div>
             <br>
             <div class="button-group">
                 <button class="btn  btn-success offset-md-5" type="submit">Editar</button>
