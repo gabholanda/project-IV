@@ -41,5 +41,14 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+      public boolean verificarFuncao(String funcao) {
+        return this.getClass().getSimpleName().equals(funcao);
+    }
+    
+      public String montarUrl() {
+        String funcao = this.getClass().getSimpleName();
+        
+         return "/" + funcao.toLowerCase();
+    }
 
 }
