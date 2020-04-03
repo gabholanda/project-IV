@@ -44,6 +44,27 @@ body {
     padding: 0px; 
 }
 
+.logo-size {
+    font-size: 30px;
+    margin-top: 4px;
+}
+
+.logo-size-endpage {
+    font-size: 15px;
+}
+
+.land-questions{
+    background-color: #80808014;
+    border-radius: 4px;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.product-name{
+    font-size: 20px;
+}
+
 
 
 #readmore{display: none} 
