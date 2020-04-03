@@ -22,9 +22,8 @@
                   <a class="nav-link" href="${pageContext.request.contextPath}/estoquista/listar-produtos-estoquista">Listar Produtos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Sair</a>
-                </li>
-              </ul>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sair</a>
+                </li>              </ul>
             </div>
           </nav>
     </header>

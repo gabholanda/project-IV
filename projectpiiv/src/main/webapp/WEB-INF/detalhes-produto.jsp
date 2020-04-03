@@ -25,8 +25,8 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-produtos">Listar Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sair</a>
-                    </li>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sair</a>
+                </li>
                 </ul>
             </div>
         </nav>

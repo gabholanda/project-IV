@@ -22,7 +22,7 @@ public class UserDAO {
         try {
             connection = DbConnectionDAO.openConnection();
             PreparedStatement comando = connection.prepareStatement("SELECT u.Email, u.Senha, f.Tipo FROM "
-                    + "Usuario u INNER JOIN Funcionario f ON f.id_usuario = u.id_usuario WHERE email LIKE ?");
+                    + "usuario u INNER JOIN funcionario f ON f.id_usuario = u.id_usuario WHERE email LIKE ?");
             comando.setString(1, email);
             ResultSet rs = comando.executeQuery();
 

@@ -1,3 +1,9 @@
+<%-- 
+    Document   : erro-nao-autorizado
+    Created on : Apr 3, 2020, 12:57:48 PM
+    Author     : Pablo de Oliveira
+--%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,52 +18,17 @@
     <header>
 
         <nav class="navbar navbar-expand-lg navbar-light nav-color">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/admin">Loja Esportiva</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/login">Loja Esportiva</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-produto">Cadastrar Produto</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-produtos">Listar Produtos</a>
-                </li>
-                 <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-usuario">Cadastrar Usuario</a>
-                </li>
-                 <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-usuarios">Listar Usuarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sair</a>
-                </li>
-              </ul>
-            </div>
           </nav>
     </header>
     <body>
         <div class="page-title">
-            <h1>Administrador</h1>
+            <h1>Página não encontrada.</h1>
         </div>
-        <c:if test="${criadoAttr}">
-          <div class="alert alert-success">
-              Cadastrado com sucesso!
-          </div>
-      </c:if>
-        <c:if test="${editadoAttr}">
-          <div class="alert alert-success">
-              Editado com sucesso!
-          </div>
-        </c:if>
-        <c:if test="${excluidoAttr}">
-          <div class="alert alert-success">
-              Excluído com sucesso!
-          </div>
-        </c:if>
-        
-        
+       
     </body>
 
 <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
