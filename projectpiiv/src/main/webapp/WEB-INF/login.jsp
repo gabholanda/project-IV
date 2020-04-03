@@ -6,68 +6,80 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="screen" />
         <title>Loja de Artigos Esportivos</title>
     </head>
     <header>
 
         <nav class="navbar navbar-expand-lg navbar-light nav-color">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/admin">Loja Esportiva</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/login">Loja Esportiva</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/estoquista/listar-produtos-estoquista">Listar Produtos</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sair</a>
-                </li>
-                </ul>
-            </div>
+
         </nav>
     </header>
     <body>
-        <div class="page-title">
-            <h1>Produtos</h1>
+
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <!-- Tabs Titles -->
+
+                <!-- Icon -->
+                <div class="fadeIn first">
+                    <img src="${pageContext.request.contextPath}/img/login.png" id="icon" alt="User Icon" />
+                </div>
+
+
+                <c:if test="${sessionScope.msg != null}">
+                    <div class="alert alert-success">
+                        <c:out value="${sessionScope.msg}" />
+                    </div>
+                    <c:remove scope="session" var="msg" />
+                </c:if>
+                <c:if test="${msgErro != null}">
+                    <div class="alert alert-danger">
+                        <c:out value="${msgErro}" />
+                    </div>
+                </c:if>
+                <!-- Login Form -->
+                <form method="post" action="${pageContext.request.contextPath}/login">
+                    <input type="text" id="usuario" class="fadeIn second" name="usuario" placeholder="login" required>
+
+                    <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="password" required>
+
+                    <input type="submit" class="fadeIn fourth" value="Log In">
+                </form>
+
+                <!-- Remind Passowrd -->
+                <div id="formFooter">
+                    <!--<a class="underlineHover" href="#"></a> -->
+                </div>
+
+            </div>
         </div>
+
+
+        <c:if test="${criadoAttr}">
+            <div class="alert alert-success">
+                Produto cadastrado com sucesso!
+            </div>
+        </c:if>
+        <c:if test="${editadoAttr}">
+            <div class="alert alert-success">
+                Produto editado com sucesso!
+            </div>
+        </c:if>
         <c:if test="${excluidoAttr}">
             <div class="alert alert-success">
                 Produto excluído com sucesso!
             </div>
         </c:if>
 
-        <c:if test="${not empty produtosAttr}">
-            <table class="table table-sm offset-md-2" style="width: 75%;">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Preco</th>
-                        <th scope="col">Quantidade</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${produtosAttr}" var="produto">
-                        <tr>
-                            <th> <c:out value="${produto.getId()}"/></th>
-                            <td ><c:out value="${produto.getNome()}"/></td>
-                            <td><c:out value="${produto.getPreco()}"/></td>
-                            <td> <c:out value="${produto.getQuantidade()}"/></td>
-
-                            <td><a data-method="get" href="${pageContext.request.contextPath}/estoquista/atualizar-quantidade?id=${produto.getId()}" class="btn btn-primary mb-1" >Editar</a></td>
-
-                        </tr>  
-                    </tbody>
-                </c:forEach>
-            </table>
-        </c:if>
 
     </body>
-
+    <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
