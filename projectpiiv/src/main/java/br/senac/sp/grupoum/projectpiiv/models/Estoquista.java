@@ -5,8 +5,11 @@
  */
 package br.senac.sp.grupoum.projectpiiv.models;
 
+import br.senac.sp.grupoum.projectpiiv.enums.Tipo;
+
 public class Estoquista extends Funcionario {
 
+    private String tipo = Tipo.ESTOQUISTA.getPermissao();
     public Estoquista() {
 
     }
@@ -19,4 +22,8 @@ public class Estoquista extends Funcionario {
         super(email, senha, nome, tipo, status);
     }
 
+    public Estoquista(int idUser, String senha, String nome, String tipo, boolean status) {
+        super(idUser, senha, nome, tipo, status);
+    }
+    
 }

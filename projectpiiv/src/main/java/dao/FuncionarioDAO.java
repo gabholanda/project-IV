@@ -27,7 +27,7 @@ public class FuncionarioDAO {
             connection = DbConnectionDAO.openConnection();
             PreparedStatement comando = connection.prepareStatement("INSERT INTO funcionario "
                     + "(Nome, Tipo, status) "
-                    + "VALUES (?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
+                    + "VALUES (?, ?, 0);", Statement.RETURN_GENERATED_KEYS);
             comando.setString(1, f.getNome());
             comando.setString(2, f.getTipo());
             comando.setBoolean(3, f.isStatus());
@@ -124,41 +124,25 @@ public class FuncionarioDAO {
         }
     }
 
-    public boolean editar(Funcionario f) {
+    public static boolean editar(Funcionario f) {
         Connection connection = null;
         boolean retorno = false;
 
-        Funcionario funcionario = (f);
-
         try {
             connection = DbConnectionDAO.openConnection();
-            PreparedStatement comando = connection.prepareStatement("UPDATE funcionario "
-                    + "SET Nome = ?, Tipo = ?, status = ?"
-                    + "WHERE id_usuario = ?", Statement.RETURN_GENERATED_KEYS);
-            comando.setString(1, funcionario.getNome());
-            comando.setInt(2, funcionario.getIdUser());
+            PreparedStatement comando = connection.prepareStatement("UPDATE funcionario"
+                    + " INNER JOIN usuario"
+                    + " ON funcionario.id_usuario = usuario.id_usuario"
+                    + " SET funcionario.Nome = ? ,usuario.Senha = ? , funcionario.Tipo = ?"
+                    + " WHERE funcionario.id_usuario = ?",
+                    Statement.RETURN_GENERATED_KEYS); 
+            comando.setString(1, f.getNome());
+            comando.setString(2, f.getSenha());        
+            comando.setString(3, f.getTipo());
+            comando.setInt(4, f.getIdUser());
 
             int linhasAfetadas = comando.executeUpdate();
-
-            if (linhasAfetadas > 0) {
-
-                comando = connection.prepareStatement("UPDATE usuario SET "
-                        + " Senha = ? "
-                        + "WHERE id_usuario = ?");
-
-                comando.setString(1, funcionario.getSenha());
-                comando.setInt(2, funcionario.getIdUser());
-
-                linhasAfetadas = comando.executeUpdate();
-
-                if (linhasAfetadas > 0) {
-                    retorno = true;
-                } else {
-                    retorno = false;
-                }
-            } else {
-                retorno = false;
-            }
+            retorno = linhasAfetadas > 0;
 
         } catch (ClassNotFoundException ex) {
             retorno = false;
@@ -179,7 +163,7 @@ public class FuncionarioDAO {
         try {
             connection = DbConnectionDAO.openConnection();
             PreparedStatement comando = connection.prepareStatement("UPDATE funcionario SET status = 1"
-                    + "WHERE funcionario.id_usuario = ?");
+                    + " WHERE funcionario.id_usuario = ?");
             comando.setInt(1, id);
 
             int linhasAfetadas = comando.executeUpdate();
@@ -209,7 +193,7 @@ public class FuncionarioDAO {
         try {
             connection = DbConnectionDAO.openConnection();
             PreparedStatement comando = connection.prepareStatement("SELECT f.id_usuario, f.Nome, f.Tipo, " + ""
-                    + "f.status, u.Email, u.Senha "
+                    + " u.Senha "
                     + "FROM funcionario f INNER JOIN usuario u ON f.id_usuario = u.id_usuario WHERE f.id_usuario = ?");
             comando.setInt(1, id);
             ResultSet rs = comando.executeQuery();
@@ -217,17 +201,15 @@ public class FuncionarioDAO {
             Funcionario funcionario = null;
 
             while (rs.next()) {
-                if (rs.getString("tipo").equals("Admin")) {
+                if (rs.getString("Tipo").equals("admin")) {
                     funcionario = new Admin();
                 } else {
                     funcionario = new Estoquista();
                 }
 
-                funcionario.setIdUser(rs.getInt("IdFuncionario"));
+                funcionario.setIdUser(id);
                 funcionario.setNome(rs.getString("Nome"));
                 funcionario.setTipo(rs.getString("Tipo"));
-                funcionario.setStatus(rs.getBoolean("Status"));
-                funcionario.setEmail(rs.getString("Email"));
                 funcionario.setSenha(rs.getString("Senha"));
             }
 

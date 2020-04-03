@@ -5,7 +5,11 @@
  */
 package br.senac.sp.grupoum.projectpiiv.models;
 
+import br.senac.sp.grupoum.projectpiiv.enums.Tipo;
+
 public class Admin extends Funcionario {
+
+    private String tipo = Tipo.ADMIN.getPermissao();
 
     public Admin() {
 
@@ -16,7 +20,11 @@ public class Admin extends Funcionario {
     }
 
     public Admin(String email, String senha, String nome, String tipo, boolean status) {
-        super(email, senha, nome,tipo, status );
+        super(email, senha, nome, tipo, status);
+    }
+
+    public Admin(int idUser, String senha, String nome, String tipo, boolean status) {
+        super(idUser, senha, nome, tipo, status);
     }
 
 }

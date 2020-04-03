@@ -43,10 +43,10 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("usuario");
         String senha = request.getParameter("senha");
 
-        Usuario usuario = UserDAO.buscarEmail(email);
+        Funcionario usuario = (Funcionario) UserDAO.buscarEmail(email);
         try {
 
-            if (usuario != null && senha.equals(usuario.getSenha())) {
+            if (usuario != null && senha.equals(usuario.getSenha()) && usuario.getPermitido()== 0) {
                 HttpSession sessao = request.getSession();
                 sessao.setAttribute("usuario", usuario);
                 String url = usuario.montarUrl();

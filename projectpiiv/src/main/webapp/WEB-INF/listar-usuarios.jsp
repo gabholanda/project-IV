@@ -60,10 +60,10 @@
                             <td> <c:out value="${funcionario.getTipo()}"/></td>
 
                             <td><a data-method="get" href="${pageContext.request.contextPath}/admin/editar-usuario?id=${funcionario.getIdUser()}" class="btn btn-primary mb-1" >Editar</a></td>
-                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#p${funcionario.getIdUser()}">Excluir</button></td> 
+                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete${funcionario.getIdUser()}">Excluir</button></td> 
                         </tr>  
                     </tbody>
-                    <div class="modal fade" id="${funcionario.getIdUser()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="delete${funcionario.getIdUser()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-body">
@@ -82,7 +82,6 @@
                 </c:forEach>
             </table>
         </c:if>
-
     </body>
 
     <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
