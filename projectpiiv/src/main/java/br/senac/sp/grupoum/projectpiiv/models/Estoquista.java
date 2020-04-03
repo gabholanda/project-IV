@@ -11,12 +11,12 @@ public class Estoquista extends Funcionario {
 
     }
 
-    public Estoquista(String email, String senha, int id, String nome) {
-        super(email, senha, id, nome);
+    public Estoquista(String email, String senha, int id, String nome, String tipo, boolean status) {
+        super(email, senha, id, nome, tipo, status);
     }
     
-    public Estoquista(String email, String senha, String nome){ 
-        super(email, senha, nome);
+    public Estoquista(String email, String senha, String nome, String tipo, boolean status){ 
+        super(email, senha, nome, tipo, status);
     }
 
 }
