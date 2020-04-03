@@ -51,7 +51,7 @@
         <div id="wrapper" class="container">
             <section class="navbar main-menu">
                 <div class="navbar-inner main-menu">				
-                    <a href="${pageContext.request.contextPath}/" class="logo pull-left logo-size"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
+                    <a href="${pageContext.request.contextPath}/land" class="logo pull-left logo-size"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
                     <nav id="menu" class="pull-right">
                         <ul>
                             <li><a href="./products.html">Masculino</a>					
@@ -90,32 +90,34 @@
                         <ul class="thumbnails listing-products">
                             <c:if test="${not empty produtosAttr}">
                                 <c:forEach items="${produtosAttr}" var="produto">
-                                    <a data-method="get" href="${pageContext.request.contextPath}/land/detalhe-produto?id=${produto.getId()}"> 
-                                        <li class="span3">
-                                            <div class="product-box">
-                                                <span class="sale_tag"></span>											
-                                                <a data-method="get" href="${pageContext.request.contextPath}/land/detalhe-produto?id=${produto.getId()}">
-                                                    <div id="myCarousel${produto.getId()}" class="carousel slide">
-                                                        <div class="carousel-inner">
-                                                            <div class="active item">
-                                                                <img src="${pageContext.request.contextPath}/img/${produto.getImagens()[0]}" style="width: 250px; height: 250px;">
-                                                            </div>
-                                                            <c:forEach items="${produto.getImagens()}" var="imagem" begin="1">
-                                                                <div class="item">
-                                                                    <img src="${pageContext.request.contextPath}/img/${imagem}" style="width: 250px; height: 250px;">
-                                                                </div>
-                                                            </c:forEach>
+
+                                    <li class="span3">
+                                        <div class="product-box">
+                                            <span class="sale_tag"></span>											
+                                            <a data-method="get" href="${pageContext.request.contextPath}/land/detalhe-produto?id=${produto.getId()}">
+                                                <div id="myCarousel${produto.getId()}" class="carousel slide">
+                                                    <div class="carousel-inner">
+                                                        <div class="active item">
+                                                            <img src="${pageContext.request.contextPath}/img/${produto.getImagens()[0]}" style="width: 250px; height: 250px;">
                                                         </div>
-                                                        <a class="carousel-control left" href="#myCarousel${produto.getId()}" data-slide="prev">&lsaquo;</a>
-                                                        <a class="carousel-control right" href="#myCarousel${produto.getId()}" data-slide="next">&rsaquo;</a>
+                                                        <c:forEach items="${produto.getImagens()}" var="imagem" begin="1">
+                                                            <div class="item">
+                                                                <img src="${pageContext.request.contextPath}/img/${imagem}" style="width: 250px; height: 250px;">
+                                                            </div>
+                                                        </c:forEach>
                                                     </div>
-                                                </a>
+                                                    <a class="carousel-control left" href="#myCarousel${produto.getId()}" data-slide="prev">&lsaquo;</a>
+                                                    <a class="carousel-control right" href="#myCarousel${produto.getId()}" data-slide="next">&rsaquo;</a>
+                                                </div>
+
                                                 <br/> 
-                                                <p><c:out value="${produto.getNome()}"/></p><br/>
-                                                <a href="#" class="category">Tênis</a>
-                                                <p class="price">R$ <c:out value="${produto.getPreco()}"/></p>
-                                            </div>
-                                        </li>  
+                                                <a data-method="get" href="${pageContext.request.contextPath}/land/detalhe-produto?id=${produto.getId()}"> 
+                                                    <p class="product-name"><c:out value="${produto.getNome()}"/></p><br/>
+                                                    <a href="#" class="category"><c:out value="${produto.getTipo()}"/></a>
+                                                    <p class="price"><strong>R$ <c:out value="${produto.getPreco()}"/></strong></p>
+                                                </a>
+                                        </div>
+                                    </li>  
                                     </a> 
                                 </c:forEach>  
                             </c:if>
@@ -155,7 +157,7 @@
             <section id="footer-bar">
                 <div class="row">
                     <div class="span3">
-                        <h4>Navigation</h4>
+                        <h4>Navegação</h4>
                         <ul class="nav">
                             <li><a href="#">Principal</a></li>  
                             <li><a href="#">Sobre nós</a></li>

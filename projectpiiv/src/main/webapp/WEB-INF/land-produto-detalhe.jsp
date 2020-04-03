@@ -1,36 +1,30 @@
-<%-- 
-    Document   : land-produto-detalhe
-    Created on : Mar 20, 2020, 12:07:23 AM
-    Author     : Pablo de Oliveira
---%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Bootstrap E-commerce Templates</title>
+        <title>Sports TADS </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="screen" />
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
-
         <!-- bootstrap -->
         <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">      
         <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">		
-        <link href="${pageContext.request.contextPath}/themes/css/bootstrappage.css" rel="stylesheet"/>
+        <link href="${pageContext.request.contextPath}}/themes/css/bootstrappage.css" rel="stylesheet"/>
 
         <!-- global styles -->
+        <link href="${pageContext.request.contextPath}/themes/css/flexslider.css" rel="stylesheet"/>
         <link href="${pageContext.request.contextPath}/themes/css/main.css" rel="stylesheet"/>
         <link href="${pageContext.request.contextPath}/themes/css/jquery.fancybox.css" rel="stylesheet"/>
 
         <!-- scripts -->
-        <script src="${pageContext.request.contextPath}/themes/js/jquery-1.7.2.min.js"></script>
-        <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>				
+        <script src="${pageContext.request.contextPath}/themes/js/jquery-1.7.2.min.js"></script>				
         <script src="${pageContext.request.contextPath}/themes/js/superfish.js"></script>	
-        <script src="${pageContext.request.contextPath}/themes/js/jquery.scrolltotop.js"></script>
         <script src="${pageContext.request.contextPath}/themes/js/jquery.fancybox.js"></script>
+        <script src="${pageContext.request.contextPath}/themes/js/jquery.scrolltotop.js"></script>
+        <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
         <!--[if lt IE 9]>			
                 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
                 <script src="js/respond.min.js"></script>
@@ -41,16 +35,16 @@
             <div class="row">
                 <div class="span4">
                     <form method="POST" class="search_form">
-                        <input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
+                        <input type="text" class="input-block-level search-query" Placeholder="O que você está procurando?">
                     </form>
                 </div>
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">				
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="cart.html">Your Cart</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>					
-                            <li><a href="register.html">Login</a></li>		
+                            <li><a href="#">Minha Conta</a></li>
+                            <li><a href="#">Carrinho</a></li>
+                            <li><a href="#">Meus Pedidos</a></li>
+                            <li><a href="#">Login</a></li>			
                         </ul>
                     </div>
                 </div>
@@ -59,114 +53,153 @@
         <div id="wrapper" class="container">
             <section class="navbar main-menu">
                 <div class="navbar-inner main-menu">				
-                    <a href="index.html" class="logo pull-left"><img src="${pageContext.request.contextPath}/themes/images/logo.png" class="site_logo" alt=""></a>
+                    <a href="${pageContext.request.contextPath}/land" class="logo pull-left logo-size"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
                     <nav id="menu" class="pull-right">
                         <ul>
-                            <li><a href="./products.html">Woman</a>					
+                            <li><a href="./products.html">Masculino</a>					
                                 <ul>
-                                    <li><a href="./products.html">Lacinia nibh</a></li>									
-                                    <li><a href="./products.html">Eget molestie</a></li>
-                                    <li><a href="./products.html">Varius purus</a></li>									
-                                </ul>       
-                            </li>															
-                            <li><a href="./products.html">Man</a></li>			
-                            <li><a href="./products.html">Sport</a>
+                                    <li><a href="#">Camisetas</a></li>									
+                                    <li><a href="#">Tênis</a></li>
+                                    <li><a href="#">Bermudas</a></li>									
+                                </ul>
+                            </li>
+                            <li><a href="./products.html">Feminino</a>					
+                                <ul>
+                                    <li><a href="#">Camisetas</a></li>									
+                                    <li><a href="#">Tênis</a></li>
+                                    <li><a href="#">Bermudas</a></li>									
+                                </ul>
+                            </li>
+                            <li><a href="#">Equipamentos</a>
                                 <ul>									
-                                    <li><a href="./products.html">Gifts and Tech</a></li>
-                                    <li><a href="./products.html">Ties and Hats</a></li>
-                                    <li><a href="./products.html">Cold Weather</a></li>
+                                    <li><a href="#">Academia</a></li>
+                                    <li><a href="#">Esportes</a></li>
                                 </ul>
                             </li>							
-                            <li><a href="./products.html">Hangbag</a></li>
-                            <li><a href="./products.html">Best Seller</a></li>
-                            <li><a href="./products.html">Top Seller</a></li>
+                            <li><a href="#">Mais Vendidos</a></li>
                         </ul>
                     </nav>
                 </div>
-            </section>
+            </section>	
             <section class="header_text sub">
-                <img class="pageBanner" src="${pageContext.request.contextPath}/themes/images/pageBanner.png" alt="New products" >
-                <h4><span>Product Detail</span></h4>
+                <img class="pageBanner" src="${pageContext.request.contextPath}/themes/images/banner1.jpg" alt="New products" >
+                <br>
+                <h3><span>Detalhes do Produto</span></h3>
             </section>
-            <section class="main-content">				
+            <section class="main-content">
                 <div class="row">						
                     <div class="span9">
                         <div class="row">
-						 <c:if test="${not empty produtosAttr}">
-                            <div class="span4">
-                                <c:forEach items="${produtosAttr.getImagens()}" var="imagem">
-                                        <a href="${pageContext.request.contextPath}/img/${imagem}" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="${pageContext.request.contextPath}/img/${imagem}"></a>												
-                                    </c:forEach>
-
-                                    <!--<ul class="thumbnails small">								
-                                            <li class="span1">
-                                                    <a href="${pageContext.request.contextPath}/themes/images/ladies/2.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="themes/images/ladies/2.jpg" alt=""></a>
-                                            </li>								
-                                            <li class="span1">
-                                                    <a href="${pageContext.request.contextPath}/themes/images/ladies/3.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 3"><img src="themes/images/ladies/3.jpg" alt=""></a>
-                                            </li>													
-                                            <li class="span1">
-                                                    <a href="${pageContext.request.contextPath}/themes/images/ladies/4.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 4"><img src="themes/images/ladies/4.jpg" alt=""></a>
-                                            </li>
-                                            <li class="span1">
-                                                    <a href="${pageContext.request.contextPath}/themes/images/ladies/5.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 5"><img src="themes/images/ladies/5.jpg" alt=""></a>
-                                            </li>
-                                    </ul> -->
-                            </div>
-                            <div class="span5">
-                                <address>
-                                    <!--<strong>Brand:</strong> <span>Apple</span><br> -->
-                                    <strong>Nome do Produto:</strong> <span><c:out value="${produtosAttr.getNome()}"/></span><br>
-                                    <strong>Reward Points:</strong> <span>0</span><br>
-                                    <strong>Availability:</strong> <span>Out Of Stock</span><br>								
-                                </address>									
-                                <h4><strong>Price: <c:out value="${produtosAttr.getPreco()}"/></strong></h4>
-                            </div>
-                            <div class="span5">
-                                <form class="form-inline">
-                                    <!--<label class="checkbox">
-                                            <input type="checkbox" value=""> Option one is this and that
-                                    </label>
-                                    <br/>
-                                    <label class="checkbox">
-                                      <input type="checkbox" value=""> Be sure to include why it's great
-                                    </label> -->
-                                    <p>&nbsp;</p>
-                                    <label>Qty:</label>
-                                    <input type="text" class="span1" placeholder="1">
-                                    <button class="btn btn-inverse" type="submit">Add to cart</button>
-                                </form>
-                            </div>							
-                        </div>
-                        <div class="row">
-                            <div class="span9">
-                                <ul class="nav nav-tabs" id="myTab">
-                                    <li class="active"><a href="#home">Description</a></li>
-                                    <li class=""><a href="#profile">Additional Information</a></li>
-                                </ul>							 
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="home"><c:out value="${produtosAttr.getDescricao()}"/></div>
-                                    <div class="tab-pane" id="profile">
-                                        <table class="table table-striped shop_attributes">	
-                                            <tbody>
-                                                <tr class="">
-                                                    <th>Size</th>
-                                                    <td>Large, Medium, Small, X-Large</td>
-                                                </tr>		
-                                                <tr class="alt">
-                                                    <th>Colour</th>
-                                                    <td>Orange, Yellow</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <c:if test="${not empty produtosAttr}">
+                                <div class="span4">
+                                    <div id="myCarousel${produto.getId()}" class="carousel slide">
+                                        <div class="carousel-inner">
+                                            <div class="active item">
+                                                <img src="${pageContext.request.contextPath}/img/${produtosAttr.getImagens()[0]}" style="width: 300px; height: 250px;">
+                                            </div>
+                                            <c:forEach items="${produtosAttr.getImagens()}" var="imagem" begin="1">
+                                                <div class="item">
+                                                    <img src="${pageContext.request.contextPath}/img/${imagem}" style="width: 300px; height: 250px;">
+                                                </div>
+                                            </c:forEach>
+                                        </div>
+                                        <a class="carousel-control left" href="#myCarousel${produto.getId()}" data-slide="prev">&lsaquo;</a>
+                                        <a class="carousel-control right" href="#myCarousel${produto.getId()}" data-slide="next">&rsaquo;</a>
                                     </div>
+                                </div>
+                                <div class="span5">
+                                    <address>
+                                        <strong>Nome do Produto:</strong> <span><c:out value="${produtosAttr.getNome()}"/></span><br>
+                                        <strong>Quantidade em Estoque</strong> <span><c:out value="${produtosAttr.getQuantidade()}"/></span><br>								
+                                    </address>	
+
+                                    <h4><strong>Preço: R$ <c:out value="${produtosAttr.getPreco()}"/></strong></h4>
+                                </div>
+                                <p>&nbsp;</p>
+                                <div class="span5">
+                                    <form class="form-inline">
+                                        <!--<label class="checkbox">
+                                                <input type="checkbox" value=""> Option one is this and that
+                                        </label>
+                                        <br/>
+                                        <label class="checkbox">
+                                          <input type="checkbox" value=""> Be sure to include why it's great
+                                        </label> -->
+                                        <label><strong>Tamanho:</strong></label>
+                                        <select class="form-control">
+                                            <option>36</option>
+                                            <option>37</option>
+                                            <option>38</option>
+                                            <option>39</option>
+                                            <option>40</option>
+                                            <option>41</option>
+                                            <option>42</option>
+                                            <option>43</option>
+                                            <option>44</option>
+                                        </select>
+                                        <p>&nbsp;</p>
+                                        <label><strong>Qtd:</strong></label>
+                                        <input type="text" class="span1" placeholder="1">
+                                        <button class="btn btn-inverse" type="submit">Adicionar ao carrinho</button>
+                                    </form>
                                 </div>							
-                            </div>	
+                            </div>
+                            <div class="row">
+                                <div class="span9">
+                                    <ul class="nav nav-tabs" id="myTab">
+                                        <li class="active"><a href="#home">Descrição</a></li>
+                                        <li class=""><a href="#profile">Informações Adicionais</a></li>
+                                        <li class=""><a href="#question">Perguntas Frequentes</a></li>
+                                    </ul>							 
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home"><c:out value="${produtosAttr.getDescricao()}"/></div>
+                                        <div class="tab-pane" id="profile">
+                                            <table class="table table-striped shop_attributes">	
+                                                <tbody>
+                                                    <tr class="">
+                                                        <th>Tamanho</th>
+                                                        <td>36, 37, 38, 39, 40, 41, 42, 43, 44</td>
+                                                    </tr>		
+                                                    <tr class="alt">
+                                                        <th>Cor</th>
+                                                        <td>Preto, Cinza, Branco</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="tab-pane" id="question">
+
+                                            <div class="land-questions">
+                                                <h4><strong>Formas de Pagamento</strong></h4>
+                                                <p>
+                                                    <strong>Boleto Bancário</strong>, ao comprar explicaremos como fazer o 
+                                                    pagamento em qualquer agência bancária, caixa eletrônico, internet banking ou 
+                                                    correspondentes bancários. Pague e será aprovado de 1 a 2 dias úteis.</p>
+                                            </div>
+                                            <div class="land-questions">
+                                                <h4><strong>Frete</strong></h4>
+                                                <p><strong>Não oferecemos frete grátis em nossos produtos</strong>
+                                                    Estaremos ao seu lado até você receber o que comprou e nos avisar que 
+                                                    está tudo correto. Se tiver algum problema, basta nos avisar.</p>
+                                            </div>
+                                            <div class="land-questions">
+                                                <h4><strong>Garantia</strong></h4>
+                                                <strong>Compra Garantida</strong>
+                                                <p>Se houver algum problema ou se não receber o produto que comprou, devolveremos o dinheiro. 
+                                                    <strong>Você sempre terá a nossa ajuda.</strong>
+                                                    Estaremos ao seu lado até você receber o que comprou e nos avisar que está 
+                                                    tudo correto. Se tiver algum problema, basta nos avisar.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>	
                             </c:if>				
                             <div class="span9">	
                                 <br>
                                 <h4 class="title">
-                                    <span class="pull-left"><span class="text"><strong>Related</strong> Products</span></span>
+                                    <span class="pull-left"><span class="text"><strong>Produtos</strong> Relacionados</span></span>
                                     <span class="pull-right">
                                         <a class="left button" href="#myCarousel-1" data-slide="prev"></a><a class="right button" href="#myCarousel-1" data-slide="next"></a>
                                     </span>
@@ -177,61 +210,43 @@
                     <div class="span3 col">
                         <div class="block">	
                             <ul class="nav nav-list">
-                                <li class="nav-header">SUB CATEGORIES</li>
-                                <li><a href="products.html">Nullam semper elementum</a></li>
-                                <li class="active"><a href="products.html">Phasellus ultricies</a></li>
-                                <li><a href="products.html">Donec laoreet dui</a></li>
-                                <li><a href="products.html">Nullam semper elementum</a></li>
-                                <li><a href="products.html">Phasellus ultricies</a></li>
-                                <li><a href="products.html">Donec laoreet dui</a></li>
-                            </ul>
-                            <br/>
-                            <ul class="nav nav-list below">
-                                <li class="nav-header">MANUFACTURES</li>
-                                <li><a href="products.html">Adidas</a></li>
-                                <li><a href="products.html">Nike</a></li>
-                                <li><a href="products.html">Dunlop</a></li>
-                                <li><a href="products.html">Yamaha</a></li>
+                                <li class="nav-header">Melhores Marcas</li>
+                                <li><a href="#">Nike</a></li>
+                                <li class="active"><a href="products.html">Adidas</a></li>
+                                <li><a href="#">Puma</a></li>
+                                <li><a href="#">Olympikus</a></li>
+                                <li><a href="#">Mizuno</a></li>
                             </ul>
                         </div>
-                        <div class="block">
-                            <h4 class="title">
-                                <span class="pull-left"><span class="text">Randomize</span></span>
-                                <span class="pull-right">
-                                    <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
-                                </span>
-                            </h4>
-                            <div id="myCarousel" class="carousel slide">
-                                <div class="carousel-inner">
-                                    <div class="active item">
-                                       
+                        <div class="block">								
+                            <h4 class="title"><strong>Mais</strong> Vendido</h4>								
+                            <ul class="small-product">
+
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </section>			
+            </section>
             <section id="footer-bar">
                 <div class="row">
                     <div class="span3">
-                        <h4>Navigation</h4>
+                        <h4>Navegação</h4>
                         <ul class="nav">
-                            <li><a href="./index.html">Homepage</a></li>  
-                            <li><a href="./about.html">About Us</a></li>
-                            <li><a href="./contact.html">Contac Us</a></li>
-                            <li><a href="./cart.html">Your Cart</a></li>
-                            <li><a href="./register.html">Login</a></li>							
+                            <li><a href="#">Principal</a></li>  
+                            <li><a href="#">Sobre nós</a></li>
+                            <li><a href="#">Seu carrinho</a></li>
+                            <li><a href="#">Login</a></li>							
                         </ul>					
                     </div>
                     <div class="span4">
-                        <h4>My Account</h4>
+                        <h4>Minha conta</h4>
                         <ul class="nav">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Order History</a></li>
-                            <li><a href="#">Wish List</a></li>
-                            <li><a href="#">Newsletter</a></li>
+                            <li><a href="#">Minha conta</a></li>
+                            <li><a href="#">Meus pedidos</a></li>
                         </ul>
                     </div>
                     <div class="span5">
-                        <p class="logo"><img src="${pageContext.request.contextPath}/themes/images/logo.png" class="site_logo" alt=""></p>
+                        <p class="logo logo-size-endpage"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
                         <br/>
                         <span class="social_icons">
@@ -247,7 +262,8 @@
                 <span>Copyright 2013 bootstrappage template  All right reserved.</span>
             </section>
         </div>
-        <script src="themes/js/common.js"></script>
+        <script src="${pageContext.request.contextPath}/themes/js/common.js"></script>
+        <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
         <script>
             $(function () {
                 $('#myTab a:first').tab('show');
