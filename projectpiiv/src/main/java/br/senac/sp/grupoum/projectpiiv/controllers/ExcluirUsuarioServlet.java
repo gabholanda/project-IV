@@ -31,7 +31,7 @@ public class ExcluirUsuarioServlet extends HttpServlet {
         boolean excluiu = FuncionarioDAO.excluir(id);
 
         if (excluiu) {
-            request.setAttribute("excluirAttr", true);
+            request.setAttribute("excluidoAttr", true);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin.jsp");
             dispatcher.forward(request, response);
         } else { 
