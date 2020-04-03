@@ -7,8 +7,8 @@ package br.senac.sp.grupoum.projectpiiv.enums;
 
 public enum Tipo {
     
-    ADMIN("ADMIN"),
-    ESTOQUISTA("ESTOQUISTA");
+    ADMIN("admin"),
+    ESTOQUISTA("estoquista");
 
     private final String permissao;
 

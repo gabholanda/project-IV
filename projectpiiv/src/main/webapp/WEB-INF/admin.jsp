@@ -27,6 +27,9 @@
                  <li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-usuario">Cadastrar Usuario</a>
                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-usuarios">Listar Usuarios</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sair</a>
                 </li>

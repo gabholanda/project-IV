@@ -9,6 +9,7 @@ public class Usuario {
 
     private String email;
     private String senha;
+    private int status; 
 
     public Usuario() {
     }
@@ -26,6 +27,11 @@ public class Usuario {
 
     }
 
+    public Usuario(String senha) {
+        this.senha = senha;
+    }
+
+    
     public String getEmail() {
         return email;
     }
@@ -41,6 +47,16 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
+    
       public boolean verificarFuncao(String funcao) {
         return this.getClass().getSimpleName().equals(funcao);
     }
