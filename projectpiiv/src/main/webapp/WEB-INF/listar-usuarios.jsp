@@ -17,14 +17,22 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-usuario">Cadastrar Usuário</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sair</a>
-                    </li>
-                </ul>
+                <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-produto">Cadastrar Produto</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-produtos">Listar Produtos</a>
+                </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-usuario">Cadastrar Usuario</a>
+                </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-usuarios">Listar Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sair</a>
+                </li>
+              </ul>
             </div>
         </nav>
     </header>

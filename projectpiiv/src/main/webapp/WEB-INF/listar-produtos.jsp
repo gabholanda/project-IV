@@ -24,7 +24,13 @@
                 <li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-produtos">Listar Produtos</a>
                 </li>
-               <li class="nav-item">
+                 <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/cadastrar-usuario">Cadastrar Usuario</a>
+                </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/admin/listar-usuarios">Listar Usuarios</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sair</a>
                 </li>
               </ul>
@@ -62,7 +68,7 @@
                         <td ><c:out value="${produto.getNome()}"/></td>
                         <td><c:out value="${produto.getPreco()}"/></td>
                         <td> <c:out value="${produto.getQuantidade()}"/></td>
-                        <td><a data-method="get" href="${pageContext.request.contextPath}/admin/detalhes-produto?id=${produto.getId()}" class="btn btn-primary mb-1" >Detalhes</a></td>
+                        <td><a data-method="get" href="${pageContext.request.contextPath}/land/detalhe-produto?id=${produto.getId()}" class="btn btn-primary mb-1" >Detalhes</a></td>
                         <td><a data-method="get" href="${pageContext.request.contextPath}/admin/editar-produto?id=${produto.getId()}" class="btn btn-primary mb-1" >Editar</a></td>
                         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#p${produto.getId()}">Excluir</button></td> 
                      </tr>  
