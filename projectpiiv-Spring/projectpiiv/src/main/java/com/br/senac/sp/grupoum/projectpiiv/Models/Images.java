@@ -16,8 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name="imagem_produto")
 public class Images implements Serializable {
@@ -31,20 +29,21 @@ public class Images implements Serializable {
     private String imagePath;
     
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name="id_produto")
     private Product product;
     
     public Images() {
     }
 
-    public Images(int idProduct, String imagePath) {
+    public Images(Product product, String imagePath) {
         this.imagePath = imagePath;
+        this.product = product;
     }
 
-    public Images(int id, int idProduct, String imagePath) {
+    public Images(int id, Product product, String imagePath) {
         this.id = id;
         this.imagePath = imagePath;
+        this.product = product;
     }
 
     public int getId() {
@@ -62,7 +61,5 @@ public class Images implements Serializable {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
-    
-    
 }
 

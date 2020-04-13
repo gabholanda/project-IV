@@ -1,7 +1,12 @@
 package com.br.senac.sp.grupoum.projectpiiv.Controllers;
 
+import com.br.senac.sp.grupoum.projectpiiv.Models.Employee;
 import com.br.senac.sp.grupoum.projectpiiv.Models.Product;
+import com.br.senac.sp.grupoum.projectpiiv.Models.User;
+import com.br.senac.sp.grupoum.projectpiiv.Repositories.EmployeeRepository;
 import com.br.senac.sp.grupoum.projectpiiv.Repositories.ProductRepository;
+import com.br.senac.sp.grupoum.projectpiiv.Repositories.UserRepository;
+
 import io.swagger.annotations.Api;
 
 import java.util.List;
@@ -26,6 +31,11 @@ public class ProductController {
     
     @Autowired
             ProductRepository produtoRepository;
+    @Autowired
+    UserRepository userRepository;
+    
+    @Autowired
+    EmployeeRepository employeeRepository;
     
     @GetMapping("/product/{id}")
     public Product findById(@PathVariable(value = "id") long id) {
@@ -35,6 +45,16 @@ public class ProductController {
     @GetMapping("/product")
     public List<Product> findAll() {
         return produtoRepository.findAll();
+    }
+    
+    @GetMapping("/user")
+    public List<User> findAllUser() {
+        return userRepository.findAll();
+    }
+    
+    @GetMapping("/employee")
+    public List<Employee> findAllemp() {
+        return employeeRepository.findAll();
     }
     
     @PostMapping("/product")
