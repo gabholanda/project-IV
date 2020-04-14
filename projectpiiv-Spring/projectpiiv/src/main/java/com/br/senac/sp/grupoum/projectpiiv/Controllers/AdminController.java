@@ -155,6 +155,31 @@ public class AdminController {
 
 	}
     
+    @GetMapping("/admin/editar-usuario")
+    public ModelAndView editarUsuario(@RequestParam(value = "id") int id) {
+        Employee employee = employeeRepository.findById(id);
+        
+        return new ModelAndView("editar-usuario").addObject("funcionario", employee);
+        
+    }
+    
+    @PostMapping("/admin/editar-usuario")
+	public ModelAndView editUser(@ModelAttribute Employee employee, @ModelAttribute User user) {
+    	
+    	Employee funcionario = employeeRepository.save(employee);
+    	int id = funcionario.getId();
+    	user.setId(id);
+    	
+    	User usuario = userRepository.save(user);
+
+		if (funcionario != null && usuario != null) {
+			return new ModelAndView("admin").addObject("editadoAttr", true);
+		} else {
+			return new ModelAndView("editar-usuario");
+		}
+
+	}
+    
     @GetMapping("/admin/listar-usuarios")
     public ModelAndView listarUsuario() {
     	List<Employee> employees = employeeRepository.findAll();

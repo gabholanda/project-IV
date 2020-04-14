@@ -15,7 +15,7 @@
 <header>
 
 	<nav class="navbar navbar-expand-lg navbar-light nav-color">
-		<a class="navbar-brand" th:href="@{/admin}">Loja Esportiva</a>
+		<a class="navbar-brand" th:href="@{/estoquista}">Loja Esportiva</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -24,31 +24,22 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
-					th:href="@{/admin/cadastrar-produto}">Cadastrar Produto</a></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/admin/listar-produtos}">Listar Produtos</a></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/admin/cadastrar-usuario}">Cadastrar Usuario</a></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/admin/listar-usuarios}">Listar Usuarios</a></li>
-				<li class="nav-item"><a class="nav-link"
-					th:href="@{/logout}">Sair</a></li>
+					th:href="@{/estoquista/listar-produtos}">Listar Produtos</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/logout}">Sair</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
 </header>
 <body>
 	<div class="page-title">
-		<h1>Administrador</h1>
+		<h1>Estoquista</h1>
 	</div>
-	<div class="alert alert-success" th:if="${criadoAttr != null}">
-		Cadastrado com sucesso!</div>
 
-	<div class="alert alert-success" th:if="${editadoAttr != null}">Editado
-		com sucesso!</div>
 
-	<div class="alert alert-success" th:if="${excluidoAttr != null}">
-		Excluído com sucesso!</div>
+	<div class="alert alert-success" th:if="${editadoAttr != null}">
+		Produto editado com sucesso!</div>
+
 </body>
 
 <script src="https://kit.fontawesome.com/1803175e4f.js"

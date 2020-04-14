@@ -40,13 +40,17 @@
 
     <body>
         <div class="page-title">
-            <h1>Cadastrar Usuario</h1>
+            <h1>Editar Usuario</h1>
         </div>
 
-        <form method="post" th:action="@{/admin/cadastrar-usuario}" novalidate>         
+        <form method="post" th:action="@{/admin/editar-usuario}" novalidate> 
+        
+        <input type="hidden" name="id" th:value="${funcionario.getId()}">
+        
+                
             <div class="form-group row">
                 <label for="inputNome" class="col-sm-1 offset-md-3">Nome*:</label>
-                <input type="text" class="form-control col-md-4" name="name" id="nome" placeholder="Digite o nome do Usuario" required>
+                <input type="text" class="form-control col-md-4" th:value="${funcionario.getName()}" name="name" id="nome" placeholder="Digite o nome do Usuario" required>
                 <div class="invalid-feedback">
                     Digite o nome do usuario:
                 </div>
@@ -54,7 +58,7 @@
 
             <div class="form-group row">
                 <label for="inputNome" class="col-sm-1 offset-md-3">Email*:</label>
-                <input type="text" class="form-control col-md-4" name="email" id="email" placeholder="Digite o email para o Usuario" pattern=".+@dominio.com" required>
+                <input type="text" class="form-control col-md-4" th:value="${funcionario.getUser().getEmail()}" name="email" id="email" placeholder="Digite o email para o Usuario" pattern=".+@dominio.com" required>
                 <div class="invalid-feedback">
                     Digite o email do usuario:
                 </div>
@@ -62,7 +66,7 @@
 
             <div class="form-group row">
                 <label for="inputNome" class="col-sm-1 offset-md-3">Senha*:</label>
-                <input type="password" class="form-control col-md-4" name="password" id="senha" placeholder="Digite a senha do Usuario" required>
+                <input type="password" class="form-control col-md-4" th:value="${funcionario.getUser().getPassword()}" name="password" id="senha" placeholder="Digite a senha do Usuario" required>
                 <div class="invalid-feedback">
                     Digite a senha do usuario:
                 </div>
@@ -79,7 +83,7 @@
             </div>
                 <br>
                 <div class="button-group">
-                    <button class="btn  btn-success offset-md-5" type="submit">Cadastrar</button>
+                    <button class="btn  btn-success offset-md-5" type="submit">Editar</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#" class="btn btn-danger">Cancelar</a>
                 </div>

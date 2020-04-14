@@ -24,6 +24,11 @@ public class StoreController {
 		List<Product> products = produtoRepository.findAll();
 		return new ModelAndView("land-page").addObject("produtosAttr", products);
 	}
+	
+	@GetMapping("/login")
+	public ModelAndView login() {
+		return new ModelAndView("login");
+	}
 
 	@GetMapping("/detalhe-produto")
 	public ModelAndView productDetails(@RequestParam(value = "id") long id) {
