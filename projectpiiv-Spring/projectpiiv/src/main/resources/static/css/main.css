@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.nav-color{
+    background-color: #25b89a;
+    color: white;
+    text-decoration: none;
+}
+
+.page-title{
+    text-align: center;
+    padding: 10px;
+}
+
+
+.text-center-hv {
+    position: absolute;
+    top: 500px;
+    left: 50px; 
+
+}
+.text-center-hv2 {
+    position: absolute;
+    top: 580px;
+    left: 50px;
+
+
+}
+
+.text-center-hv3 {
+    position: absolute;
+    top: 640px;
+    left: 50px; 
+
+
+}
+
+.text-center-hv4 {
+    position: absolute;
+    top: 700px;
+    left: 50px
+
+}
+
+body { 
+    margin: 0px; 
+    padding: 0px; 
+}
+
+.logo-size {
+    font-size: 30px;
+    margin-top: 4px;
+}
+
+.logo-size-endpage {
+    font-size: 15px;
+}
+
+.land-questions{
+    background-color: #80808014;
+    border-radius: 4px;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.product-name{
+    font-size: 20px;
+}
+
+
+
+#readmore{display: none} 
+
+#readmoreGarantia{display: none}
+
+#readmoreFrete{display: none}
+
+.container { 
+    width: 100%; 
+}

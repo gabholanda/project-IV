@@ -56,8 +56,6 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    
-    
     public Long getId() {
         return id;
     }
@@ -109,7 +107,6 @@ public class Product implements Serializable {
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
-    
     
 }
 

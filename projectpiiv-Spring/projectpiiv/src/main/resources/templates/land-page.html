@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sports TADS </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" media="screen" />
+        <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+        <!-- bootstrap -->
+        <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">      
+        <link th:href="@{/bootstrap/css/bootstrap-responsive.min.css}" rel="stylesheet">	
+        <link th:href="@{/themes/css/bootstrappage.css}" rel="stylesheet"/>
+
+        <!-- global styles -->
+        <link th:href="@{/themes/css/flexslider.css}" rel="stylesheet"/>
+        <link th:href="@{/themes/css/main.css}" rel="stylesheet"/>
+        <link th:href="@{/themes/css/jquery.fancybox.css}" rel="stylesheet"/>
+
+        <!-- scripts -->
+        <script th:src="@{/themes/js/jquery-1.7.2.min.js}"></script>				
+        <script th:src="@{/themes/js/superfish.js}"></script>	
+        <script th:src="@{/themes/js/jquery.scrolltotop.js}"></script>
+        <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{/themes/js/common.js}"></script>
+        <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
+
+    </head>
+    <body>		
+        <div id="top-bar" class="container">
+            <div class="row">
+                <div class="span4">
+                    <form method="POST" class="search_form">
+                        <input type="text" class="input-block-level search-query" Placeholder="O que você está procurando?">
+                    </form>
+                </div>
+                <div class="span8">
+                    <div class="account pull-right">
+                        <ul class="user-menu">				
+                            <li><a href="#">Minha Conta</a></li>
+                            <li><a href="#">Carrinho</a></li>
+                            <li><a href="#">Meus Pedidos</a></li>
+                            <li><a href="#">Login</a></li>			
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="wrapper" class="container">
+            <section class="navbar main-menu">
+                <div class="navbar-inner main-menu">				
+                    <a th:href="@{/}" class="logo pull-left logo-size"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
+                    <nav id="menu" class="pull-right">
+                        <ul>
+                            <li><a href="#">Masculino</a>					
+                                <ul>
+                                    <li><a href="#">Camisetas</a></li>									
+                                    <li><a href="#">Tênis</a></li>
+                                    <li><a href="#">Bermudas</a></li>									
+                                </ul>
+                            </li>
+                            <li><a href="#">Feminino</a>					
+                                <ul>
+                                    <li><a href="#">Camisetas</a></li>									
+                                    <li><a href="#">Tênis</a></li>
+                                    <li><a href="#">Bermudas</a></li>									
+                                </ul>
+                            </li>
+                            <li><a href="#">Equipamentos</a>
+                                <ul>									
+                                    <li><a href="#">Academia</a></li>
+                                    <li><a href="#">Esportes</a></li>
+                                </ul>
+                            </li>							
+                            <li><a href="#">Mais Vendidos</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>	
+            <section class="header_text sub">
+                <img class="pageBanner" th:src="@{/themes/images/banner1.jpg}" alt="New products" >
+                <br>
+                <h3><span>Novos Produtos</span></h3>
+            </section>
+            <section class="main-content">
+                <div class="row">						
+                    <div class="span9" th:if="${produtosAttr} != null">
+                        <ul class="thumbnails listing-products">
+                                    <li class="span3"  th:each="produto : ${produtosAttr}">
+                                        <div class="product-box">
+                                            <span class="sale_tag"></span>											
+                                            <a data-method="get" th:href="@{/detalhe-produto(id=${produto.getId()})}">
+                                                <div th:attr="id='myCarousel'+${produto.getId()}" class="carousel slide">
+                                                    <div class="carousel-inner">
+                                                        <div class="active item">
+                                                           <img th:src="@{/img/{image}(image=${produto.getImages().get(0).getImagePath()})}" style="width: 250px; height: 250px;"> 
+                                                        </div>
+                                                        
+                                                           <div class="item" th:each="imagem : ${produto.getImages()}">
+                                                               <img th:src="@{/img/{image}(image=${imagem.getImagePath()})}" style="width: 250px; height: 250px;">
+                                                           </div>
+                                          
+                                                    </div>
+                                                    <a class="carousel-control left" th:attr="href='#myCarousel'+${produto.getId()}" data-slide="prev">&lsaquo;</a>
+                                                    <a class="carousel-control right" th:attr="href='#myCarousel'+${produto.getId()}" data-slide="next">&rsaquo;</a>
+                                                </div>
+
+                                                <br/> 
+                                                <a data-method="get" th:href="@{/detalhe-produto(id=${produto.getId()})}"> 
+                                                    <p class="product-name" th:text="${produto.getName()}"></p><br/>
+                                                    <a href="#" class="category" th:text="${produto.getType()}"/></a>
+                                                    <p class="price"><strong>R$ <span th:text="${produto.getPrice()}"></span></strong></p>
+                                                </a>
+                                                        </a> 
+                                        </div>
+                                    </li>  
+                            
+                        </ul>					
+                        <hr>
+                        <div class="pagination pagination-small pagination-centered">
+                            <ul>
+                                <li><a href="#">Prev</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="span3 col">
+                        <div class="block">	
+                            <ul class="nav nav-list">
+                                <li class="nav-header">Melhores Marcas</li>
+                                <li><a href="#">Nike</a></li>
+                                <li class="active"><a href="products.html">Adidas</a></li>
+                                <li><a href="#">Puma</a></li>
+                                <li><a href="#">Olympikus</a></li>
+                                <li><a href="#">Mizuno</a></li>
+                            </ul>
+                        </div>
+                        <div class="block">								
+                            <h4 class="title"><strong>Mais</strong> Vendido</h4>								
+                            <ul class="small-product">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="footer-bar">
+                <div class="row">
+                    <div class="span3">
+                        <h4>Navegação</h4>
+                        <ul class="nav">
+                            <li><a href="#">Principal</a></li>  
+                            <li><a href="#">Sobre nós</a></li>
+                            <li><a href="#">Seu carrinho</a></li>
+                            <li><a href="#">Login</a></li>							
+                        </ul>					
+                    </div>
+                    <div class="span4">
+                        <h4>Minha conta</h4>
+                        <ul class="nav">
+                            <li><a href="#">Minha conta</a></li>
+                            <li><a href="#">Meus pedidos</a></li>
+                        </ul>
+                    </div>
+                    <div class="span5">
+                        <p class="logo logo-size-endpage"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+                        <br/>
+                        <span class="social_icons">
+                            <a class="facebook" href="#">Facebook</a>
+                            <a class="twitter" href="#">Twitter</a>
+                            <a class="skype" href="#">Skype</a>
+                            <a class="vimeo" href="#">Vimeo</a>
+                        </span>
+                    </div>					
+                </div>	
+            </section>
+            <section id="copyright">
+                <span>Copyright 2013 bootstrappage template  All right reserved.</span>
+            </section>
+        </div>
+    </body>
+</html>
