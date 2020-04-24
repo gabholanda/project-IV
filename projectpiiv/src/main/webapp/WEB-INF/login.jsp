@@ -59,25 +59,7 @@
 
             </div>
         </div>
-
-
-        <c:if test="${criadoAttr}">
-            <div class="alert alert-success">
-                Produto cadastrado com sucesso!
-            </div>
-        </c:if>
-        <c:if test="${editadoAttr}">
-            <div class="alert alert-success">
-                Produto editado com sucesso!
-            </div>
-        </c:if>
-        <c:if test="${excluidoAttr}">
-            <div class="alert alert-success">
-                Produto excluído com sucesso!
-            </div>
-        </c:if>
-
-
+                    
     </body>
     <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>

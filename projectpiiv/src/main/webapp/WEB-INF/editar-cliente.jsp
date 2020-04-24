@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Bootstrap E-commerce Templates</title>
+        <title>Loja Esportiva - Meu Cadastro</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -41,8 +41,8 @@
                             <li><a href="#">Minha Conta</a></li>
                             <li><a href="#">Carrinho</a></li>
                             <li><a href="#">Meus Pedidos</a></li>					
-                            <li><a href="${pageContext.request.contextPath}/login-cliente">Login</a></li>
-                              
+                            <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
+                                <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
         <div id="wrapper" class="container">
             <section class="navbar main-menu">
                 <div class="navbar-inner main-menu">				
-                    <a href="index.html" class="logo pull-left"><img src="themes/images//logo.png" class="site_logo" alt=""></a>
+                    <a href="${pageContext.request.contextPath}/land" class="logo pull-left"><img src="themes/images//logo.png" class="site_logo" alt=""></a>
                     <nav id="menu" class="pull-right">
                         <ul>
 
@@ -87,51 +87,51 @@
                     <div class="row">
                         <div class="d-flex justify-content-center">					
 
-                            <h4 class="title"><span class="text"><strong>Cadastrar</strong></span></h4>
-                            <form action="${pageContext.request.contextPath}/cadastrar-cliente" method="post" class="form-stacked">
+                            <h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
+                            <form action="${pageContext.request.contextPath}/editar-cliente" method="post" class="form-stacked">
                                 <fieldset>
                                     <div class="control-group">
                                         <label class="control-label">Nome</label>
                                         <div class="controls">
-                                            <input type="text" placeholder="Nome" id="nome" name="nome" class="input-xlarge">
+                                            <input type="text" value="${nomeAttr}" placeholder="Nome" id="nome" name="nome" class="input-xlarge">
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label">Sobrenome</label>
                                         <div class="controls">
-                                            <input type="text" placeholder="Sobrenome" id="sobrenome" name="sobrenome" class="input-xlarge">
+                                            <input type="text" value="${sobreNomeAttr}" placeholder="Sobrenome" id="sobrenome" name="sobrenome" class="input-xlarge">
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label">CPF</label>
                                         <div class="controls">
-                                            <input type="text" placeholder="Digite seu CPF" id="cpf" name="cpf" class="input-xlarge">
+                                            <input type="text" value="${cpfAttr}" placeholder="Digite seu CPF" id="cpf" name="cpf" class="input-xlarge" readonly=”readonly”="">
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label">Endereço</label>
                                         <div class="controls">
-                                            <input type="text" placeholder="Rua, casa, numero e complemento" id="endereco" name="endereco" class="input-xlarge">
+                                            <input type="text" value="${enderecoAttr}" placeholder="Rua, casa, numero e complemento" id="endereco" name="endereco" class="input-xlarge">
                                         </div>
                                     </div>	
                                     <div class="control-group">
                                         <label class="control-label">CEP</label>
                                         <div class="controls">
-                                            <input type="text" placeholder="Digite o CEP" id="cep" name="cep" class="input-xlarge">
+                                            <input type="text" value="${cepAttr}" placeholder="Digite o CEP" id="cep" name="cep" class="input-xlarge">
                                         </div>
                                     </div>	
                                     <div class="control-group">
                                         <label class="control-label">E-mail</label>
                                         <div class="controls">
-                                            <input type="email" placeholder="Digite seu e-mail" id="email" name="email" class="input-xlarge">
+                                            <input type="email" value="${emailAttr}" placeholder="Digite seu e-mail" id="email" name="email" class="input-xlarge" readonly=”readonly”="">
                                         </div>
                                     </div>	
-                                    <div class="control-group">
+                                  <!--  <div class="control-group">
                                         <label class="control-label">Senha</label>
                                         <div class="controls">
-                                            <input type="password" placeholder="Digite uma senha" id="senha" name="senha" class="input-xlarge">
+                                            <input type="password" value="${senhaAttr}" placeholder="Digite uma senha" id="senha" name="senha" class="input-xlarge">
                                         </div>
-                                    </div>							                            
+                                    </div>	-->						                            
 
                                     <hr>
                                     <c:if test="${sessionScope.msg != null}">
@@ -145,12 +145,12 @@
                                                 <c:out value="${msgErro}" />
                                             </div>
                                         </c:if>
-                                        <c:if test="${criadoAttr}">
+                                        <c:if test="${alteradoAttr}">
                                             <div class="alert alert-success">
-                                                Cadastrado com sucesso!
+                                                Alterado com sucesso!
                                             </div>
                                         </c:if>
-                                    <div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Criar Conta"></div>
+                                    <div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Atualizar Cadastro"></div>
                                 </fieldset>
                             </form>							
                         </div>

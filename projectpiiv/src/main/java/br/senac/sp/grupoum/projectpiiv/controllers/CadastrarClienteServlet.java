@@ -7,11 +7,11 @@ package br.senac.sp.grupoum.projectpiiv.controllers;
 
 import br.senac.sp.grupoum.projectpiiv.models.Cliente;
 import br.senac.sp.grupoum.projectpiiv.services.Encriptografar;
+import br.senac.sp.grupoum.projectpiiv.services.ValidarCep;
 import dao.ClienteDAO;
+
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +33,7 @@ public class CadastrarClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf");
@@ -42,13 +42,18 @@ public class CadastrarClienteServlet extends HttpServlet {
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         try {
+
             if (ClienteDAO.buscarCpf(cpf)) {
-                 request.setAttribute("msgErro", "CPF já cadastrado");
+                request.setAttribute("msgErro", "CPF já cadastrado");
                 request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
             }
             if (ClienteDAO.buscarEmail(email)) {
-                 request.setAttribute("msgErro", "E-mail já cadastrado");
-                request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
+
+            }
+
+            if (!ValidarCep.encontrarCep(cep)) {
+                request.setAttribute("msgErro", "CEP não encontrado");
+                response.sendRedirect(request.getContextPath() + "/cadastrar-cliente");
             }
 
             try {
@@ -60,10 +65,10 @@ public class CadastrarClienteServlet extends HttpServlet {
             } catch (Exception e) {
                 System.out.println(e);
             }
+
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
         }
-      
 
     }
 }

@@ -42,10 +42,10 @@
             <h1>Administrador</h1>
         </div>
         <c:if test="${criadoAttr}">
-          <div class="alert alert-success">
-              Cadastrado com sucesso!
-          </div>
-      </c:if>
+            <div class="alert alert-success">
+                Cadastrado com sucesso!
+            </div>
+        </c:if>
         <c:if test="${editadoAttr}">
           <div class="alert alert-success">
               Editado com sucesso!

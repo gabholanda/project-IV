@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,6 +28,15 @@ public class LandDetalheProdutoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+         HttpSession sessao = request.getSession();
+        if(sessao.getAttribute("usuario") !=null){
+            request.setAttribute("LogadoAttr", true);
+            request.setAttribute("nLogadoAttr", false);
+        }else{
+             request.setAttribute("LogadoAttr", false);
+             request.setAttribute("nLogadoAttr", true);
+        }
+        
         int id = Integer.parseInt(request.getParameter("id"));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/land-produto-detalhe.jsp");
         Produto produto = ProdutoDAO.pesquisarPorId(id);

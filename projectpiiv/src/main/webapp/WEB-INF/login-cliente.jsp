@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Bootstrap E-commerce Templates</title>
+        <title>Sports TADS - Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -50,7 +50,7 @@
         <div id="wrapper" class="container">
             <section class="navbar main-menu">
                 <div class="navbar-inner main-menu">				
-                    <a href="index.html" class="logo pull-left"><img src="themes/images//logo.png" class="site_logo" alt=""></a>
+                    <a href="${pageContext.request.contextPath}/land" class="logo pull-left"><img src="themes/images//logo.png" class="site_logo" alt=""></a>
                     <nav id="menu" class="pull-right">
                         <ul>
 
@@ -80,8 +80,8 @@
                 </div>
             </section>			
             <section class="header_text sub">
-                <img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
-                <h4><span>Login or Regsiter</span></h4>
+               
+                <h4><span>Login</span></h4>
             </section>
             <center>
                 <section>	
@@ -99,13 +99,26 @@
                                         </div>
                                     </div>
                                     <div class="control-group">
+
                                         <label class="control-label">Senha</label>
                                         <div class="controls">
+
                                             <input type="password" placeholder="Senha" id="senha" name="senha" class="input-xlarge">
+                                            <c:if test="${msgErro != null}">
+                                                <div class="alert alert-danger" style="width: 237px;">
+                                                    <c:out value="${msgErro}" />
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${sessionScope.msg != null}">
+                                                <div class="alert alert-success" style="width: 237px;">
+                                                    <c:out value="${sessionScope.msg}" />
+                                                </div>
+                                                <c:remove scope="session" var="msg" />
+                                            </c:if>
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        
+
                                         <input tabindex="3" class="btn btn-inverse large" type="submit" value="Entrar">
                                         <br>
                                         <br>

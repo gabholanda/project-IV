@@ -37,6 +37,20 @@ public class Cliente {
         this.senha = senha;
     }
 
+    public Cliente(String nome, String sobreNome, String cpf, String endereco, String cep, String email) {
+        this.nome = nome;
+        this.sobreNome = sobreNome;
+        this.cpf = cpf;
+        this.endereco = endereco;
+        this.cep = cep;
+        this.email = email;
+    }
+    
+    
+
+    public Cliente() {
+    }
+
    
 
     public String getNome() {
@@ -81,6 +95,10 @@ public class Cliente {
 
     public int getIdCliente() {
         return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getEmail() {

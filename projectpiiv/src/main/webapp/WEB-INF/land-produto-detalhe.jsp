@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Sports TADS </title>
+        <title>Sports TADS - Detalhes do Produto </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="screen" />
@@ -41,10 +41,16 @@
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">				
-                            <li><a href="#">Minha Conta</a></li>
+
                             <li><a href="#">Carrinho</a></li>
                             <li><a href="#">Meus Pedidos</a></li>
-                            <li><a href="#">Login</a></li>			
+                                <c:if test="${nLogadoAttr}">
+                                <li><a href="${pageContext.request.contextPath}/login-cliente">Login</a></li>
+                                </c:if>
+                                <c:if test="${LogadoAttr}">
+                                <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
+                                <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
+                                </c:if>
                         </ul>
                     </div>
                 </div>
