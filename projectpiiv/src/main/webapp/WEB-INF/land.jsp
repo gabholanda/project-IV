@@ -42,7 +42,15 @@
                             <li><a href="#">Minha Conta</a></li>
                             <li><a href="#">Carrinho</a></li>
                             <li><a href="#">Meus Pedidos</a></li>
-                            <li><a href="#">Login</a></li>			
+                                <c:if test="${nLogadoAttr}">
+                                <li><a href="${pageContext.request.contextPath}/login-cliente">Login</a></li>
+                                </c:if>
+                                <c:if test="${LogadoAttr}">
+                                <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
+                                <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
+                                </c:if>
+
+
                         </ul>
                     </div>
                 </div>
