@@ -2,26 +2,27 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+     <head>
         <meta charset="utf-8">
-        <title>Sports TADS - Login</title>
+        <title>Sports TADS </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="screen" />
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
         <!-- bootstrap -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">      
-        <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">		
-        <link href="themes/css/bootstrappage.css" rel="stylesheet"/>
+        <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">      
+        <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">		
+        <link href="${pageContext.request.contextPath}}/themes/css/bootstrappage.css" rel="stylesheet"/>
 
         <!-- global styles -->
-        <link href="themes/css/flexslider.css" rel="stylesheet"/>
-        <link href="themes/css/main.css" rel="stylesheet"/>
+        <link href="${pageContext.request.contextPath}/themes/css/flexslider.css" rel="stylesheet"/>
+        <link href="${pageContext.request.contextPath}/themes/css/main.css" rel="stylesheet"/>
 
         <!-- scripts -->
-        <script src="themes/js/jquery-1.7.2.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>				
-        <script src="themes/js/superfish.js"></script>	
-        <script src="themes/js/jquery.scrolltotop.js"></script>
+        <script src="${pageContext.request.contextPath}/themes/js/jquery-1.7.2.min.js"></script>				
+        <script src="${pageContext.request.contextPath}/themes/js/superfish.js"></script>	
+        <script src="${pageContext.request.contextPath}/themes/js/jquery.scrolltotop.js"></script>
+        <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
         <!--[if lt IE 9]>			
                 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
                 <script src="js/respond.min.js"></script>
@@ -32,16 +33,15 @@
             <div class="row">
                 <div class="span4">
                     <form method="POST" class="search_form">
-                        <input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
+                        <input type="text" class="input-block-level search-query" Placeholder="O que você está procurando?">
                     </form>
                 </div>
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">				
-                            <li><a href="#">Minha Conta</a></li>
                             <li><a href="cart.html">Carrinho</a></li>
                             <li><a href="checkout.html">Meus Pedidos</a></li>					
-                            <li><a href="register.html">Login</a></li>		
+                            <li><a href="${pageContext.request.contextPath}/login-cliente">Login</a></li>		
                         </ul>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
         <div id="wrapper" class="container">
             <section class="navbar main-menu">
                 <div class="navbar-inner main-menu">				
-                    <a href="${pageContext.request.contextPath}/land" class="logo pull-left"><img src="themes/images//logo.png" class="site_logo" alt=""></a>
+                   <a href="${pageContext.request.contextPath}/land" class="logo pull-left logo-size"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
                     <nav id="menu" class="pull-right">
                         <ul>
 
@@ -79,10 +79,6 @@
                     </nav>
                 </div>
             </section>			
-            <section class="header_text sub">
-               
-                <h4><span>Login</span></h4>
-            </section>
             <center>
                 <section>	
 
@@ -169,13 +165,7 @@
                 <span>Copyright 2013 bootstrappage template  All right reserved.</span>
             </section>
         </div>
-        <script src="themes/js/common.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#checkout').click(function (e) {
-                    document.location.href = "checkout.html";
-                })
-            });
-        </script>		
+	<script src="${pageContext.request.contextPath}/themes/js/common.js"></script>
+        <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
     </body>
 </html>

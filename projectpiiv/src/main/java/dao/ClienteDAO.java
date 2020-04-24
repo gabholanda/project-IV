@@ -65,20 +65,28 @@ public class ClienteDAO {
             connection = DbConnectionDAO.openConnection();
             PreparedStatement comando = connection.prepareStatement("SELECT * FROM cliente WHERE email = ?", Statement.RETURN_GENERATED_KEYS);
             comando.setString(1, email);
+            
+            ResultSet rs = comando.executeQuery();
 
-            int buscar = comando.executeUpdate();
+            int cont = 0;
+            
+            while (rs.next()) {
+                cont++;
+            }
 
-            DbConnectionDAO.closeConnection(connection);
-
-            if (buscar != 1) {
-                return true;
-            } else {
+            if (cont == 0) {
+                DbConnectionDAO.closeConnection(connection);
                 return false;
+            } else {
+                DbConnectionDAO.closeConnection(connection);
+                return true;
             }
 
         } catch (ClassNotFoundException ex) {
+            DbConnectionDAO.closeConnection(connection);
             return false;
         } catch (SQLException ex) {
+            DbConnectionDAO.closeConnection(connection);
             System.out.println(ex);
             return false;
         }
@@ -94,22 +102,26 @@ public class ClienteDAO {
             PreparedStatement comando = connection.prepareStatement("SELECT * FROM cliente WHERE cpf = ?", Statement.RETURN_GENERATED_KEYS);
             comando.setString(1, cpf);
 
-            int buscar = comando.executeUpdate();
+            ResultSet rs = comando.executeQuery();
+            
+            int cont = 0;
+            
+            while (rs.next()) {
+                cont++;
+            }
 
-            DbConnectionDAO.closeConnection(connection);
-
-            if (buscar != 1) {
-                return true;
-            } else {
+            if (cont == 0) {
+                DbConnectionDAO.closeConnection(connection);
                 return false;
+            } else {
+                DbConnectionDAO.closeConnection(connection);
+                return true;
             }
 
         } catch (SQLException ex) {
             System.out.println(ex);
-
+            return false;
         }
-        return false;
-
     }
 
     public static Cliente autenticar(String usuario, String senha) {
