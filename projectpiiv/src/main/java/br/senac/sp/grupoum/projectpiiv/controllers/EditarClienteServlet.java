@@ -62,9 +62,9 @@ public class EditarClienteServlet extends HttpServlet {
         try{
         String nome = request.getParameter("nome");
         String sobreNome = request.getParameter("sobrenome");
-        String cpf = (String) request.getParameter("cpf");
+        String cpf = (String) request.getParameter("cpf").replace(".", "").replace("-", "");
         String endereco = request.getParameter("endereco");
-        String cep = request.getParameter("cep");
+        String cep = request.getParameter("cep").replace("-", "");
         String email = request.getParameter("email");
 
         if (!ValidarCep.encontrarCep(cep)) {
@@ -76,7 +76,6 @@ public class EditarClienteServlet extends HttpServlet {
             boolean salvou = ClienteDAO.editar(cliente);
 
             if (salvou) {
-
                 sessao.setAttribute("usuario", cliente);
                 request.setAttribute("alteradoAttr", true);
                 response.sendRedirect(request.getContextPath() + "/land");
@@ -85,6 +84,7 @@ public class EditarClienteServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/editar-cliente.jsp").forward(request, response);
             }
         }
+        
         }catch(Exception ex ){
             request.setAttribute("msgErro", "Houve um erro, tente novamente");
             request.getRequestDispatcher("/WEB-INF/editar-cliente.jsp").forward(request, response);

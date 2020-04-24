@@ -39,7 +39,6 @@
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">				
-                            <li><a href="#">Minha Conta</a></li>
                             <li><a href="#">Carrinho</a></li>
                             <li><a href="#">Meus Pedidos</a></li>
                                 <c:if test="${nLogadoAttr}">
@@ -91,6 +90,18 @@
                 <img class="pageBanner" src="${pageContext.request.contextPath}/themes/images/banner1.jpg" alt="New products" >
                 <br>
                 <h3><span>Novos Produtos</span></h3>
+                <c:if test="${sessionScope.msg != null}">
+                    <div class="alert alert-success">
+                        <c:out value="${sessionScope.msg}" />
+                    </div>
+                    <c:remove scope="session" var="msg" />
+                </c:if>
+
+                <c:if test="${alteradoAttr}">
+                    <div class="alert alert-success">
+                        Cadastro alterado com sucesso!
+                    </div>
+                </c:if>
             </section>
             <section class="main-content">
                 <div class="row">						

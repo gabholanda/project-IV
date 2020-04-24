@@ -36,38 +36,45 @@ public class CadastrarClienteServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
-        String cpf = request.getParameter("cpf");
+        String cpf = request.getParameter("cpf").replace(".", "").replace("-", "");
         String endereco = request.getParameter("endereco");
-        String cep = request.getParameter("cep");
+        String cep = request.getParameter("cep").replace("-", "");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
+        
         try {
-
             if (ClienteDAO.buscarCpf(cpf)) {
                 request.setAttribute("msgErro", "CPF já cadastrado");
                 request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
+                return;
             }
+            
             if (ClienteDAO.buscarEmail(email)) {
-
+                request.setAttribute("msgErro", "Email já cadastrado");
+                request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
+                return;
             }
-
+            
             if (!ValidarCep.encontrarCep(cep)) {
                 request.setAttribute("msgErro", "CEP não encontrado");
-                response.sendRedirect(request.getContextPath() + "/cadastrar-cliente");
+                request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
+                return;
             }
 
-            try {
-                Cliente cliente = new Cliente(nome, sobrenome, cpf, endereco, cep, email, Encriptografar.criptografar(senha));
-                ClienteDAO.salvar(cliente);
+            Cliente cliente = new Cliente(nome, sobrenome, cpf, endereco, cep, email, Encriptografar.criptografar(senha));
+            
+            if (ClienteDAO.salvar(cliente)) {
                 request.setAttribute("criadoAttr", true);
                 request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
-
-            } catch (Exception e) {
-                System.out.println(e);
+            } else {
+                request.setAttribute("msgErro", "Houve um erro inesperado");
+                response.sendRedirect(request.getContextPath() + "/cadastrar-cliente");
             }
 
         } catch (ClassNotFoundException ex) {
             System.out.println(ex);
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
     }
