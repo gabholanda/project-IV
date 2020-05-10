@@ -18,10 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Pablo de Oliveira
- */
 @WebServlet(name = "CadastrarClienteServlet", urlPatterns = {"/cadastrar-cliente"})
 public class CadastrarClienteServlet extends HttpServlet {
 
@@ -38,10 +34,11 @@ public class CadastrarClienteServlet extends HttpServlet {
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf").replace(".", "").replace("-", "");
         String endereco = request.getParameter("endereco");
+        String enderecoEntrega = request.getParameter("enderecoEntrega");
         String cep = request.getParameter("cep").replace("-", "");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        
+
         try {
             if (ClienteDAO.buscarCpf(cpf)) {
                 request.setAttribute("msgErro", "CPF já cadastrado");
@@ -49,20 +46,26 @@ public class CadastrarClienteServlet extends HttpServlet {
                 return;
             }
             
+         /*   if(ClienteDAO.validacaoNome(nome, sobrenome)){ 
+                request.setAttribute("msgErro", "Erro Nome");
+                request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
+                return;
+            }
+*/
             if (ClienteDAO.buscarEmail(email)) {
                 request.setAttribute("msgErro", "Email já cadastrado");
                 request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
                 return;
             }
-            
+
             if (!ValidarCep.encontrarCep(cep)) {
                 request.setAttribute("msgErro", "CEP não encontrado");
                 request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
                 return;
             }
 
-            Cliente cliente = new Cliente(nome, sobrenome, cpf, endereco, cep, email, Encriptografar.criptografar(senha));
-            
+            Cliente cliente = new Cliente(nome, sobrenome, cpf, endereco, enderecoEntrega, cep, email, Encriptografar.criptografar(senha));
+
             if (ClienteDAO.salvar(cliente)) {
                 request.setAttribute("criadoAttr", true);
                 request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
@@ -78,4 +81,6 @@ public class CadastrarClienteServlet extends HttpServlet {
         }
 
     }
+
+    
 }

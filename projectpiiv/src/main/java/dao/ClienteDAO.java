@@ -13,10 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- *
- * @author Pablo de Oliveira
- */
+
 public class ClienteDAO {
 
     public static boolean salvar(Cliente c) {
@@ -28,15 +25,16 @@ public class ClienteDAO {
 
             connection = DbConnectionDAO.openConnection();
             PreparedStatement comando = connection.prepareStatement("INSERT INTO cliente "
-                    + "(nome, sobrenome, cpf, endereco, cep, email, senha) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?);");
+                    + "(nome, sobrenome, cpf, endereco, enderecoEntrega, cep, email, senha) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
             comando.setString(1, c.getNome());
             comando.setString(2, c.getSobreNome());
             comando.setString(3, c.getCpf());
             comando.setString(4, c.getEndereco());
-            comando.setString(5, c.getCep());
-            comando.setString(6, c.getEmail());
-            comando.setString(7, c.getSenha());
+            comando.setString(5, c.getEnderecoEntrega());
+            comando.setString(6, c.getCep());
+            comando.setString(7, c.getEmail());
+            comando.setString(8, c.getSenha());
 
             int linhasAfetadas = comando.executeUpdate();
 
@@ -92,7 +90,26 @@ public class ClienteDAO {
         }
 
     }
-
+    
+    /*  public static boolean validacaoNome(String nome, String sobreNome) {
+        int contarLetra = 0;
+        int contarPalavra = 0;
+        for (int i = 0; i < nome.length(); i++) {
+            char letra = nome.charAt(i);
+            if (contarPalavra >= 2) {
+                return true;
+            } else if (letra != ' ') {
+                contarLetra++;
+            } else if (contarLetra < 3) {
+                return false;
+            } else {
+                contarPalavra++;
+                contarLetra = 0;
+            }
+        }
+        return true;
+    }
+*/
     public static boolean buscarCpf(String cpf) throws ClassNotFoundException {
 
         Connection connection = null;
@@ -145,6 +162,7 @@ public class ClienteDAO {
                     cliente.setSobreNome(rs.getString("sobrenome"));
                     cliente.setCpf(rs.getString("cpf"));
                     cliente.setEndereco(rs.getString("endereco"));
+                    cliente.setEnderecoEntrega(rs.getString("enderecoEntrega"));
                     cliente.setCep(rs.getString("cep"));
                     cliente.setEmail(rs.getString("Email"));
                     cliente.setSenha(rs.getString("Senha"));
@@ -175,13 +193,15 @@ public class ClienteDAO {
                     + " SET nome = ? ,"
                     + " sobrenome = ? ,"
                     + " endereco = ? , "
+                    + " enderecoEntrega = ?, "
                     + " cep = ? "
                     + " WHERE cpf = ? ", Statement.RETURN_GENERATED_KEYS);
             comando.setString(1, cliente.getNome());
             comando.setString(2, cliente.getSobreNome());
             comando.setString(3, cliente.getEndereco());
-            comando.setString(4, cliente.getCep());
-            comando.setString(5, cliente.getCpf());
+            comando.setString(4, cliente.getEnderecoEntrega());
+            comando.setString(5, cliente.getCep());
+            comando.setString(6, cliente.getCpf());
 
             int linhasAfetadas = comando.executeUpdate();
 
@@ -196,5 +216,6 @@ public class ClienteDAO {
         DbConnectionDAO.closeConnection(connection);
         return retorno;
     }
+    
 
 }
