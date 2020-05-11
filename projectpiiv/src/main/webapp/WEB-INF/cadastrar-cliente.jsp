@@ -110,13 +110,13 @@
                                     <div class="control-group">
                                         <label class="control-label">Nome</label>
                                         <div class="controls">
-                                            <input type="text" placeholder="Nome" id="nome" name="nome" class="input-xlarge">
+                                            <input type="text" placeholder="Nome" id="nome" name="nome" class="input-xlarge" required>
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label class="control-label">Sobrenome</label>
                                         <div class="controls">
-                                            <input type="text" placeholder="Sobrenome" id="sobrenome" name="sobrenome" class="input-xlarge">
+                                            <input type="text" placeholder="Sobrenome" id="sobrenome" name="sobrenome" class="input-xlarge" required>
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -126,27 +126,33 @@
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        <label class="control-label">Endereço</label>
+                                        <label class="control-label">Endereço Fatura</label>
                                         <div class="controls">
-                                            <input type="text" placeholder="Rua, casa, numero e complemento" id="endereco" name="endereco" class="input-xlarge">
+                                            <input type="text" placeholder="Rua, casa, numero e complemento" id="endereco" name="endereco" class="input-xlarge" required>
                                         </div>
-                                    </div>	
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Endereço Entrega</label>
+                                        <div class="controls">
+                                            <input type="text" placeholder="Rua, casa, numero e complemento" id="enderecoEntrega" name="enderecoEntrega" class="input-xlarge" required>
+                                        </div>
+                                    </div>
                                     <div class="control-group">
                                         <label class="control-label">CEP</label>
                                         <div class="controls">
-                                            <input type="text" placeholder="Digite o CEP" id="cep" name="cep" class="input-xlarge">
+                                            <input type="text" placeholder="Digite o CEP" id="cep" name="cep" class="input-xlarge" required>
                                         </div>
                                     </div>	
                                     <div class="control-group">
                                         <label class="control-label">E-mail</label>
                                         <div class="controls">
-                                            <input type="email" placeholder="Digite seu e-mail" id="email" name="email" class="input-xlarge">
+                                            <input type="email" placeholder="Digite seu e-mail" id="email" name="email" class="input-xlarge" required>
                                         </div>
                                     </div>	
                                     <div class="control-group">
                                         <label class="control-label">Senha</label>
                                         <div class="controls">
-                                            <input type="password" placeholder="Digite uma senha" id="senha" name="senha" class="input-xlarge">
+                                            <input type="password" placeholder="Digite uma senha" id="senha" name="senha" class="input-xlarge" required>
                                         </div>
                                     </div>							                            
 

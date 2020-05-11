@@ -41,6 +41,7 @@ public class EditarClienteServlet extends HttpServlet {
                 request.setAttribute("sobreNomeAttr", cliente.getSobreNome());
                 request.setAttribute("cpfAttr", cliente.getCpf());
                 request.setAttribute("enderecoAttr", cliente.getEndereco());
+                request.setAttribute("enderecoEntregaAttr", cliente.getEnderecoEntrega());
                 request.setAttribute("cepAttr", cliente.getCep());
                 request.setAttribute("emailAttr", cliente.getEmail());
             }
@@ -64,6 +65,7 @@ public class EditarClienteServlet extends HttpServlet {
         String sobreNome = request.getParameter("sobrenome");
         String cpf = (String) request.getParameter("cpf").replace(".", "").replace("-", "");
         String endereco = request.getParameter("endereco");
+        String enderecoEntrega = request.getParameter("enderecoEntrega"); 
         String cep = request.getParameter("cep").replace("-", "");
         String email = request.getParameter("email");
 
@@ -71,7 +73,7 @@ public class EditarClienteServlet extends HttpServlet {
             request.setAttribute("msgErro", "CEP não encontrado");
             request.getRequestDispatcher("/WEB-INF/editar-cliente.jsp").forward(request, response);
         } else {
-            Cliente cliente = new Cliente(nome, sobreNome, cpf, endereco, cep, email);
+            Cliente cliente = new Cliente(nome, sobreNome, cpf, endereco, enderecoEntrega, cep, email);
 
             boolean salvou = ClienteDAO.editar(cliente);
 
