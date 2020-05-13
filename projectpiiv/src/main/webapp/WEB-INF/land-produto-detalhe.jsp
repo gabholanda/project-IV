@@ -123,7 +123,7 @@
                                 </div>
                                 <p>&nbsp;</p>
                                 <div class="span5">
-                                    <form class="form-inline">
+                                    <form class="form-inline" method="post" action="${pageContext.request.contextPath}/carrinho>
                                         <!--<label class="checkbox">
                                                 <input type="checkbox" value=""> Option one is this and that
                                         </label>
@@ -145,8 +145,10 @@
                                         </select>
                                         <p>&nbsp;</p>
                                         <label><strong>Qtd:</strong></label>
+                                        
                                         <input type="text" class="span1" placeholder="1">
-                                        <button class="btn btn-inverse" type="submit">Adicionar ao carrinho</button>
+                                        <button type="submit">Adicionar ao carrinho></button>
+                                        
                                     </form>
                                 </div>							
                             </div>

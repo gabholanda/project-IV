@@ -125,24 +125,8 @@
                                             <input type="text" placeholder="Digite seu CPF" id="cpf" name="cpf" class="input-xlarge">
                                         </div>
                                     </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Endereço Fatura</label>
-                                        <div class="controls">
-                                            <input type="text" placeholder="Rua, casa, numero e complemento" id="endereco" name="endereco" class="input-xlarge" required>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Endereço Entrega</label>
-                                        <div class="controls">
-                                            <input type="text" placeholder="Rua, casa, numero e complemento" id="enderecoEntrega" name="enderecoEntrega" class="input-xlarge" required>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label">CEP</label>
-                                        <div class="controls">
-                                            <input type="text" placeholder="Digite o CEP" id="cep" name="cep" class="input-xlarge" required>
-                                        </div>
-                                    </div>	
+                                    
+                                    	
                                     <div class="control-group">
                                         <label class="control-label">E-mail</label>
                                         <div class="controls">
