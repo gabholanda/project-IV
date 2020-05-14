@@ -9,6 +9,7 @@
         <meta name="description" content="">
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
         <!-- bootstrap -->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" media="screen" />
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">      
         <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">		
         <link href="themes/css/bootstrappage.css" rel="stylesheet"/>
@@ -85,57 +86,68 @@
                 <div class="row">
                     <div class="span9">					
                         <h4 class="title"><span class="text"><strong>Meu</strong> Carrinho</span></h4>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Retirar Produto</th> 
-                                    <th> </th>
-                                    <th>Nome do Produto</th>
-                                    <th>Quantidade</th>
-                                    <th>Valor Unitário</th>
-                                    <th>Valor Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" value="option1"></td>
-                                    <td><a href="product_detail.html"><img alt="" src="themes/images/ladies/9.jpg"></a></td>
-                                    <td>Fusce id molestie massa</td>
-                                    <td><input type="text" placeholder="1" class="input-mini"></td>
-                                    <td>$2,350.00</td>
-                                    <td>$2,350.00</td>
-                                </tr>			  
-                                <tr>
-                                    <td><input type="checkbox" value="option1"></td>
-                                    <td><a href="product_detail.html"><img alt="" src="themes/images/ladies/1.jpg"></a></td>
-                                    <td>Luctus quam ultrices rutrum</td>
-                                    <td><input type="text" placeholder="2" class="input-mini"></td>
-                                    <td>$1,150.00</td>
-                                    <td>$2,450.00</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" value="option1"></td>
-                                    <td><a href="product_detail.html"><img alt="" src="themes/images/ladies/3.jpg"></a></td>
-                                    <td>Wuam ultrices rutrum</td>
-                                    <td><input type="text" placeholder="1" class="input-mini"></td>
-                                    <td>$1,210.00</td>
-                                    <td>$1,123.00</td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td><strong>$3,600.00</strong></td>
-                                </tr>		  
+                        <c:if test="${not empty produtosAttr}">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Retirar Produto</th> 
+                                        <th> </th>
+                                        <th>Nome do Produto</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor Unitário</th>
+                                        <th>Valor Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <c:forEach items="${produtosAttr}" var="produto">
+                                        <tr>
+                                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#p${produto.getProduto().getId()}">Excluir</button></td> 
+                                            <td></td>
+                                            <td><c:out value="${produto.getProduto().getNome()}" /></td>
+                                            <td><input type="number" placeholder="1" class="input-mini" id="qtdProduto" min="0" data-bind="qtdProduto" value="${produto.getQuantidade()}"></td>
+                                            <td id="preco"><c:out value="${produto.getProduto().getPreco()}" /></td>
+                                            <td> <c:out value="${produto.vlrTotalItem()}" /> </td>
+                                        </tr>	
+                                    <div class="modal fade" id="p${produto.getProduto().getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    Tem certeza que deseja excluir o produto <c:out value="${produto.getProduto().getNome()}"/>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="${pageContext.request.contextPath}/excluirItem" method="post">
+                                                        <button class="btn btn-success" type="submit" name="id" id="confirmDeleteButton" value="${produto.getProduto().getId()}">Confirmar</button>
+                                                    </form>
+
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </c:forEach>   
+                            </c:if>
+                            <c:if test="${empty produtosAttr}">
+                                <h2 style=" text-align: center;">Carrinho vazio</h2>
+                            </c:if>
+
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td id="total"><strong>R$<c:out value="${totalAttr}" /></strong></td>
+                            </tr>		  
                             </tbody>
                         </table>
-                        
+
+                        <c:if test="${not empty produtosAttr}">
                         <p class="buttons center">				
-                      
                             <button class="btn btn-inverse" type="submit" id="checkout">Finalizar Compra</button>
-                        </p>					
+                            <a class="btn btn-inverse" href="${pageContext.request.contextPath}/land">Continuar comprando</a>
+                        </p>	
+                        </c:if>
                     </div>
                     <div class="span3 col">
                         <div class="block">	
@@ -190,12 +202,18 @@
                     </div>					
                 </div>	
             </section>				
-                
+
             <section id="copyright">
                 <span>Copyright 2013 bootstrappage template  All right reserved.</span>
             </section>
         </div>
-       <script src="${pageContext.request.contextPath}/themes/js/common.js"></script>
+        <script src="${pageContext.request.contextPath}/themes/js/common.js"></script>
         <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>	
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+        <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -123,7 +123,7 @@
                                 </div>
                                 <p>&nbsp;</p>
                                 <div class="span5">
-                                    <form class="form-inline" method="post" action="${pageContext.request.contextPath}/carrinho>
+                                    <form class="form-inline" method="get" action="${pageContext.request.contextPath}/carrinho">
                                         <!--<label class="checkbox">
                                                 <input type="checkbox" value=""> Option one is this and that
                                         </label>
@@ -146,8 +146,11 @@
                                         <p>&nbsp;</p>
                                         <label><strong>Qtd:</strong></label>
                                         
-                                        <input type="text" class="span1" placeholder="1">
-                                        <button type="submit">Adicionar ao carrinho></button>
+                                        <input type="number" class="span1" placeholder="1" name="qtdProduto" id="qtdProduto" min="0" data-bind="qtdProduto" required>
+                                        
+                                        <input type="hidden" name="id" value="${produtosAttr.getId()}">
+                                        
+                                        <button class="btn btn-primary" type="submit">Adicionar ao carrinho</button>
                                         
                                     </form>
                                 </div>							
