@@ -156,6 +156,7 @@ public class ClienteDAO {
                 Cliente cliente = new Cliente();
                 rs.beforeFirst();
                 while (rs.next()) {
+                    cliente.setIdCliente(rs.getInt("id_cliente"));
                     cliente.setNome(rs.getString("nome"));
                     cliente.setSobreNome(rs.getString("sobrenome"));
                     cliente.setCpf(rs.getString("cpf"));
@@ -205,6 +206,4 @@ public class ClienteDAO {
         DbConnectionDAO.closeConnection(connection);
         return retorno;
     }
-    
-
 }

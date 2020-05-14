@@ -40,9 +40,9 @@
                     <div class="account pull-right">
                         <ul class="user-menu">				
                             <li><a href="#">Carrinho</a></li>
-                            <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>					
-                            <li><a href="${pageContext.request.contextPath}/login-cliente">Login</a></li>
-
+                            <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>
+                            <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -54,7 +54,6 @@
                     <a href="${pageContext.request.contextPath}/land" class="logo pull-left logo-size"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
                     <nav id="menu" class="pull-right">
                         <ul>
-
                             <li><a href="./products.html">Masculino</a>					
                                 <ul>
                                     <li><a href="#">Camisetas</a></li>									
@@ -79,77 +78,60 @@
                         </ul>
                     </nav>
                 </div>
-            </section>			
+            </section>	
+            <section class="header_text sub">
+                <img class="pageBanner" src="${pageContext.request.contextPath}/themes/images/banner1.jpg" alt="New products" >
+                <br>
+                <h3><span>Meus Pedidos</span></h3>
 
-            <center>
-                <section>	
-
-                    <div class="row">
-                        <div class="d-flex justify-content-center">					
-
-                            <h4 class="title"><span class="text"><strong>Cadastrar</strong></span></h4>
-                            <c:if test="${sessionScope.msg != null}">
-                                <div class="alert alert-success">
-                                    <c:out value="${sessionScope.msg}" />
-                                </div>
-                                <c:remove scope="session" var="msg" />
-                            </c:if>
-                            <c:if test="${msgErro != null}">
-                                <div class="alert alert-danger">
-                                    <c:out value="${msgErro}" />
-                                </div>
-                            </c:if>
-                            <c:if test="${criadoAttr}">
-                                <div class="alert alert-success">
-                                    Cadastrado com sucesso!
-                                </div>
-                            </c:if>
-
-                            <form action="${pageContext.request.contextPath}/cadastrar-cliente" method="post" class="form-stacked">
-                                <fieldset>
-                                    <div class="control-group">
-                                        <label class="control-label">Nome</label>
-                                        <div class="controls">
-                                            <input type="text" placeholder="Nome" id="nome" name="nome" class="input-xlarge" required>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Sobrenome</label>
-                                        <div class="controls">
-                                            <input type="text" placeholder="Sobrenome" id="sobrenome" name="sobrenome" class="input-xlarge" required>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label">CPF</label>
-                                        <div class="controls">
-                                            <input type="text" placeholder="Digite seu CPF" id="cpf" name="cpf" class="input-xlarge">
-                                        </div>
-                                    </div>
-                                    
-                                    	
-                                    <div class="control-group">
-                                        <label class="control-label">E-mail</label>
-                                        <div class="controls">
-                                            <input type="email" placeholder="Digite seu e-mail" id="email" name="email" class="input-xlarge" required>
-                                        </div>
-                                    </div>	
-                                    <div class="control-group">
-                                        <label class="control-label">Senha</label>
-                                        <div class="controls">
-                                            <input type="password" placeholder="Digite uma senha" id="senha" name="senha" class="input-xlarge" required>
-                                        </div>
-                                    </div>							                            
-
-                                    <hr>
-                                    <div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Criar Conta"></div>
-                                </fieldset>
-                            </form>							
-                        </div>
-
+            </section>
+            <section class="main-content">
+                <div class="row">						
+                    <div class="span9">
+                        <c:if test="${not empty pedidosAttr}">
+                            <table class="table table-sm offset-md-2">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Data Pedido</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${pedidosAttr}" var="produto">
+                                        <tr>
+                                            <th> <c:out value="${produto.getId()}"/></th>
+                                            <td ><c:out value="${produto.getDataVenda()}"/></td>
+                                            <td><c:out value="${produto.getValorTotal()}"/></td>
+                                            <td> <c:out value="${produto.getStatusCompra()}"/></td>
+                                            <td><a data-method="get" href="#" class="btn btn-primary mb-1" >Detalhes</a></td>
+                                        </tr>
+                                    </c:forEach>
+                            </table>
+                        </c:if>
                     </div>
+                    <div class="span3 col">
+                        <div class="block">	
+                            <ul class="nav nav-list">
+                                <li class="nav-header">Melhores Marcas</li>
+                                <li><a href="#">Nike</a></li>
+                                <li class="active"><a href="products.html">Adidas</a></li>
+                                <li><a href="#">Puma</a></li>
+                                <li><a href="#">Olympikus</a></li>
+                                <li><a href="#">Mizuno</a></li>
+                            </ul>
+                        </div>
+                        <div class="block">								
+                            <h4 class="title"><strong>Mais</strong> Vendido</h4>								
+                            <ul class="small-product">
 
-                </section>
-            </center>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section id="footer-bar">
                 <div class="row">
                     <div class="span3">
@@ -187,12 +169,5 @@
         </div>
         <script src="${pageContext.request.contextPath}/themes/js/common.js"></script>
         <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-        <script>
-            jQuery(function ($) {
-                $("#cpf").mask('000.000.000-00');
-                $("#cep").mask('00000-000');
-            });
-        </script>		
     </body>
 </html>

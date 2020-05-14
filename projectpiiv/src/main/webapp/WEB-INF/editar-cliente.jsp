@@ -40,7 +40,7 @@
                     <div class="account pull-right">
                         <ul class="user-menu">				
                             <li><a href="#">Carrinho</a></li>
-                            <li><a href="#">Meus Pedidos</a></li>					
+                            <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>					
                             <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
                                 <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
                         </ul>
