@@ -43,8 +43,13 @@
                         <ul class="user-menu">				
                             <li><a href="${pageContext.request.contextPath}/carrinho">Carrinho</a></li>
                             <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>
+                            <c:if test="${nLogadoAttr}">
+                            <li><a href="${pageContext.request.contextPath}/login-cliente">Login</a></li>
+                            </c:if>
+                            <c:if test="${LogadoAttr}">
                             <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
                             <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
+                            </c:if>
                         </ul>
                     </div>
                 </div>
@@ -161,17 +166,17 @@
                         </table>
 
                         <c:if test="${not empty produtosAttr}">
-                            
-                                 <div class="button-group" style="display: -webkit-inline-box;">
-           
-                
-                            <form class="form-inline" method="get" action="${pageContext.request.contextPath}/continuarVenda">
-                                <button class="btn btn-inverse" type="submit" id="checkout">Escolher forma de pagamento</button>
-                            </form>
+
+                            <div class="button-group" style="display: -webkit-inline-box;">
+
+
+                                <form class="form-inline" method="get" action="${pageContext.request.contextPath}/continuarVenda">
+                                    <button class="btn btn-inverse" type="submit" id="checkout">Escolher forma de pagamento</button>
+                                </form>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a class="btn btn-inverse" href="${pageContext.request.contextPath}/land">Continuar
-                                comprando</a>
-                      
+                                <a class="btn btn-inverse" href="${pageContext.request.contextPath}/land">Continuar
+                                    comprando</a>
+
                             </div>
                         </c:if>
                     </div>
