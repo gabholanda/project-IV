@@ -9,7 +9,6 @@ import br.senac.sp.grupoum.projectpiiv.models.Cliente;
 import br.senac.sp.grupoum.projectpiiv.services.Encriptografar;
 import dao.ClienteDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,7 +47,7 @@ public class LoginClientServlet extends HttpServlet {
             request.setAttribute("nLogadoAttr", false);
 
             if (sessao.getAttribute("produtosAttr") != null) {
-                response.sendRedirect(request.getContextPath() + "/continuarVenda");
+                response.sendRedirect(request.getContextPath() + "/carrinho");
             } else {
                 response.sendRedirect(request.getContextPath() + "/land");
             }
