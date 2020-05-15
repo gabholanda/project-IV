@@ -16,9 +16,6 @@ import java.util.ArrayList;
 
 public class ClienteDAO {
 
- 
-    
-    
     public static boolean salvar(Cliente c) {
 
         boolean retorno = false;
@@ -243,19 +240,20 @@ public class ClienteDAO {
         }
     }
 
-    public static boolean cadastrarEndereco(Endereco endereco ) {
-        
-        if(endereco.getTipo().equals("Ambos Endereços")){
-            if(cadastrarEnderecoPorTipo(endereco,"Endereço Fatura") && cadastrarEnderecoPorTipo(endereco,"Endereço Entrega"))
+    public static boolean cadastrarEndereco(Endereco endereco) {
+
+        if (endereco.getTipo().equals("Ambos Endereços")) {
+            if (cadastrarEnderecoPorTipo(endereco, "Endereço Fatura") && cadastrarEnderecoPorTipo(endereco, "Endereço Entrega")) {
                 return true;
-        }else {
-            return cadastrarEnderecoPorTipo(endereco,"");
-           
+            }
+        } else {
+            return cadastrarEnderecoPorTipo(endereco, "");
+
         }
         return false;
     }
 
-    public static boolean cadastrarEnderecoPorTipo(Endereco endereco, String tipo ) {
+    public static boolean cadastrarEnderecoPorTipo(Endereco endereco, String tipo) {
 
         boolean retorno = false;
         Connection connection = null;
@@ -274,10 +272,11 @@ public class ClienteDAO {
             comando.setString(6, endereco.getBairro());
             comando.setString(7, endereco.getCidade());
             comando.setString(8, endereco.getEstado());
-            if(tipo.isEmpty())
+            if (tipo.isEmpty()) {
                 comando.setString(9, endereco.getTipo());
-            else
+            } else {
                 comando.setString(9, tipo);
+            }
 
             int linhasAfetadas = comando.executeUpdate();
 
@@ -297,53 +296,7 @@ public class ClienteDAO {
         DbConnectionDAO.closeConnection(connection);
         return retorno;
     }
-    public static boolean cadastroDuplo(Endereco endereco) {
 
-        boolean retorno = false;
-        Connection connection = null;
-
-        try {
-
-            connection = DbConnectionDAO.openConnection();
-            PreparedStatement comando = connection.prepareStatement("INSERT INTO enderecos "
-                    + "(id_cliente, CEP, rua, numero, complemento, bairro, cidade, estado, tipo)"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, Endereço Entrega);");
-            comando.setInt(1, endereco.getCliente().getIdCliente());
-            comando.setString(2, endereco.getCep());
-            comando.setString(3, endereco.getRua());
-            comando.setString(4, endereco.getNumero());
-            comando.setString(5, endereco.getComplemento());
-            comando.setString(6, endereco.getBairro());
-            comando.setString(7, endereco.getCidade());
-            comando.setString(8, endereco.getEstado());
-            comando.setString(9, endereco.getTipo());
-
-            int linhasAfetadas = comando.executeUpdate();
-
-            if (linhasAfetadas > 0) {
-                retorno = true;
-            } else {
-                retorno = false;
-            }
-
-        } catch (ClassNotFoundException ex) {
-            retorno = false;
-        } catch (SQLException ex) {
-            System.out.println(ex);
-            retorno = false;
-        }
-
-        DbConnectionDAO.closeConnection(connection);
-        return retorno;
-        
-        
- 
-        
-        
-
-    }
-
-    
     public static ArrayList<Endereco> enderecoPorCliente(int idCliente) {
         ArrayList<Endereco> endereco = new ArrayList<Endereco>();
         Connection connection = null;
@@ -421,6 +374,45 @@ public class ClienteDAO {
             System.out.println(ex);
             return null;
         }
+    }
+
+    public static boolean editarEndereco(Endereco endereco) {
+        boolean retorno = false;
+        Connection connection = null;
+
+        try {
+            connection = DbConnectionDAO.openConnection();
+            PreparedStatement comando = connection.prepareStatement(" UPDATE endereco"
+                    + " SET CEP = ? ,"
+                    + " rua = ? ,"
+                    + " numero = ? ,"
+                    + " complemento = ? ,"
+                    + " bairro = ? ,"
+                    + " cidade = ? ,"
+                    + " estado = ? ,"
+                    + " tipo = ? ,"
+                    + " WHERE id_endereco = ? ", Statement.RETURN_GENERATED_KEYS);
+            comando.setString(1, endereco.getCep());
+            comando.setString(2, endereco.getRua());
+            comando.setString(3, endereco.getNumero());
+            comando.setString(4, endereco.getComplemento());
+            comando.setString(5, endereco.getBairro());
+            comando.setString(6, endereco.getCidade());
+            comando.setString(7, endereco.getEstado());
+            comando.setString(8, endereco.getTipo());
+
+            int linhasAfetadas = comando.executeUpdate();
+
+            retorno = linhasAfetadas > 0;
+
+        } catch (ClassNotFoundException ex) {
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+
+        }
+        DbConnectionDAO.closeConnection(connection);
+        return retorno;
     }
 
 }

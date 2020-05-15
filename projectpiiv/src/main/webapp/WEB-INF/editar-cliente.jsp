@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-     <head>
+    <head>
         <meta charset="utf-8">
         <title>Sports TADS </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +42,7 @@
                             <li><a href="#">Carrinho</a></li>
                             <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>					
                             <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
-                                <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -108,18 +108,7 @@
                                             <input type="text" value="${cpfAttr}" placeholder="Digite seu CPF" id="cpf" name="cpf" class="input-xlarge" readonly=”readonly”="">
                                         </div>
                                     </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Endereço Fatura</label>
-                                        <div class="controls">
-                                            <input type="text" value="${enderecoAttr}" placeholder="Rua, casa, numero e complemento" id="endereco" name="endereco" class="input-xlarge" required>
-                                        </div>
-                                    </div>
-                                        <div class="control-group">
-                                        <label class="control-label">Endereço Entrega</label>
-                                        <div class="controls">
-                                            <input type="text" value="${enderecoEntregaAttr}" placeholder="Rua, casa, numero e complemento" id="enderecoEntrega" name="enderecoEntrega" class="input-xlarge" required>
-                                        </div>
-                                    </div>
+
                                     <div class="control-group">
                                         <label class="control-label">CEP</label>
                                         <div class="controls">
@@ -132,30 +121,30 @@
                                             <input type="email" value="${emailAttr}" placeholder="Digite seu e-mail" id="email" name="email" class="input-xlarge" readonly=”readonly”="">
                                         </div>
                                     </div>	
-                                  <!--  <div class="control-group">
-                                        <label class="control-label">Senha</label>
-                                        <div class="controls">
-                                            <input type="password" value="${senhaAttr}" placeholder="Digite uma senha" id="senha" name="senha" class="input-xlarge">
-                                        </div>
-                                    </div>	-->						                            
+                                    <!--  <div class="control-group">
+                                          <label class="control-label">Senha</label>
+                                          <div class="controls">
+                                              <input type="password" value="${senhaAttr}" placeholder="Digite uma senha" id="senha" name="senha" class="input-xlarge">
+                                          </div>
+                                      </div>	-->						                            
 
                                     <hr>
                                     <c:if test="${sessionScope.msg != null}">
-                                            <div class="alert alert-success">
-                                                <c:out value="${sessionScope.msg}" />
-                                            </div>
-                                            <c:remove scope="session" var="msg" />
-                                        </c:if>
-                                        <c:if test="${msgErro != null}">
-                                            <div class="alert alert-danger">
-                                                <c:out value="${msgErro}" />
-                                            </div>
-                                        </c:if>
-                                        <c:if test="${alteradoAttr}">
-                                            <div class="alert alert-success">
-                                                Alterado com sucesso!
-                                            </div>
-                                        </c:if>
+                                        <div class="alert alert-success">
+                                            <c:out value="${sessionScope.msg}" />
+                                        </div>
+                                        <c:remove scope="session" var="msg" />
+                                    </c:if>
+                                    <c:if test="${msgErro != null}">
+                                        <div class="alert alert-danger">
+                                            <c:out value="${msgErro}" />
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${alteradoAttr}">
+                                        <div class="alert alert-success">
+                                            Alterado com sucesso!
+                                        </div>
+                                    </c:if>
                                     <div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Atualizar Cadastro"></div>
                                 </fieldset>
                             </form>							
@@ -204,7 +193,7 @@
         <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>	
         <script>
-            jQuery(function($){
+            jQuery(function ($) {
                 $("#cpf").mask('000.000.000-00');
                 $("#cep").mask('00000-000');
             });

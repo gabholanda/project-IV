@@ -48,9 +48,9 @@
                 <c:out value="${msgErro}" />
             </div>
         </c:if>
-        <c:if test="${criadoAttr}">
+        <c:if test="${editadoAttr}">
             <div class="alert alert-success">
-                Cadastrado com sucesso!
+                Editado com sucesso!
             </div>
         </c:if>
 
@@ -64,32 +64,32 @@
                     <div class="col-sm-2">
                         <label for="cep">CEP</label>
 
-                        <input type="text" class="form-control" name="cep" id="cep" class="input-xlarge"  required>
+                        <input type="text" value="${cepAttr}" class="form-control" name="cep" id="cep" class="input-xlarge"  required>
 
                     </div>
 
                     <div class="col-sm-2">
                         <label for="rua">Rua</label>
-                        <input type="text" class="form-control" name="rua" id="rua" required>
+                        <input type="text" value="${ruaAttr}"class="form-control" name="rua" id="rua" required>
                     </div>
 
                     <div class="col-sm-2">
                         <label for="numero">Número</label>
-                        <input type="number" class="form-control" name="numero" id="numero" required>
+                        <input type="number" value="${numeroAttr}" class="form-control" name="numero" id="numero" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-5">
                         <label for="complemento">Complemento</label>
-                        <input type="text" class="form-control" name="complemento" id="complemento" required>
+                        <input type="text" value="${complementoAttr}" class="form-control" name="complemento" id="complemento" required>
                     </div>
                     <div class="col-sm-3">
                         <label for="bairro">Bairro</label>
-                        <input type="text" class="form-control" name="bairro" id="bairro" required>
+                        <input type="text" value="${bairroAttr}" class="form-control" name="bairro" id="bairro" required>
                     </div>
                     <div class="col-sm-3">
                         <label for="cidade">Cidade</label>
-                        <input type="text" class="form-control" name="cidade" id="cidade" required>
+                        <input type="text" value="${cidadeAttr}" class="form-control" name="cidade" id="cidade" required>
                     </div>
 
                     <div class="col-sm-3">
