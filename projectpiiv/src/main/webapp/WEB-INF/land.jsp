@@ -39,7 +39,7 @@
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">				
-                            <li><a href="#">Carrinho</a></li>
+                            <li><a href="${pageContext.request.contextPath}/carrinho">Carrinho</a></li>
                             <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>
                                 <c:if test="${nLogadoAttr}">
                                 <li><a href="${pageContext.request.contextPath}/login-cliente">Login</a></li>
@@ -48,8 +48,6 @@
                                 <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
                                 <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
                                 </c:if>
-
-
                         </ul>
                     </div>
                 </div>

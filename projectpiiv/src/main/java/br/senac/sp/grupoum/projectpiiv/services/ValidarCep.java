@@ -43,8 +43,8 @@ public class ValidarCep {
                 conn.disconnect();
                 return true;
 
-                /*
-               POR FAVOR NÃO APAGAR ESTE COMENTÁRIO, PODE SER ÚTIL
+                
+               /*POR FAVOR NÃO APAGAR ESTE COMENTÁRIO, PODE SER ÚTIL
                
                 InputStreamReader in = new InputStreamReader(conn.getInputStream());
                 BufferedReader br = new BufferedReader(in);
@@ -54,6 +54,8 @@ public class ValidarCep {
 
                 JSONObject jsonResponse = new JSONObject(output);
 
+               jsonResponse.getString("frete");
+                
                 conn.disconnect();
                  */
             }

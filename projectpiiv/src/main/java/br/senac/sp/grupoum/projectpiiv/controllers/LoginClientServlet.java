@@ -37,21 +37,24 @@ public class LoginClientServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String usuario = request.getParameter("usuario");
         String senha = Encriptografar.criptografar(request.getParameter("senha"));
-        
+
         Cliente cliente = ClienteDAO.autenticar(usuario, senha);
-        if(cliente !=null){
-        
-            
+        if (cliente != null) {
+
             HttpSession sessao = request.getSession();
             sessao.setAttribute("usuario", cliente);
-            
+
             request.setAttribute("LogadoAttr", true);
             request.setAttribute("nLogadoAttr", false);
-            response.sendRedirect(request.getContextPath() + "/land");
-        }
-        else{
-             request.setAttribute("msgErro", "Usuário ou senha incorreta");
-             request.getRequestDispatcher("/WEB-INF/login-cliente.jsp").forward(request, response);
+
+            if (sessao.getAttribute("produtosAttr") != null) {
+                response.sendRedirect(request.getContextPath() + "/continuarVenda");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/land");
+            }
+        } else {
+            request.setAttribute("msgErro", "Usuário ou senha incorreta");
+            request.getRequestDispatcher("/WEB-INF/login-cliente.jsp").forward(request, response);
         }
     }
 }

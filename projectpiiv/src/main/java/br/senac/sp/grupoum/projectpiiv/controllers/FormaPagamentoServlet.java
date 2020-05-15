@@ -1,5 +1,6 @@
 package br.senac.sp.grupoum.projectpiiv.controllers;
 
+import br.senac.sp.grupoum.projectpiiv.models.Venda;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -33,8 +34,21 @@ public class FormaPagamentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String pagamento = request.getParameter("pagamento");
+        String pagamentoAttr = request.getParameter("pagamento");
+        String pagamento = "";
         HttpSession sessao = request.getSession();
+        
+        if (pagamentoAttr.equals("boleto")) {
+            pagamento = "Boleto";
+        } else {
+            pagamento = "Cartão de Crédito";
+        }
+        
+        Venda venda = (Venda) sessao.getAttribute("vendaAttr");
+        venda.setMetodoPagamento(pagamento);
+        sessao.setAttribute("vendaAttr", venda);
+        
+        response.sendRedirect(request.getContextPath() + "/enderecos");
     }
 
 }
