@@ -33,9 +33,8 @@ public class CadastrarClienteServlet extends HttpServlet {
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf").replace(".", "").replace("-", "");
-        String endereco = request.getParameter("endereco");
-        String enderecoEntrega = request.getParameter("enderecoEntrega");
-        String cep = request.getParameter("cep").replace("-", "");
+        
+       
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
 
@@ -58,13 +57,9 @@ public class CadastrarClienteServlet extends HttpServlet {
                 return;
             }
 
-            if (!ValidarCep.encontrarCep(cep)) {
-                request.setAttribute("msgErro", "CEP não encontrado");
-                request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
-                return;
-            }
+            
 
-            Cliente cliente = new Cliente(nome, sobrenome, cpf, endereco, enderecoEntrega, cep, email, Encriptografar.criptografar(senha));
+            Cliente cliente = new Cliente(nome, sobrenome, cpf,  email, Encriptografar.criptografar(senha));
 
             if (ClienteDAO.salvar(cliente)) {
                 request.setAttribute("criadoAttr", true);

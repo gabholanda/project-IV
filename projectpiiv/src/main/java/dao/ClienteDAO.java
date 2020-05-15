@@ -25,16 +25,14 @@ public class ClienteDAO {
 
             connection = DbConnectionDAO.openConnection();
             PreparedStatement comando = connection.prepareStatement("INSERT INTO cliente "
-                    + "(nome, sobrenome, cpf, endereco, enderecoEntrega, cep, email, senha) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+                    + "(nome, sobrenome, cpf, email, senha) "
+                    + "VALUES (?, ?, ?, ?, ?);");
+            
             comando.setString(1, c.getNome());
             comando.setString(2, c.getSobreNome());
             comando.setString(3, c.getCpf());
-            comando.setString(4, c.getEndereco());
-            comando.setString(5, c.getEnderecoEntrega());
-            comando.setString(6, c.getCep());
-            comando.setString(7, c.getEmail());
-            comando.setString(8, c.getSenha());
+            comando.setString(4, c.getEmail());
+            comando.setString(5, c.getSenha());
 
             int linhasAfetadas = comando.executeUpdate();
 
@@ -158,12 +156,10 @@ public class ClienteDAO {
                 Cliente cliente = new Cliente();
                 rs.beforeFirst();
                 while (rs.next()) {
+                    cliente.setIdCliente(rs.getInt("id_cliente"));
                     cliente.setNome(rs.getString("nome"));
                     cliente.setSobreNome(rs.getString("sobrenome"));
                     cliente.setCpf(rs.getString("cpf"));
-                    cliente.setEndereco(rs.getString("endereco"));
-                    cliente.setEnderecoEntrega(rs.getString("enderecoEntrega"));
-                    cliente.setCep(rs.getString("cep"));
                     cliente.setEmail(rs.getString("Email"));
                     cliente.setSenha(rs.getString("Senha"));
                 }
@@ -192,16 +188,10 @@ public class ClienteDAO {
             PreparedStatement comando = connection.prepareStatement(" UPDATE cliente"
                     + " SET nome = ? ,"
                     + " sobrenome = ? ,"
-                    + " endereco = ? , "
-                    + " enderecoEntrega = ?, "
-                    + " cep = ? "
                     + " WHERE cpf = ? ", Statement.RETURN_GENERATED_KEYS);
             comando.setString(1, cliente.getNome());
             comando.setString(2, cliente.getSobreNome());
-            comando.setString(3, cliente.getEndereco());
-            comando.setString(4, cliente.getEnderecoEntrega());
-            comando.setString(5, cliente.getCep());
-            comando.setString(6, cliente.getCpf());
+            comando.setString(3, cliente.getCpf());
 
             int linhasAfetadas = comando.executeUpdate();
 
@@ -217,5 +207,36 @@ public class ClienteDAO {
         return retorno;
     }
     
+    public static Cliente pesquisarPorId(int id) {
 
+        Connection connection = null;
+
+        try {
+            connection = DbConnectionDAO.openConnection();
+            PreparedStatement comando = connection.prepareStatement("SELECT * FROM cliente WHERE id_cliente = ?");
+            comando.setInt(1, id);
+            ResultSet rs = comando.executeQuery();
+
+            Cliente cliente = new Cliente();
+
+            while (rs.next()) {
+                cliente.setIdCliente(rs.getInt("id_cliente"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setSobreNome(rs.getString("sobrenome"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setSenha(rs.getString("senha"));
+            }
+
+            DbConnectionDAO.closeConnection(connection);
+            return cliente;
+
+        } catch (ClassNotFoundException ex) {
+            return null;
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
+        }
+    }
 }

@@ -39,17 +39,10 @@
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">				
-                            <li><a href="${pageContext.request.contextPath}/carrinho">Carrinho</a></li>
+                            <li><a href="#">Carrinho</a></li>
                             <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>
-                                <c:if test="${nLogadoAttr}">
-                                <li><a href="${pageContext.request.contextPath}/login-cliente">Login</a></li>
-                                </c:if>
-                                <c:if test="${LogadoAttr}">
-                                <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
-                                <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
-                                </c:if>
-
-
+                            <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -89,69 +82,96 @@
             <section class="header_text sub">
                 <img class="pageBanner" src="${pageContext.request.contextPath}/themes/images/banner1.jpg" alt="New products" >
                 <br>
-                <h3><span>Novos Produtos</span></h3>
-                <c:if test="${sessionScope.msg != null}">
-                    <div class="alert alert-success">
-                        <c:out value="${sessionScope.msg}" />
-                    </div>
-                    <c:remove scope="session" var="msg" />
-                </c:if>
-
-                <c:if test="${alteradoAttr}">
-                    <div class="alert alert-success">
-                        Cadastro alterado com sucesso!
-                    </div>
-                </c:if>
+                <h2><span>Detalhes Pedidos</span></h2>
             </section>
             <section class="main-content">
                 <div class="row">						
                     <div class="span9">
-                        <ul class="thumbnails listing-products">
-                            <c:if test="${not empty produtosAttr}">
-                                <c:forEach items="${produtosAttr}" var="produto">
-
-                                    <li class="span3">
-                                        <div class="product-box">
-                                            <span class="sale_tag"></span>											
-                                            <a data-method="get" href="${pageContext.request.contextPath}/land/detalhe-produto?id=${produto.getId()}">
-                                                <div id="myCarousel${produto.getId()}" class="carousel slide">
-                                                    <div class="carousel-inner">
-                                                        <div class="active item">
-                                                            <img src="${pageContext.request.contextPath}/img/${produto.getImagens()[0]}" style="width: 250px; height: 250px;">
-                                                        </div>
-                                                        <c:forEach items="${produto.getImagens()}" var="imagem" begin="1">
-                                                            <div class="item">
-                                                                <img src="${pageContext.request.contextPath}/img/${imagem}" style="width: 250px; height: 250px;">
-                                                            </div>
-                                                        </c:forEach>
-                                                    </div>
-                                                    <a class="carousel-control left" href="#myCarousel${produto.getId()}" data-slide="prev">&lsaquo;</a>
-                                                    <a class="carousel-control right" href="#myCarousel${produto.getId()}" data-slide="next">&rsaquo;</a>
-                                                </div>
-
-                                                <br/> 
-                                                <a data-method="get" href="${pageContext.request.contextPath}/land/detalhe-produto?id=${produto.getId()}"> 
-                                                    <p class="product-name"><c:out value="${produto.getNome()}"/></p><br/>
-                                                    <a href="#" class="category"><c:out value="${produto.getTipo()}"/></a>
-                                                    <p class="price"><strong>R$ <c:out value="${produto.getPreco()}"/></strong></p>
-                                                </a>
-                                        </div>
-                                    </li>  
-                                    </a> 
-                                </c:forEach>  
-                            </c:if>
-                        </ul>					
-                        <hr>
-                        <div class="pagination pagination-small pagination-centered">
-                            <ul>
-                                <li><a href="#">Prev</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">Next</a></li>
-                            </ul>
-                        </div>
+                        <c:if test="${not empty vendaAttr}">
+                            <div class="block">	
+                                <h3 style="font-size: 25px;">Pedido</h3>
+                                <table class="table table-sm offset-md-2">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Data Pedido</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> <c:out value="${vendaAttr.getId()}"/></td>
+                                            <td ><c:out value="${vendaAttr.getDataVenda()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getStatusCompra()}"/></td>
+                                        </tr>
+                                </table>
+                            </div>
+                            <div class="block" style="border-top: none;">	
+                                <h3 style="font-size: 25px;">Produtos</h3>
+                                <table class="table table-sm offset-md-2">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Produto</th>
+                                            <th scope="col">Quantidade</th>
+                                            <th scope="col">Preço Unitário</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${vendaAttr.getItensVenda()}" var="item">
+                                            <tr>
+                                                <td><c:out value="${item.getProduto().getNome()}"/></td>
+                                                <td><c:out value="${item.getQuantidade()}"/></td>
+                                                <td><c:out value="${item.getProduto().getPreco()}"/></td>
+                                                <td><c:out value="${item.vlrTotalItemF()}"/></td>
+                                            </tr>
+                                        </c:forEach>
+                                </table>
+                            </div>
+                            <div class="block" style="border-top: none;">
+                                <h3 style="float: left; clear: both; margin-left: 80px;"><strong style="color: red;">Total</strong> Venda: R$ <c:out value="${vendaAttr.getValorTotal()}"/></h3>
+                                <h3><strong style="color: red;">Forma</strong> de Pagamento: <c:out value="${vendaAttr.getMetodoPagamento()}"/></h3>
+                            </div>
+                            <div class="block" style="border-top: none;">	
+                                <h3 style="font-size: 25px;">Endereço de Entrega</h3>
+                                <table class="table table-sm offset-md-2">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Rua</th>
+                                            <th scope="col">Número</th>
+                                            <th scope="col">Complemento</th>
+                                            <th scope="col">CEP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getRua()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getNumero()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getComplemento()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getCep()}"/></td>
+                                        </tr>
+                                </table>
+                                        
+                                        <table class="table table-sm offset-md-2">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Bairro</th>
+                                            <th scope="col">Cidade</th>
+                                            <th scope="col">Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getBairro()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getCidade()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getEstado()}"/></td>
+                                        </tr>
+                                </table>
+                                 <hr style="background-color: red; height: 1px;">
+                                 <h3 style="font-size: 25px;"><strong style="color: red;">Valor</strong> Frete: R$ <c:out value="${vendaAttr.getValorFrete()}"/></h3>
+                            </div>
+                        </c:if>
                     </div>
                     <div class="span3 col">
                         <div class="block">	
