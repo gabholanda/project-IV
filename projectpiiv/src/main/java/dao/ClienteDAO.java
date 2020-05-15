@@ -156,6 +156,7 @@ public class ClienteDAO {
                 Cliente cliente = new Cliente();
                 rs.beforeFirst();
                 while (rs.next()) {
+                    cliente.setIdCliente(rs.getInt("id_cliente"));
                     cliente.setNome(rs.getString("nome"));
                     cliente.setSobreNome(rs.getString("sobrenome"));
                     cliente.setCpf(rs.getString("cpf"));
@@ -206,5 +207,36 @@ public class ClienteDAO {
         return retorno;
     }
     
+    public static Cliente pesquisarPorId(int id) {
 
+        Connection connection = null;
+
+        try {
+            connection = DbConnectionDAO.openConnection();
+            PreparedStatement comando = connection.prepareStatement("SELECT * FROM cliente WHERE id_cliente = ?");
+            comando.setInt(1, id);
+            ResultSet rs = comando.executeQuery();
+
+            Cliente cliente = new Cliente();
+
+            while (rs.next()) {
+                cliente.setIdCliente(rs.getInt("id_cliente"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setSobreNome(rs.getString("sobrenome"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setSenha(rs.getString("senha"));
+            }
+
+            DbConnectionDAO.closeConnection(connection);
+            return cliente;
+
+        } catch (ClassNotFoundException ex) {
+            return null;
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
+        }
+    }
 }

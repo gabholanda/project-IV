@@ -39,8 +39,8 @@
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">				
-                            <li><a href="cart.html">Carrinho</a></li>
-                            <li><a href="checkout.html">Meus Pedidos</a></li>					
+                            <li><a href="#">Carrinho</a></li>
+                            <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>					
                             <li><a href="${pageContext.request.contextPath}/login-cliente">Login</a></li>		
                         </ul>
                     </div>
@@ -103,6 +103,11 @@
                                             <c:if test="${msgErro != null}">
                                                 <div class="alert alert-danger" style="width: 237px;">
                                                     <c:out value="${msgErro}" />
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${fazerLoginAttr != null}">
+                                                <div class="alert alert-danger" style="width: 237px;">
+                                                    <c:out value="${fazerLoginAttr}" />
                                                 </div>
                                             </c:if>
                                             <c:if test="${sessionScope.msg != null}">
