@@ -28,14 +28,14 @@ public class CarrinhoServlet extends HttpServlet {
         HttpSession sessao = request.getSession();
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/carrinho.jsp");
 
-        List<ItemVenda> intensCarrinho = (List<ItemVenda>) sessao.getAttribute("produtosAttr");
+        if (sessao.getAttribute("produtosAttr") == null) {
+            sessao.setAttribute("produtosAttr", new ArrayList<ItemVenda>());
+        }
+        List<ItemVenda> itensCarrinho = (List<ItemVenda>) sessao.getAttribute("produtosAttr");
+
         double total = 0;
 
         try {
-
-            if (sessao.getAttribute("produtosAttr") == null) {
-                sessao.setAttribute("produtosAttr", new ArrayList<ItemVenda>());
-            }
 
             if (request.getParameter("id") != null) {
                 int id = Integer.parseInt(request.getParameter("id"));
@@ -43,20 +43,37 @@ public class CarrinhoServlet extends HttpServlet {
 
                 Produto produto = ProdutoDAO.pesquisarPorId(id);
 
-                ItemVenda item = new ItemVenda(produto, qtd);
+                if (!itensCarrinho.isEmpty()) {
+                    int existe = existe(itensCarrinho, id);
+                    if (existe >= 0) {
+                        itensCarrinho.get(existe).setQuantidade(itensCarrinho.get(existe).getQuantidade() + qtd);
 
-                intensCarrinho.add(item);
+                    } else {
 
-                sessao.setAttribute("produtosAttr", intensCarrinho);
+                        ItemVenda item = new ItemVenda(produto, qtd);
+
+                        itensCarrinho.add(item);
+
+                    }
+
+                } else {
+
+                    ItemVenda item = new ItemVenda(produto, qtd);
+
+                    itensCarrinho.add(item);
+
+                }
+
+                sessao.setAttribute("produtosAttr", itensCarrinho);
 
             } else {
-                sessao.setAttribute("produtosAttr", intensCarrinho);
+                sessao.setAttribute("produtosAttr", itensCarrinho);
             }
         } catch (NumberFormatException ex) {
             System.out.println("fail" + ex);
         }
-        for (int i = 0; i < intensCarrinho.size(); i++) {
-            total = total + Double.parseDouble(intensCarrinho.get(i).vlrTotalItemF().replace(",", "."));
+        for (int i = 0; i < itensCarrinho.size(); i++) {
+            total = total + Double.parseDouble(itensCarrinho.get(i).vlrTotalItemF().replace(",", "."));
         }
 
         sessao.setAttribute("totalAttr", total);
@@ -88,6 +105,16 @@ public class CarrinhoServlet extends HttpServlet {
 //        }   
 //        
 //        
+    }
+
+    private int existe(List<ItemVenda> itensCarrinho, int id) {
+
+        for (int i = 0; i < itensCarrinho.size(); i++) {
+            if (itensCarrinho.get(i).getProduto().getId() == id) {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }

@@ -8,10 +8,10 @@ public class DbConnectionDAO {
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     //MY SQL RDS NA AWS
-    private static final String SERVER = "aws-database.cohykcyaldy0.us-east-1.rds.amazonaws.com:3306";
+    private static final String SERVER = "rdsschool.cohykcyaldy0.us-east-1.rds.amazonaws.com:3306";
     private static final String DATABASE = "loja_esporte";
-    private static final String LOGIN = "admin";
-    private static final String PASSWORD = "admin123";
+    private static final String LOGIN = "administrador";
+    private static final String PASSWORD = "#abc123#";
 //    private static final String LOGIN = "root";
 //    private static final String PASSWORD = "";
     private static final String URL = "jdbc:mysql://" + SERVER + "/" + DATABASE + "?useTimezone=true&serverTimezone=UTC";
