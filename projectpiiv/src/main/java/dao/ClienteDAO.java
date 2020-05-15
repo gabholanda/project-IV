@@ -6,13 +6,13 @@
 package dao;
 
 import br.senac.sp.grupoum.projectpiiv.models.Cliente;
+import br.senac.sp.grupoum.projectpiiv.models.Endereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 
 public class ClienteDAO {
 
@@ -27,7 +27,7 @@ public class ClienteDAO {
             PreparedStatement comando = connection.prepareStatement("INSERT INTO cliente "
                     + "(nome, sobrenome, cpf, email, senha) "
                     + "VALUES (?, ?, ?, ?, ?);");
-            
+
             comando.setString(1, c.getNome());
             comando.setString(2, c.getSobreNome());
             comando.setString(3, c.getCpf());
@@ -61,11 +61,11 @@ public class ClienteDAO {
             connection = DbConnectionDAO.openConnection();
             PreparedStatement comando = connection.prepareStatement("SELECT * FROM cliente WHERE email = ?", Statement.RETURN_GENERATED_KEYS);
             comando.setString(1, email);
-            
+
             ResultSet rs = comando.executeQuery();
 
             int cont = 0;
-            
+
             while (rs.next()) {
                 cont++;
             }
@@ -88,7 +88,7 @@ public class ClienteDAO {
         }
 
     }
-    
+
     /*  public static boolean validacaoNome(String nome, String sobreNome) {
         int contarLetra = 0;
         int contarPalavra = 0;
@@ -107,7 +107,7 @@ public class ClienteDAO {
         }
         return true;
     }
-*/
+     */
     public static boolean buscarCpf(String cpf) throws ClassNotFoundException {
 
         Connection connection = null;
@@ -118,9 +118,9 @@ public class ClienteDAO {
             comando.setString(1, cpf);
 
             ResultSet rs = comando.executeQuery();
-            
+
             int cont = 0;
-            
+
             while (rs.next()) {
                 cont++;
             }
@@ -206,7 +206,7 @@ public class ClienteDAO {
         DbConnectionDAO.closeConnection(connection);
         return retorno;
     }
-    
+
     public static Cliente pesquisarPorId(int id) {
 
         Connection connection = null;
@@ -239,4 +239,124 @@ public class ClienteDAO {
             return null;
         }
     }
+
+    public static boolean cadastrarEndereco(Endereco endereco) {
+
+        boolean retorno = false;
+        Connection connection = null;
+
+        try {
+
+            connection = DbConnectionDAO.openConnection();
+            PreparedStatement comando = connection.prepareStatement("INSERT INTO enderecos "
+                    + "(id_cliente, CEP, rua, numero, complemento, bairro, cidade, estado, tipo)"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+            comando.setInt(1, endereco.getCliente().getIdCliente());
+            comando.setString(2, endereco.getCep());
+            comando.setString(3, endereco.getRua());
+            comando.setString(4, endereco.getNumero());
+            comando.setString(5, endereco.getComplemento());
+            comando.setString(6, endereco.getBairro());
+            comando.setString(7, endereco.getCidade());
+            comando.setString(8, endereco.getEstado());
+            comando.setString(9, endereco.getTipo());
+
+            int linhasAfetadas = comando.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+
+        } catch (ClassNotFoundException ex) {
+            retorno = false;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            retorno = false;
+        }
+
+        DbConnectionDAO.closeConnection(connection);
+        return retorno;
+    }
+
+    public static ArrayList<Endereco> enderecoPorCliente(int idCliente) {
+        ArrayList<Endereco> endereco = new ArrayList<Endereco>();
+        Connection connection = null;
+
+        try {
+            connection = DbConnectionDAO.openConnection();
+
+            PreparedStatement comando = connection.prepareStatement("SELECT * FROM endereco WHERE id_cliente = ?");
+            
+            ResultSet rs = comando.executeQuery();
+
+            while (rs.next()) {
+                Endereco end = new Endereco();
+                end.setId(rs.getInt("id_endereco"));
+                end.setCep(rs.getString("cep"));
+                end.setRua(rs.getString("rua"));
+                end.setNumero(rs.getString("numero"));
+                end.setComplemento(rs.getString("complemento"));
+                end.setBairro(rs.getString("bairro"));
+                end.setCidade(rs.getString("cidade"));
+                end.setEstado(rs.getString("estado"));
+                end.setTipo(rs.getString("tipo"));
+                endereco.add(end);
+            }
+
+            DbConnectionDAO.closeConnection(connection);
+            return endereco;
+
+        } catch (ClassNotFoundException ex) {
+            return null;
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
+        }
+    }
+
+    public static Endereco pesquisarPorId2(int id) {
+
+        Connection connection = null;
+
+        try {
+            connection = DbConnectionDAO.openConnection();
+            Endereco end = new Endereco();
+
+            PreparedStatement comando = connection.prepareStatement("SELECT * FROM venda WHERE id_endereco = ?");
+            comando.setInt(1, id);
+            ResultSet rs = comando.executeQuery();
+
+            while (rs.next()) {
+                end.setId(rs.getInt("id_endereco"));
+                end.setCep(rs.getString("cep"));
+                end.setRua(rs.getString("rua"));
+                end.setNumero(rs.getString("numero"));
+                end.setComplemento(rs.getString("complemento"));
+                end.setBairro(rs.getString("bairro"));
+                end.setCidade(rs.getString("cidade"));
+                end.setEstado(rs.getString("estado"));
+                end.setTipo(rs.getString("tipo"));
+
+            }
+
+            while (rs.next()) {
+                Endereco enderecos = ClienteDAO.pesquisarPorId2(rs.getInt("id_endereco"));
+
+            }
+
+            DbConnectionDAO.closeConnection(connection);
+            return end;
+
+        } catch (ClassNotFoundException ex) {
+            return null;
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
+        }
+    }
+
 }
