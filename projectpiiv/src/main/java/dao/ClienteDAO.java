@@ -16,6 +16,9 @@ import java.util.ArrayList;
 
 public class ClienteDAO {
 
+ 
+    
+    
     public static boolean salvar(Cliente c) {
 
         boolean retorno = false;
@@ -240,7 +243,19 @@ public class ClienteDAO {
         }
     }
 
-    public static boolean cadastrarEndereco(Endereco endereco) {
+    public static boolean cadastrarEndereco(Endereco endereco ) {
+        
+        if(endereco.getTipo().equals("Ambos Endereços")){
+            if(cadastrarEnderecoPorTipo(endereco,"Endereço Fatura") && cadastrarEnderecoPorTipo(endereco,"Endereço Entrega"))
+                return true;
+        }else {
+            return cadastrarEnderecoPorTipo(endereco,"");
+           
+        }
+        return false;
+    }
+
+    public static boolean cadastrarEnderecoPorTipo(Endereco endereco, String tipo ) {
 
         boolean retorno = false;
         Connection connection = null;
@@ -251,6 +266,48 @@ public class ClienteDAO {
             PreparedStatement comando = connection.prepareStatement("INSERT INTO enderecos "
                     + "(id_cliente, CEP, rua, numero, complemento, bairro, cidade, estado, tipo)"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+            comando.setInt(1, endereco.getCliente().getIdCliente());
+            comando.setString(2, endereco.getCep());
+            comando.setString(3, endereco.getRua());
+            comando.setString(4, endereco.getNumero());
+            comando.setString(5, endereco.getComplemento());
+            comando.setString(6, endereco.getBairro());
+            comando.setString(7, endereco.getCidade());
+            comando.setString(8, endereco.getEstado());
+            if(tipo.isEmpty())
+                comando.setString(9, endereco.getTipo());
+            else
+                comando.setString(9, tipo);
+
+            int linhasAfetadas = comando.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+
+        } catch (ClassNotFoundException ex) {
+            retorno = false;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            retorno = false;
+        }
+
+        DbConnectionDAO.closeConnection(connection);
+        return retorno;
+    }
+    public static boolean cadastroDuplo(Endereco endereco) {
+
+        boolean retorno = false;
+        Connection connection = null;
+
+        try {
+
+            connection = DbConnectionDAO.openConnection();
+            PreparedStatement comando = connection.prepareStatement("INSERT INTO enderecos "
+                    + "(id_cliente, CEP, rua, numero, complemento, bairro, cidade, estado, tipo)"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, Endereço Entrega);");
             comando.setInt(1, endereco.getCliente().getIdCliente());
             comando.setString(2, endereco.getCep());
             comando.setString(3, endereco.getRua());
@@ -278,8 +335,15 @@ public class ClienteDAO {
 
         DbConnectionDAO.closeConnection(connection);
         return retorno;
+        
+        
+ 
+        
+        
+
     }
 
+    
     public static ArrayList<Endereco> enderecoPorCliente(int idCliente) {
         ArrayList<Endereco> endereco = new ArrayList<Endereco>();
         Connection connection = null;
@@ -288,7 +352,7 @@ public class ClienteDAO {
             connection = DbConnectionDAO.openConnection();
 
             PreparedStatement comando = connection.prepareStatement("SELECT * FROM endereco WHERE id_cliente = ?");
-            
+            comando.setInt(1, idCliente);
             ResultSet rs = comando.executeQuery();
 
             while (rs.next()) {

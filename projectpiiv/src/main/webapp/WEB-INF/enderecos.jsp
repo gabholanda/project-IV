@@ -39,6 +39,13 @@
     </section>	
     <div class="container mt-5">
         <h3 class="title-default mb-5">Cadastrar Endereços</h3>
+
+
+        <c:if test="${msgErro != null}">
+            <div class="alert alert-danger">
+                <c:out value="${msgErro}" />
+            </div>
+        </c:if>
         <c:if test="${criadoAttr}">
             <div class="alert alert-success">
                 Cadastrado com sucesso!
@@ -79,11 +86,40 @@
                         <label for="cidade">Cidade</label>
                         <input type="text" class="form-control" name="cidade" id="cidade" required>
                     </div>
-                    <div class="col-sm-1">
-                        <label for="estado">Estado</label>
-                        <input type="text" class="form-control" name="estado" id="estado" required>
-                    </div>
+                    
+                    <div class="col-sm-3">
+                        <label for="estado" class="col-sm-1 offset-md-3">Estado</label>
+                        <select name="estado" id="estado" class="form-control col-sm-4">
+                    <option >Acre</option>
+                    <option >Alagoas</option>
+                    <option >Amapá</option>
+                    <option >Amazonas</option>
+                    <option >Bahia</option>
+                    <option >Ceará</option>
+                    <option >Distrito Federal</option>
+                    <option >Espirito Santo</option>
+                    <option >Goiás</option>
+                    <option >Maranhão</option>
+                    <option >Mato Grosso do Sul</option>
+                    <option >Mato Grosso</option>
+                    <option >Minas Gerais</option>
+                    <option >Pará</option>
+                    <option >Paraíba</option>
+                    <option >Paraná</option>
+                    <option >Pernambuco</option>
+                    <option >Piauí</option>
+                    <option >Rio de Janeiro</option>
+                    <option >Rio Grande do Norte</option>
+                    <option >Rio Grande do Sul</option>
+                    <option >Rondônia</option>
+                    <option >Roraima</option>
+                    <option >Santa Catarina</option>
+                    <option >São Paulo</option>
+                    <option >Sergipe</option>
+                    <option >Tocantins</option>
 
+                        </select>
+                    </div>
                     <div class="col-sm-3">
                         <label for="tipo" class="col-sm-1 offset-md-3">Tipo:</label>
 
@@ -106,68 +142,9 @@
             </div>
 
         </form>
-        <div class="row">						
-            <div class="span9">
-                <c:if test="${not empty enderecosAttr}">
-                    <div class="block">
-                        <table class="table table-sm offset-md-2">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">CEP</th>
-                                    <th scope="col">NUMERO</th>
-                                    <th scope="col">COMPLEMENTO</th>
-                                    <th scope="col">BAIRRO</th>
-                                    <th scope="col">CIDADE</th>
-                                    <th scope="col">ESTADO</th>
-                                    <th scope="col">TIPO</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${enderecosAttr}" var="endereco">
-                                    <tr>
-                                        <th> <c:out value="${endereco.getId()}"/></th>
-                                        <td ><c:out value="${endereco.getCep()}"/></td>
-                                        <td><c:out value="${endereco.getRua()}"/></td>
-                                        <td> <c:out value="${endereco.getNumero()}"/></td>
-                                        <td> <c:out value="${endereco.getComplemento()}"/></td>
-                                        <td> <c:out value="${endereco.getBairro()}"/></td>
-                                        <td> <c:out value="${endereco.getCidade()}"/></td>
-                                        <td> <c:out value="${endereco.getEstado()}"/></td>
-                                        <td> <c:out value="${endereco.getTipo()}"/></td>
-                                        <td><a data-method="get" href="${pageContext.request.contextPath}/enderecos?id=${endereco.getId()}" class="btn btn-primary mb-1" >Enderecos</a></td>
-                                    </tr>
-                                </c:forEach>
-                        </table>
-                    </div>
-                </c:if>
-            </div>
 
-        </div>
     </div>
 
-    <script>
-        jQuery(function ($) {
-
-            $("#cep").mask('00000-000');
-        });
-    </script>
-<script>
-        if (${ErroCep} === false) {
-            alert('CEP obrigatório');
-        }
-    </script>
-    <script>
-        if (${ErroNome} === false) {
-            alert('Nome com menos que 5 letras');
-        }
-    </script>
-    <script>
-        if (${ErroNome} === false) {
-            alert('Nome com menos que 5 letras');
-        }
-    </script>
 
 </body>
 </html>

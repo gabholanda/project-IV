@@ -68,6 +68,44 @@ public class EnderecoServlet extends HttpServlet {
         String tipo = request.getParameter("tipo");
 
         try {
+            
+             if (cep.equals("")) {
+                request.setAttribute("msgErro", "Cep Campo Vazio");
+                request.getRequestDispatcher("WEB-INF/enderecos.jsp").forward(request, response);
+                return;
+            }
+             
+             else if (rua.equals("")) {
+                request.setAttribute("msgErro", "Rua Campo Vazio");
+                request.getRequestDispatcher("WEB-INF/enderecos.jsp").forward(request, response);
+                return;
+            }
+             
+             else if (numero.equals("")) {
+                request.setAttribute("msgErro", "Numero Campo Vazio");
+                request.getRequestDispatcher("WEB-INF/enderecos.jsp").forward(request, response);
+                return;
+            }
+             
+             else if (complemento.equals("")) {
+                request.setAttribute("msgErro", "Complemento Campo Vazio");
+                request.getRequestDispatcher("WEB-INF/enderecos.jsp").forward(request, response);
+                return;
+            }
+             
+             else if (bairro.equals("")) {
+                request.setAttribute("msgErro", "Bairro Campo Vazio");
+                request.getRequestDispatcher("WEB-INF/enderecos.jsp").forward(request, response);
+                return;
+            }
+             
+             else if (cidade.equals("")) {
+                request.setAttribute("msgErro", "Cidade Campo Vazio");
+                request.getRequestDispatcher("WEB-INF/enderecos.jsp").forward(request, response);
+                return;
+             }
+             
+             
 
             Endereco end = new Endereco(cliente, cep, rua, numero, complemento, bairro, cidade, estado, tipo);
 
