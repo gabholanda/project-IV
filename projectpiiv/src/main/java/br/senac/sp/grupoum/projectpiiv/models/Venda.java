@@ -2,6 +2,7 @@ package br.senac.sp.grupoum.projectpiiv.models;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class Venda {
@@ -36,6 +37,12 @@ public class Venda {
         this.idCliente = idCliente;
         this.statusCompra = statusCompra;
         this.metodoPagamento = metodoPagamento;
+    }
+
+    public Venda(ArrayList<ItemVenda> itensVenda ,double valorTotal, int idCliente) {
+        this.itensVenda = itensVenda;
+        this.valorTotal = valorTotal;
+        this.idCliente = idCliente;
     }
 
     public int getId() {

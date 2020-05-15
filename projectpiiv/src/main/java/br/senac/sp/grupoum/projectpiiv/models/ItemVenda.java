@@ -11,9 +11,9 @@ import java.text.DecimalFormat;
 public class ItemVenda {
     
     private Produto produto;
-    private double quantidade;
+    private int quantidade;
 
-    public ItemVenda(Produto produto, double quantidade) {
+    public ItemVenda(Produto produto, int quantidade) {
         this.produto = produto;
         this.quantidade = quantidade;
     }
@@ -28,11 +28,11 @@ public class ItemVenda {
         this.produto = produto;
     }
 
-    public double getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(double quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
     
