@@ -82,35 +82,94 @@
             <section class="header_text sub">
                 <img class="pageBanner" src="${pageContext.request.contextPath}/themes/images/banner1.jpg" alt="New products" >
                 <br>
-                <h3><span>Meus Pedidos</span></h3>
-
+                <h2><span>Detalhes Pedidos</span></h2>
             </section>
             <section class="main-content">
                 <div class="row">						
                     <div class="span9">
-                        <c:if test="${not empty pedidosAttr}">
-                            <div class="block">
+                        <c:if test="${not empty vendaAttr}">
+                            <div class="block">	
+                                <h3 style="font-size: 25px;">Pedido</h3>
                                 <table class="table table-sm offset-md-2">
                                     <thead>
                                         <tr>
                                             <th scope="col">Id</th>
                                             <th scope="col">Data Pedido</th>
-                                            <th scope="col">Total</th>
                                             <th scope="col">Status</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${pedidosAttr}" var="produto">
+                                        <tr>
+                                            <td> <c:out value="${vendaAttr.getId()}"/></td>
+                                            <td ><c:out value="${vendaAttr.getDataVenda()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getStatusCompra()}"/></td>
+                                        </tr>
+                                </table>
+                            </div>
+                            <div class="block" style="border-top: none;">	
+                                <h3 style="font-size: 25px;">Produtos</h3>
+                                <table class="table table-sm offset-md-2">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Produto</th>
+                                            <th scope="col">Quantidade</th>
+                                            <th scope="col">Preço Unitário</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${vendaAttr.getItensVenda()}" var="item">
                                             <tr>
-                                                <th> <c:out value="${produto.getId()}"/></th>
-                                                <td ><c:out value="${produto.getDataVenda()}"/></td>
-                                                <td><c:out value="${produto.getValorTotal()}"/></td>
-                                                <td> <c:out value="${produto.getStatusCompra()}"/></td>
-                                                <td><a data-method="get" href="${pageContext.request.contextPath}/detalhes-pedido?id=${produto.getId()}" class="btn btn-primary mb-1" >Detalhes</a></td>
+                                                <td><c:out value="${item.getProduto().getNome()}"/></td>
+                                                <td><c:out value="${item.getQuantidade()}"/></td>
+                                                <td><c:out value="${item.getProduto().getPreco()}"/></td>
+                                                <td><c:out value="${item.vlrTotalItemF()}"/></td>
                                             </tr>
                                         </c:forEach>
                                 </table>
+                            </div>
+                            <div class="block" style="border-top: none;">
+                                <h3 style="float: left; clear: both; margin-left: 80px;"><strong style="color: red;">Total</strong> Venda: R$ <c:out value="${vendaAttr.getValorTotal()}"/></h3>
+                                <h3><strong style="color: red;">Forma</strong> de Pagamento: <c:out value="${vendaAttr.getMetodoPagamento()}"/></h3>
+                            </div>
+                            <div class="block" style="border-top: none;">	
+                                <h3 style="font-size: 25px;">Endereço de Entrega</h3>
+                                <table class="table table-sm offset-md-2">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Rua</th>
+                                            <th scope="col">Número</th>
+                                            <th scope="col">Complemento</th>
+                                            <th scope="col">CEP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getRua()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getNumero()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getComplemento()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getCep()}"/></td>
+                                        </tr>
+                                </table>
+                                        
+                                        <table class="table table-sm offset-md-2">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Bairro</th>
+                                            <th scope="col">Cidade</th>
+                                            <th scope="col">Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getBairro()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getCidade()}"/></td>
+                                            <td> <c:out value="${vendaAttr.getEndereco().getEstado()}"/></td>
+                                        </tr>
+                                </table>
+                                 <hr style="background-color: red; height: 1px;">
+                                 <h3 style="font-size: 25px;"><strong style="color: red;">Valor</strong> Frete: R$ <c:out value="${vendaAttr.getValorFrete()}"/></h3>
                             </div>
                         </c:if>
                     </div>

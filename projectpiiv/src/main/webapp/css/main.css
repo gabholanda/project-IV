@@ -65,6 +65,10 @@ body {
     font-size: 20px;
 }
 
+.block.custom{
+    border-top: none;
+}
+
 
 
 #readmore{display: none} 

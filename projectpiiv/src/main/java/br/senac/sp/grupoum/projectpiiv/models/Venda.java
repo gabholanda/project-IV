@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senac.sp.grupoum.projectpiiv.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -13,8 +9,11 @@ public class Venda {
     private double valorTotal;
     private Date dataVenda;
     private int idCliente;
+    private double valorFrete;
+    private Endereco endereco;
     private String statusCompra;
     private String metodoPagamento;
+    private ArrayList<ItemVenda> itensVenda = new ArrayList<ItemVenda>();
     
     public Venda() {}
     
@@ -86,6 +85,29 @@ public class Venda {
     public void setMetodoPagamento(String metodoPagamento) {
         this.metodoPagamento = metodoPagamento;
     }
-    
+
+    public double getValorFrete() {
+        return valorFrete;
+    }
+
+    public void setValorFrete(double valorFrete) {
+        this.valorFrete = valorFrete;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public ArrayList<ItemVenda> getItensVenda() {
+        return itensVenda;
+    }
+
+    public void setItensVenda(ArrayList<ItemVenda> itensVenda) {
+        this.itensVenda = itensVenda;
+    }
     
 }
