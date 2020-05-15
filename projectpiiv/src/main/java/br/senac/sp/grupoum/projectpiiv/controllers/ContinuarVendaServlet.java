@@ -9,9 +9,7 @@ import br.senac.sp.grupoum.projectpiiv.models.Cliente;
 import br.senac.sp.grupoum.projectpiiv.models.ItemVenda;
 import br.senac.sp.grupoum.projectpiiv.models.Venda;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +44,7 @@ public class ContinuarVendaServlet extends HttpServlet {
                 Venda vendaCliente = new Venda(itensCarrinho, total, cliente.getIdCliente());
 
                 sessao.setAttribute("vendaAttr", vendaCliente);
-                response.sendRedirect(request.getContextPath() + "/enderecos");
+                response.sendRedirect(request.getContextPath() + "/forma-pagamento");
 
             }
         } catch (Exception e) {

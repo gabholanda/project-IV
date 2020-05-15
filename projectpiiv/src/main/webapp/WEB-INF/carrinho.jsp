@@ -40,10 +40,11 @@
                 </div>
                 <div class="span8">
                     <div class="account pull-right">
-                        <ul class="user-menu">
-
-                            <li><a href="cart.html">Finalizar Compra</a></li>
-                            <li><a href="register.html">Login</a></li>
+                        <ul class="user-menu">				
+                            <li><a href="${pageContext.request.contextPath}/carrinho">Carrinho</a></li>
+                            <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>
+                            <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -160,13 +161,18 @@
                         </table>
 
                         <c:if test="${not empty produtosAttr}">
-                            <p class="buttons center">
+                            
+                                 <div class="button-group" style="display: -webkit-inline-box;">
+           
+                
                             <form class="form-inline" method="get" action="${pageContext.request.contextPath}/continuarVenda">
-                                <button class="btn btn-inverse" type="submit" id="checkout">Finalizar Compra</button>
+                                <button class="btn btn-inverse" type="submit" id="checkout">Escolher forma de pagamento</button>
                             </form>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <a class="btn btn-inverse" href="${pageContext.request.contextPath}/land">Continuar
                                 comprando</a>
-                            </p>
+                      
+                            </div>
                         </c:if>
                     </div>
                     <div class="span3 col">

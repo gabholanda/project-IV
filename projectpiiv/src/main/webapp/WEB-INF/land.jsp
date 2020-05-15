@@ -48,8 +48,6 @@
                                 <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
                                 <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
                                 </c:if>
-
-
                         </ul>
                     </div>
                 </div>

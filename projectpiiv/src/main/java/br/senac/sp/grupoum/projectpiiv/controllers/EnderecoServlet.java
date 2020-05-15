@@ -31,7 +31,7 @@ public class EnderecoServlet extends HttpServlet {
         Venda carrinho = (Venda) sessao.getAttribute("vendaAttr");
 
         System.out.println("***Chegou na rota Endereço*** Produto: " + carrinho.getItensVenda().get(0).getProduto().getNome());
-
+        System.out.println("***Chegou na rota Endereço*** Produto: " + carrinho.getMetodoPagamento());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/enderecos.jsp");
         dispatcher.forward(request, response);
 
