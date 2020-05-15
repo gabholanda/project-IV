@@ -5,6 +5,7 @@
  */
 package br.senac.sp.grupoum.projectpiiv.controllers;
 
+import br.senac.sp.grupoum.projectpiiv.models.Venda;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -21,20 +23,24 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "EnderecoServlet", urlPatterns = {"/enderecos"})
 public class EnderecoServlet extends HttpServlet {
 
-    
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/enderecos.jsp");
+        HttpSession sessao = request.getSession();
+
+        Venda carrinho = (Venda) sessao.getAttribute("vendaAttr");
+
+        System.out.println("***Chegou na rota Endereço*** Produto: " + carrinho.getItensVenda().get(0).getProduto().getNome());
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/enderecos.jsp");
         dispatcher.forward(request, response);
-        
+
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-   
+
     }
 
 }

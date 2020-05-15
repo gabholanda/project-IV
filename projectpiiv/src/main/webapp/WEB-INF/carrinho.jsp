@@ -161,9 +161,11 @@
 
                         <c:if test="${not empty produtosAttr}">
                             <p class="buttons center">
+                            <form class="form-inline" method="get" action="${pageContext.request.contextPath}/continuarVenda">
                                 <button class="btn btn-inverse" type="submit" id="checkout">Finalizar Compra</button>
-                                <a class="btn btn-inverse" href="${pageContext.request.contextPath}/land">Continuar
-                                    comprando</a>
+                            </form>
+                            <a class="btn btn-inverse" href="${pageContext.request.contextPath}/land">Continuar
+                                comprando</a>
                             </p>
                         </c:if>
                     </div>
@@ -255,7 +257,7 @@
                 var preco = document.getElementById('preco').value;
                 var qtd = document.getElementById('qtdProduto').value;
 
-                for (var i = 0; i < preco.length; i++){
+                for (var i = 0; i < preco.length; i++) {
                     var totalProduto = preco[i] * qtd[i];
                     if (!isNaN(totalProduto)) {
                         document.getElementById('totalProd')[i].value = totalProduto;

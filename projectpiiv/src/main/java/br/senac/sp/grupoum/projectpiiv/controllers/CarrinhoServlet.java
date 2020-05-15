@@ -31,7 +31,7 @@ public class CarrinhoServlet extends HttpServlet {
         if (sessao.getAttribute("produtosAttr") == null) {
             sessao.setAttribute("produtosAttr", new ArrayList<ItemVenda>());
         }
-        List<ItemVenda> itensCarrinho = (List<ItemVenda>) sessao.getAttribute("produtosAttr");
+        ArrayList<ItemVenda> itensCarrinho = (ArrayList<ItemVenda>) sessao.getAttribute("produtosAttr");
 
         double total = 0;
 
@@ -107,7 +107,7 @@ public class CarrinhoServlet extends HttpServlet {
 //        
     }
 
-    private int existe(List<ItemVenda> itensCarrinho, int id) {
+    private int existe(ArrayList<ItemVenda> itensCarrinho, int id) {
 
         for (int i = 0; i < itensCarrinho.size(); i++) {
             if (itensCarrinho.get(i).getProduto().getId() == id) {
