@@ -40,10 +40,16 @@
                 </div>
                 <div class="span8">
                     <div class="account pull-right">
-                        <ul class="user-menu">
-
-                            <li><a href="cart.html">Finalizar Compra</a></li>
-                            <li><a href="register.html">Login</a></li>
+                        <ul class="user-menu">				
+                            <li><a href="${pageContext.request.contextPath}/carrinho">Carrinho</a></li>
+                            <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>
+                                <c:if test="${nLogadoAttr}">
+                                <li><a href="${pageContext.request.contextPath}/login-cliente">Login</a></li>
+                                </c:if>
+                                <c:if test="${LogadoAttr}">
+                                <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
+                                <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
+                                </c:if>
                         </ul>
                     </div>
                 </div>
@@ -95,7 +101,7 @@
                                 <thead>
                                     <tr>
                                         <th>Retirar Produto</th>
-                                        <th> </th>
+                                        <th>Atualizar Quantidade </th>
                                         <th>Nome do Produto</th>
                                         <th>Quantidade</th>
                                         <th>Valor Unitário</th>
@@ -105,42 +111,51 @@
                                 <tbody>
 
                                     <c:forEach items="${produtosAttr}" var="produto">
+
                                         <tr>
                                             <td><button type="button" class="btn btn-primary" data-toggle="modal"
                                                         data-target="#p${produto.getProduto().getId()}">Excluir</button></td>
-                                            <td></td>
-                                            <td>
-                                                <c:out value="${produto.getProduto().getNome()}" />
-                                            </td>
-                                            <td><input type="text" placeholder="1" class="input-mini" id="qtdProduto"
-                                                       min="0" data-bind="qtdProduto" onClick="" value="${produto.getQuantidade()}"></td>
-                                            <td> <input type="text" class="input-mini" id="preco" data-bind="preco" value="${produto.getProduto().getPreco()}">
-                                            </td>
-                                            <td><input type="text" class="input-mini" id="totalProd" data-bind="totalProd" value="${produto.vlrTotalItem()}" />
-                                            </td>
-                                        </tr>
-                                    <div class="modal fade" id="p${produto.getProduto().getId()}" tabindex="-1"
-                                         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-body">
-                                                    Tem certeza que deseja excluir o produto
-                                                    <c:out value="${produto.getProduto().getNome()}" />
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <form action="${pageContext.request.contextPath}/excluirItem"
-                                                          method="post">
-                                                        <button class="btn btn-success" type="submit" name="id"
-                                                                id="confirmDeleteButton"
-                                                                value="${produto.getProduto().getId()}">Confirmar</button>
-                                                    </form>
 
-                                                    <button type="button" class="btn btn-danger"
-                                                            data-dismiss="modal">Cancelar</button>
+                                    <form class="form-inline" method="get" action="${pageContext.request.contextPath}/continuar-comprando">
+                                        <td>
+                                            <input type="hidden" name="id" value="${produto.getProduto().getId()}">
+
+                                            <button class="btn btn-primary" type="submit" id="checkout">Atualizar</button>
+                                        </td>
+
+                                        <td>
+                                            <c:out value="${produto.getProduto().getNome()}" />
+                                        </td>
+                                        <td><input name="qtdProduto" type="number" placeholder="1" class="input-mini" id="qtdProduto${loop.index}"
+                                                   min="0" data-bind="qtdProduto" value="${produto.getQuantidade()}" onClick="teste('qtdProduto${loop.index}', 'preco${loop.index}', 'totalProd${loop.index}')"></td>
+                                        <td> <input type="text" class="input-mini " id="preco${loop.index}" data-bind="preco" value="${produto.getProduto().getPreco()}">
+                                        </td>
+                                        <td><input type="text" class="input-mini totalProd" id="totalProd${loop.index}" data-bind="totalProd" value="${produto.vlrTotalItem()}" />
+                                        </td>
+                                        </tr>
+                                    </form>
+                                <div class="modal fade" id="p${produto.getProduto().getId()}" tabindex="-1"
+                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        Tem certeza que deseja excluir o produto
+                                                        <c:out value="${produto.getProduto().getNome()}" />
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form action="${pageContext.request.contextPath}/excluirItem"
+                                                              method="post">
+                                                            <button class="btn btn-success" type="submit" name="id"
+                                                                    id="confirmDeleteButton"
+                                                                    value="${produto.getProduto().getId()}">Confirmar</button>
+                                                        </form>
+
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Cancelar</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </c:forEach>
                             </c:if>
                             <c:if test="${empty produtosAttr}">
@@ -154,17 +169,24 @@
                                 <td>&nbsp;</td>
                                 <td><strong>R$
                                         <input type="text" placeholder="1" class="input-mini" id="total"
-                                               min="0" data-bind="total"value="${totalAttr}" /></strong></td>
+                                               min="0" data-bind="total" value="${totalAttr}" /></strong></td>
                             </tr>
                             </tbody>
                         </table>
 
                         <c:if test="${not empty produtosAttr}">
-                            <p class="buttons center">
-                                <button class="btn btn-inverse" type="submit" id="checkout">Finalizar Compra</button>
-                                <a class="btn btn-inverse" href="${pageContext.request.contextPath}/land">Continuar
-                                    comprando</a>
-                            </p>
+
+                            <div class="button-group" style="display: -webkit-inline-box;">
+
+
+                                <form class="form-inline" method="get" action="${pageContext.request.contextPath}/continuarVenda">
+                                    <button class="btn btn-inverse" type="submit" id="checkout">Escolher forma de pagamento</button>
+                                </form>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <a class="btn btn-inverse" href="${pageContext.request.contextPath}/land">Continuar comprando</a>
+
+                            </div>
                         </c:if>
                     </div>
                     <div class="span3 col">
@@ -243,36 +265,28 @@
 
 
         <script>
-            $(document).ready(function () {
-                //this calculates values automatically 
-                sum();
-                $("#preco, #qtdProduto, #totalProd, #total").on("keydown keyup", function () {
-                    sum();
-                });
-            });
+                                                           function teste(qtd, preco, total) {
+                                                               var quant = document.getElementById(qtd).value;
+                                                               var prec = document.getElementById(preco).value;
+                                                               var tot = document.getElementById(total).value;
 
-            function sum() {
-                var preco = document.getElementById('preco').value;
-                var qtd = document.getElementById('qtdProduto').value;
+                                                               tot = quant * prec
 
-                for (var i = 0; i < preco.length; i++){
-                    var totalProduto = preco[i] * qtd[i];
-                    if (!isNaN(totalProduto)) {
-                        document.getElementById('totalProd')[i].value = totalProduto;
-                    } else {
-                        document.getElementById('totalProd').value = 0
-                        document.getElementById('qtdProduto').value = 0
-                    }
-                }
+                                                               document.getElementById(total).value = tot;
+                                                               soma();
+                                                           }
 
-                var num2 = document.getElementById('totalProd').value;
-                var total = 0;
+                                                           function soma() {
+                                                               var valores = document.getElementsByClassName('totalProd');
+                                                               var total = 0;
 
-                for (var i = 0; i < num2.length; i++) {
-                    total += num2[i];
-                }
-                // document.getElementById('total').value = total.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
-            }
+                                                               for (var i = 0; i < valores.length; i++) {
+                                                                   valor = document.getElementById(valores[i].id).value
+                                                                   total = parseInt(total) + parseInt(valor);
+                                                               }
+
+                                                               document.getElementById('total').value = total;
+                                                           }
         </script>
 
     </body>

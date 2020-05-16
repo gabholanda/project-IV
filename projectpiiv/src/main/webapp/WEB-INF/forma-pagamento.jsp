@@ -40,7 +40,7 @@
                     <div class="account pull-right">
                         <ul class="user-menu">				
                             <li><a href="${pageContext.request.contextPath}/carrinho">Carrinho</a></li>
-                            <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>					
+                            <li><a href="${pageContext.request.contextPath}/meus-pedidos">Meus Pedidos</a></li>
                             <li><a href="${pageContext.request.contextPath}/editar-cliente">Meu Cadastro</a></li>
                             <li><a href="${pageContext.request.contextPath}/logout-cliente">Logout</a></li>
                         </ul>
@@ -54,7 +54,6 @@
                     <a href="${pageContext.request.contextPath}/land" class="logo pull-left logo-size"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
                     <nav id="menu" class="pull-right">
                         <ul>
-
                             <li><a href="./products.html">Masculino</a>					
                                 <ul>
                                     <li><a href="#">Camisetas</a></li>									
@@ -79,81 +78,82 @@
                         </ul>
                     </nav>
                 </div>
-            </section>			
+            </section>	
+            <section class="header_text sub">
+                <img class="pageBanner" src="${pageContext.request.contextPath}/themes/images/banner1.jpg" alt="New products" >
+                <br>
+                <h2><span>Forma de Pagamento</span></h2>
+            </section>
+            <section class="main-content">
+                <div class="row">						
+                    <div class="span9">
+                        <form action="${pageContext.request.contextPath}/forma-pagamento" method="post" class="form-stacked">
+                            <div class="block">
 
-            <center>
-                <section>	
+                                <input style="width: 20px;  height: 18px;" class="form-check-input" type="radio" name="pagamento" id="boleto" value="boleto" onchange="desabilitarCampos()" required>
+                                <label class="form-check-label" for="inlineRadio1" style="margin-top: 15px;"><strong style="font-size: 30px;">Boleto</strong></label>
+                                <i style="font-size: 90px" class="fas fa-money-bill-alt"></i>
+                            </div>
 
-                    <div class="row">
-                        <div class="d-flex justify-content-center">					
-
-                            <h4 class="title"><span class="text"><strong>Editar</strong> Cadastro</span></h4>
-                            <form action="${pageContext.request.contextPath}/editar-cliente" method="post" class="form-stacked">
+                            <div class="block" style="border-top: none;">
+                                <input style="width: 20px;  height: 18px;" class="form-check-input" type="radio" name="pagamento" id="cartaoCredito" value="cartaoCredito" onchange="liberarCampos()" required>
+                                <label class="form-check-label" for="inlineRadio1" style="margin-top: 15px;"><strong style="font-size: 30px;">Cartão de Crédito</strong></label>
+                                <br>
+                                <i style="font-size: 40px" class="fab fa-cc-visa"></i>
+                                <i style="font-size: 40px" class="fab fa-cc-amex"></i>
+                                <i style="font-size: 40px" class="fab fa-cc-mastercard"></i>
+                                <i style="font-size: 40px" class="fab fa-cc-paypal"></i>
+                                <i style="font-size: 40px" class="fab fa-cc-diners-club"></i>
+                                <i style="font-size: 40px" class="fab fa-apple-pay"></i>
+                                <br><br>
                                 <fieldset>
                                     <div class="control-group">
-                                        <label class="control-label">Nome</label>
+                                        <label class="control-label">Número do Cartão</label>
                                         <div class="controls">
-                                            <input type="text" value="${nomeAttr}" placeholder="Nome" id="nome" name="nome" class="input-xlarge" required>
+                                            <input disabled="disabled" type="text" placeholder="xxxx xxxx xxxx xxxx" id="numeroCartao" name="numeroCartao" class="input-xlarge" required>
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        <label class="control-label">Sobrenome</label>
+                                        <label class="control-label">Código de Segurança</label>
                                         <div class="controls">
-                                            <input type="text" value="${sobreNomeAttr}" placeholder="Sobrenome" id="sobrenome" name="sobrenome" class="input-xlarge" required>
+                                            <input disabled="disabled" type="text" placeholder="xxx" id="codigoSeguranca" name="codigoSeguranca" class="input-xlarge" required>
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        <label class="control-label">CPF</label>
+                                        <label class="control-label">Data de Vencimento</label>
                                         <div class="controls">
-                                            <input type="text" value="${cpfAttr}" placeholder="Digite seu CPF" id="cpf" name="cpf" class="input-xlarge" readonly=”readonly”="">
+                                            <input disabled="disabled" type="text" placeholder="xx/xx" id="dataVencimento" name="dataVencimento" class="input-xlarge">
                                         </div>
-                                    </div>
-
-                                    <div class="control-group">
-                                        <label class="control-label">CEP</label>
-                                        <div class="controls">
-                                            <input type="text" value="${cepAttr}" placeholder="Digite o CEP" id="cep" name="cep" class="input-xlarge" required>
-                                        </div>
-                                    </div>	
-                                    <div class="control-group">
-                                        <label class="control-label">E-mail</label>
-                                        <div class="controls">
-                                            <input type="email" value="${emailAttr}" placeholder="Digite seu e-mail" id="email" name="email" class="input-xlarge" readonly=”readonly”="">
-                                        </div>
-                                    </div>	
-                                    <!--  <div class="control-group">
-                                          <label class="control-label">Senha</label>
-                                          <div class="controls">
-                                              <input type="password" value="${senhaAttr}" placeholder="Digite uma senha" id="senha" name="senha" class="input-xlarge">
-                                          </div>
-                                      </div>	-->						                            
+                                    </div>						                            
 
                                     <hr>
-                                    <c:if test="${sessionScope.msg != null}">
-                                        <div class="alert alert-success">
-                                            <c:out value="${sessionScope.msg}" />
-                                        </div>
-                                        <c:remove scope="session" var="msg" />
-                                    </c:if>
-                                    <c:if test="${msgErro != null}">
-                                        <div class="alert alert-danger">
-                                            <c:out value="${msgErro}" />
-                                        </div>
-                                    </c:if>
-                                    <c:if test="${alteradoAttr}">
-                                        <div class="alert alert-success">
-                                            Alterado com sucesso!
-                                        </div>
-                                    </c:if>
-                                    <div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Atualizar Cadastro"></div>
+                                    <div class="actions"><input tabindex="9" id="avancarButton" class="btn btn-inverse large" type="submit" value="Avançar" disabled="disabled"></div>
                                 </fieldset>
-                            </form>							
-                        </div>
+                            </div>
 
+
+                        </form>	
                     </div>
+                    <div class="span3 col">
+                        <div class="block">	
+                            <ul class="nav nav-list">
+                                <li class="nav-header">Melhores Marcas</li>
+                                <li><a href="#">Nike</a></li>
+                                <li class="active"><a href="products.html">Adidas</a></li>
+                                <li><a href="#">Puma</a></li>
+                                <li><a href="#">Olympikus</a></li>
+                                <li><a href="#">Mizuno</a></li>
+                            </ul>
+                        </div>
+                        <div class="block">								
+                            <h4 class="title"><strong>Mais</strong> Vendido</h4>								
+                            <ul class="small-product">
 
-                </section>
-            </center>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section id="footer-bar">
                 <div class="row">
                     <div class="span3">
@@ -189,14 +189,30 @@
                 <span>Copyright 2013 bootstrappage template  All right reserved.</span>
             </section>
         </div>
-        <script src="${pageContext.request.contextPath}/themes/js/common.js"></script>
-        <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>	
         <script>
+            function liberarCampos() {
+                document.getElementById('numeroCartao').disabled = false
+                document.getElementById('codigoSeguranca').disabled = false
+                document.getElementById('dataVencimento').disabled = false
+                document.getElementById('dataVencimento').disabled = false
+                document.getElementById('avancarButton').disabled = false
+            }
+
+            function desabilitarCampos() {
+                document.getElementById('numeroCartao').disabled = true
+                document.getElementById('codigoSeguranca').disabled = true
+                document.getElementById('dataVencimento').disabled = true
+                document.getElementById('avancarButton').disabled = false
+            }
+
             jQuery(function ($) {
-                $("#cpf").mask('000.000.000-00');
-                $("#cep").mask('00000-000');
+                $("#numeroCartao").mask('0000 0000 0000 0000');
+                $("#codigoSeguranca").mask('000');
+                $("#dataVencimento").mask('00/00');
             });
         </script>
+        <script src="${pageContext.request.contextPath}/themes/js/common.js"></script>
+        <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     </body>
 </html>

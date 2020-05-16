@@ -5,11 +5,15 @@
  */
 package br.senac.sp.grupoum.projectpiiv.controllers;
 
+<<<<<<< HEAD
 import br.senac.sp.grupoum.projectpiiv.models.Cliente;
 import br.senac.sp.grupoum.projectpiiv.models.Endereco;
 
 import dao.ClienteDAO;
 
+=======
+import br.senac.sp.grupoum.projectpiiv.models.Venda;
+>>>>>>> 669ffbbbbb66fedfe4038732514e6c8e998b2f49
 import java.io.IOException;
 import java.io.PrintWriter;
 
