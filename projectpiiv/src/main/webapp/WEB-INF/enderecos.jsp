@@ -29,68 +29,147 @@
 
     </head>
 
+
+
     <section class="navbar main-menu">
         <div class="navbar-inner main-menu">				
             <a href="${pageContext.request.contextPath}/land" class="logo pull-left logo-size"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
 
         </div>
     </section>	
+
+
     <div class="container mt-5">
         <h3 class="title-default mb-5">Cadastrar Endereços</h3>
 
+
+        <c:if test="${msgErro != null}">
+            <div class="alert alert-danger">
+                <c:out value="${msgErro}" />
+            </div>
+        </c:if>
+        <c:if test="${criadoAttr}">
+            <div class="alert alert-success">
+                Cadastrado com sucesso!
+            </div>
+        </c:if>
+
+
         <form method="post" action="${pageContext.request.contextPath}/enderecos" novalidate>
-            <h4 class="mb-3">Endereço de Entrega</h4>
 
             <div class="group"> 
 
                 <div class="row">
 
-                    <div class="col-sm-3">
-                        <label for="cep">CEP</label><span class="obrigatorio"></span>
-                        <input type="number" class="form-control" name="cep" id="cep" maxlength="8" placeholder="00000-000" required>
-                    </div>
+                    <div class="col-sm-2">
+                        <label for="cep">CEP</label>
 
-                    <div class="col-sm-7">
-                        <label for="logradouro">Logradouro</label><span class="obrigatorio"></span>
-                        <input type="text" class="form-control" name="logradouro" id="logradouro" required>
+                        <input type="text" class="form-control" name="cep" id="cep" class="input-xlarge"  required>
+
                     </div>
 
                     <div class="col-sm-2">
-                        <label for="numero">Número</label><span class="obrigatorio"></span>
+                        <label for="rua">Rua</label>
+                        <input type="text" class="form-control" name="rua" id="rua" required>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="numero">Número</label>
                         <input type="number" class="form-control" name="numero" id="numero" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-5">
                         <label for="complemento">Complemento</label>
-                        <input type="text" class="form-control" name="complemento" id="complemento">
+                        <input type="text" class="form-control" name="complemento" id="complemento" required>
                     </div>
                     <div class="col-sm-3">
-                        <label for="bairro">Bairro</label><span class="obrigatorio"></span>
+                        <label for="bairro">Bairro</label>
                         <input type="text" class="form-control" name="bairro" id="bairro" required>
                     </div>
                     <div class="col-sm-3">
-                        <label for="cidade">Cidade</label><span class="obrigatorio"></span>
+                        <label for="cidade">Cidade</label>
                         <input type="text" class="form-control" name="cidade" id="cidade" required>
                     </div>
-                    <div class="col-sm-1">
-                        <label for="estado">Estado</label><span class="obrigatorio"></span>
-                        <input type="text" class="form-control" name="estado" id="estado" required>
+
+                    <div class="col-sm-3">
+                        <label for="estado" class="col-sm-1 offset-md-3">Estado</label>
+                        <select name="estado" id="estado" class="form-control col-sm-4">
+                            <option >Acre</option>
+                            <option >Alagoas</option>
+                            <option >Amapá</option>
+                            <option >Amazonas</option>
+                            <option >Bahia</option>
+                            <option >Ceará</option>
+                            <option >Distrito Federal</option>
+                            <option >Espirito Santo</option>
+                            <option >Goiás</option>
+                            <option >Maranhão</option>
+                            <option >Mato Grosso do Sul</option>
+                            <option >Mato Grosso</option>
+                            <option >Minas Gerais</option>
+                            <option >Pará</option>
+                            <option >Paraíba</option>
+                            <option >Paraná</option>
+                            <option >Pernambuco</option>
+                            <option >Piauí</option>
+                            <option >Rio de Janeiro</option>
+                            <option >Rio Grande do Norte</option>
+                            <option >Rio Grande do Sul</option>
+                            <option >Rondônia</option>
+                            <option >Roraima</option>
+                            <option >Santa Catarina</option>
+                            <option >São Paulo</option>
+                            <option >Sergipe</option>
+                            <option >Tocantins</option>
+
+                        </select>
                     </div>
+                    <div class="col-sm-3">
+                        <label for="tipo" class="col-sm-1 offset-md-3">Tipo:</label>
+
+                        <select name="tipo" id="tipo" class="form-control col-sm-4">
+                            <option selected>Endereço Entrega</option>
+                            <option>Endereço Fatura</option>
+                            <option>Ambos Endereços</option>
+
+                        </select>
+
+                    </div>
+
                 </div>
                 <input type="hidden" class="form-control" name="idCliente" id="idCliente" value="${idCliente}">
 
-                <input type="submit" value="Enviar para esse endereço" class="btn btn-cor-especial col-2 mb-5" />
+                <input type="submit" value="Cadastrar Endereço" class="btn btn-cor-especial col-2 mb-5" />
                 <br>
-                <div class="mt-5">
-                    <button class="btn btn-secondary" type="button" id="copiar" name="copiar" onClick="copyFromTextbox();">Usar endereço para faturamento</button>
-                </div>
+
+
             </div>
 
         </form>
+
     </div>
 
 
 
+    <script src="${pageContext.request.contextPath}/themes/js/common.js"></script>
+    <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script>
+        jQuery(function ($) {
+            $("#cep").mask('00000-000');
+        });
+    </script>	
+
+    <script>
+        jQuery(function ($) {
+            $("#rua").mask('SSSS'): {pattern: /[a-zA-Z]/;
+        });
+    </script>
+    <script>
+        jQuery(function ($) {
+            $("#numero").mask('000000');
+        });
+    </script>
 </body>
 </html>

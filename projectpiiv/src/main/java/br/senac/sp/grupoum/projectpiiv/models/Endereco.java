@@ -1,5 +1,7 @@
 package br.senac.sp.grupoum.projectpiiv.models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author erickgurian
@@ -15,11 +17,25 @@ public class Endereco {
     private String cidade;
     private String estado;
     private String tipo;
+    private ArrayList<String> endereco = new ArrayList<String>();
     
     public Endereco() {}
 
     public Endereco(int id, Cliente cliente, String cep, String rua, String numero, String complemento, String bairro, String cidade, String estado, String tipo) {
         this.id = id;
+        this.cliente = cliente;
+        this.cep = cep;
+        this.rua = rua;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.tipo = tipo;
+    }
+    
+    public Endereco(Cliente cliente, String cep, String rua, String numero, String complemento, String bairro, String cidade, String estado, String tipo) {
+        
         this.cliente = cliente;
         this.cep = cep;
         this.rua = rua;
@@ -110,5 +126,7 @@ public class Endereco {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+ 
     
 }
