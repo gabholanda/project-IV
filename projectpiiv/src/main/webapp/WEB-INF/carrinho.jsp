@@ -179,8 +179,8 @@
                             <div class="button-group" style="display: -webkit-inline-box;">
 
 
-                                <form class="form-inline" method="get" action="${pageContext.request.contextPath}/continuarVenda">
-                                    <button class="btn btn-inverse" type="submit" id="checkout">Escolher forma de pagamento</button>
+                                <form class="form-inline" method="get" action="${pageContext.request.contextPath}/listar-enderecos">
+                                    <button class="btn btn-inverse" type="submit" id="checkout">Escolher endereço de Entrega</button>
                                 </form>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
