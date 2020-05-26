@@ -8,6 +8,8 @@ package br.senac.sp.grupoum.projectpiiv.controllers;
 import br.senac.sp.grupoum.projectpiiv.models.Cliente;
 import br.senac.sp.grupoum.projectpiiv.models.ItemVenda;
 import br.senac.sp.grupoum.projectpiiv.models.Venda;
+import br.senac.sp.grupoum.projectpiiv.models.Endereco;
+import dao.EnderecoDAO;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -39,13 +41,21 @@ public class ContinuarVendaServlet extends HttpServlet {
             if (sessao.getAttribute("usuario") == null) {
                 response.sendRedirect(request.getContextPath() + "/login-cliente");
             } else {
-                Cliente cliente = (Cliente) sessao.getAttribute("usuario");
+                  if (request.getParameter("id") != null) {
+                   int id = Integer.parseInt(request.getParameter("id"));
+                   Endereco endereco = EnderecoDAO.pesquisarPorId(id);
+                     Cliente cliente = (Cliente) sessao.getAttribute("usuario");
+                
 
-                Venda vendaCliente = new Venda(itensCarrinho, total, cliente.getIdCliente());
+                    Venda vendaCliente = new Venda(itensCarrinho, total, cliente.getIdCliente());
+                    vendaCliente.setEndereco(endereco);
 
-                sessao.setAttribute("vendaAttr", vendaCliente);
-                response.sendRedirect(request.getContextPath() + "/forma-pagamento");
-
+                    sessao.setAttribute("vendaAttr", vendaCliente);
+                    response.sendRedirect(request.getContextPath() + "/forma-pagamento");
+                  }else{
+                  sessao.setAttribute("msgErro", "Por favor, selecione um endereço para prosseguir.");
+                  response.sendRedirect(request.getContextPath() + "/listar-enderecos");
+                  }
             }
         } catch (Exception e) {
             System.out.println(e);

@@ -23,7 +23,7 @@ public class FormaPagamentoServlet extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession sessao = request.getSession();
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/forma-pagamento.jsp");;
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/forma-pagamento.jsp");
         
         dispatcher.forward(request, response);
        
@@ -46,9 +46,11 @@ public class FormaPagamentoServlet extends HttpServlet {
         
         Venda venda = (Venda) sessao.getAttribute("vendaAttr");
         venda.setMetodoPagamento(pagamento);
+        venda.setValorFrete(20.00);
+        venda.setValorTotal(venda.getValorTotal() + venda.getValorFrete());
         sessao.setAttribute("vendaAttr", venda);
         
-        response.sendRedirect(request.getContextPath() + "/enderecos");
+        response.sendRedirect(request.getContextPath() + "/resumo-venda");
     }
 
 }
