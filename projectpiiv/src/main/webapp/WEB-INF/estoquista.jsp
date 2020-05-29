@@ -21,6 +21,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath}/estoquista/listar-produtos-estoquista">Listar Produtos</a>
                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath}/estoquista/listar-pedidos">Listar Pedidos</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sair</a>
                 </li>              </ul>
@@ -35,6 +38,11 @@
         <c:if test="${editadoAttr}">
           <div class="alert alert-success">
               Produto editado com sucesso!
+          </div>
+        </c:if>
+      <c:if test="${alteradoAttr}">
+          <div class="alert alert-success">
+              Status do pedido alterado com sucesso!
           </div>
         </c:if>
     </body>

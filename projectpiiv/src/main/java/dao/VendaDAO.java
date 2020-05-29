@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -112,7 +113,7 @@ public class VendaDAO {
             comando.setDouble(1, venda.getValorTotal());
             comando.setDate(2, Date.valueOf(LocalDate.now()));
             comando.setInt(3, venda.getIdCliente());
-            comando.setString(4, "Pagamento Confirmado");
+            comando.setString(4, "Aguardando Confirmação de Pagamento");
             comando.setString(5, venda.getMetodoPagamento());
             comando.setDouble(6, venda.getValorFrete());
             comando.setInt(7, venda.getEndereco().getId());
@@ -149,5 +150,71 @@ public class VendaDAO {
         }
         DbConnectionDAO.closeConnection(connection);
         return retorno;
+    }
+    
+    public static List<Venda> buscarVendas(){
+       Connection connection = null;
+
+        try {
+            connection = DbConnectionDAO.openConnection();
+            List<Venda> vendas = new ArrayList<>();
+
+            PreparedStatement comando = connection.prepareStatement("SELECT * FROM venda WHERE id_venda is not null ORDER BY data_venda DESC");
+            
+            ResultSet rs = comando.executeQuery();
+
+            while (rs.next()) {
+                Venda venda = new Venda();
+                venda.setId(rs.getInt("id_venda"));
+                venda.setValorTotal(rs.getDouble("valor_total"));
+                venda.setDataVenda(rs.getDate("data_venda"));
+                venda.setIdCliente(rs.getInt("id_cliente"));
+                venda.setStatusCompra(rs.getString("status_venda"));
+                venda.setMetodoPagamento(rs.getString("metodo_pagamento"));
+                venda.setValorFrete(rs.getDouble("frete"));
+                Endereco endereco = EnderecoDAO.pesquisarPorId(rs.getInt("id_enderecos"));
+                venda.setEndereco(endereco);
+                
+                vendas.add(venda);
+            }
+          
+            DbConnectionDAO.closeConnection(connection);
+            return vendas;
+
+        } catch (ClassNotFoundException ex) {
+            return null;
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
+        } 
+    }
+    
+    public static boolean atualizarStatus(int idVenda, String status){
+       Connection connection = null;
+       boolean alterou = false;
+        try {
+            connection = DbConnectionDAO.openConnection();
+            
+            PreparedStatement comando = connection.prepareStatement("UPDATE venda SET status_venda = ? WHERE id_venda = ?", Statement.RETURN_GENERATED_KEYS);
+            comando.setString(1, status);
+            comando.setInt(2, idVenda);
+            int linhasAfetadas = comando.executeUpdate();
+            
+            if(linhasAfetadas > 0){
+                alterou = true;
+            }
+            
+           
+            DbConnectionDAO.closeConnection(connection);
+            return alterou;
+
+        } catch (ClassNotFoundException ex) {
+            return alterou;
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return alterou;
+        } 
     }
 }
