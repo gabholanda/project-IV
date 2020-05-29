@@ -180,7 +180,7 @@
 
 
                                 <form class="form-inline" method="get" action="${pageContext.request.contextPath}/listar-enderecos">
-                                    <button class="btn btn-inverse" type="submit" id="checkout">Escolher endereço de Entrega</button>
+                                    <button class="btn btn-inverse" type="submit" id="checkout">Finalizar compra</button>
                                 </form>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 

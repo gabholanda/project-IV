@@ -57,7 +57,7 @@ public class ResumoFinalizarVendaServlet extends HttpServlet {
             sessao.removeAttribute("produtosAttr");
             sessao.removeAttribute("totalAttr");
             sessao.removeAttribute("vendaAttr");
-             response.sendRedirect(request.getContextPath() + "/land");
+            response.sendRedirect(request.getContextPath() + "/meus-pedidos");
         }
         
     }

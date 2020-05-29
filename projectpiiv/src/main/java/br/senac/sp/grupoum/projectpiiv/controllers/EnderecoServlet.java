@@ -101,7 +101,8 @@ public class EnderecoServlet extends HttpServlet {
 
             if (ClienteDAO.cadastrarEndereco(end)) {
                 request.setAttribute("criadoAttr", true);
-                request.getRequestDispatcher("WEB-INF/enderecos.jsp").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "/listar-enderecos");
+                return;
             } else {
                 request.setAttribute("msgErro", "Houve um erro inesperado");
                 response.sendRedirect(request.getContextPath() + "/enderecos");
