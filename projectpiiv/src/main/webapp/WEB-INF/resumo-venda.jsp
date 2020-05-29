@@ -111,7 +111,7 @@
                                 </table>
                             </div>
                             <div class="block" style="border-top: none;">
-                                
+
                                 <h3><strong style="color: red;">Forma</strong> de Pagamento: <c:out value="${vendaAttr.getMetodoPagamento()}"/></h3>
                             </div>
                             <div class="block" style="border-top: none;">	
@@ -133,8 +133,8 @@
                                             <td> <c:out value="${vendaAttr.getEndereco().getCep()}"/></td>
                                         </tr>
                                 </table>
-                                        
-                                        <table class="table table-sm offset-md-2">
+
+                                <table class="table table-sm offset-md-2">
                                     <thead>
                                         <tr>
                                             <th scope="col">Bairro</th>
@@ -149,12 +149,17 @@
                                             <td> <c:out value="${vendaAttr.getEndereco().getEstado()}"/></td>
                                         </tr>
                                 </table>
-                                 <hr style="background-color: red; height: 1px;">
-                                 <h3 style="font-size: 15px;"><strong style="color: red;">Valor</strong> Frete: R$ <c:out value="${vendaAttr.getValorFrete()}"/></h3>
-                                 <h3 style="font-size: 25px;"><strong style="color: red;">Total</strong> Venda: R$ <c:out value="${vendaAttr.getValorTotal()}"/></h3>
-                                 <form action="${pageContext.request.contextPath}/resumo-venda" method="post">
+                                <hr style="background-color: red; height: 1px;">
+                                <h3 style="font-size: 15px;"><strong style="color: red;">Valor</strong> Frete: R$ <c:out value="${vendaAttr.getValorFrete()}"/></h3>
+                                <h3 style="font-size: 25px;"><strong style="color: red;">Total</strong> Venda: R$ <c:out value="${vendaAttr.getValorTotal()}"/></h3>
+                                <form action="${pageContext.request.contextPath}/resumo-venda" method="post">
                                     <button class="btn btn-inverse" type="submit">
-                                         Confirmar Compra.
+                                        Confirmar Compra.
+                                    </button>
+                                </form>
+                                <form action="${pageContext.request.contextPath}/cancelar-venda" method="post">
+                                    <button class="btn btn-inverse" type="submit">
+                                        Cancelar
                                     </button>
                                 </form>
                             </div>
