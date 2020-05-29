@@ -82,7 +82,7 @@
             <section class="header_text sub">
                 <img class="pageBanner" src="${pageContext.request.contextPath}/themes/images/banner1.jpg" alt="New products" >
                 <br>
-                <h2><span>Detalhes Pedidos</span></h2>
+                <h2><span>Resumo da Venda</span></h2>
             </section>
             <section class="main-content">
                 <div class="row">						
@@ -154,7 +154,7 @@
                                 <h3 style="font-size: 25px;"><strong style="color: red;">Total</strong> Venda: R$ <c:out value="${vendaAttr.getValorTotal()}"/></h3>
                                 <form action="${pageContext.request.contextPath}/resumo-venda" method="post">
                                     <button class="btn btn-inverse" type="submit">
-                                        Confirmar Compra.
+                                        Confirmar Compra
                                     </button>
                                 </form>
                                 <form action="${pageContext.request.contextPath}/cancelar-venda" method="post">

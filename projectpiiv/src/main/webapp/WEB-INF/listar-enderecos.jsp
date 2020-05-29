@@ -86,7 +86,7 @@
             <img class="pageBanner" src="${pageContext.request.contextPath}/themes/images/banner1.jpg"
                 alt="New products">
             <br>
-            <h3><span>Meus Pedidos</span></h3>
+            <h3><span>Meus Endereços</span></h3>
 
         </section>
         <section class="main-content">

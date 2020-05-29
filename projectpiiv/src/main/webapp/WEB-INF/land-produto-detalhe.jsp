@@ -146,7 +146,7 @@
                                         <p>&nbsp;</p>
                                         <label><strong>Qtd:</strong></label>
                                         
-                                        <input type="number" class="span1" placeholder="1" name="qtdProduto" id="qtdProduto" min="0" data-bind="qtdProduto" required>
+                                        <input type="number" class="span1" placeholder="0" name="qtdProduto" id="qtdProduto" min="1" data-bind="qtdProduto" required>
                                         
                                         <input type="hidden" name="id" value="${produtosAttr.getId()}">
                                         
