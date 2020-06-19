@@ -63,7 +63,7 @@ public class CadastrarClienteServlet extends HttpServlet {
 
             if (ClienteDAO.salvar(cliente)) {
                 request.setAttribute("criadoAttr", true);
-                request.getRequestDispatcher("WEB-INF/cadastrar-cliente.jsp").forward(request, response);
+                request.getRequestDispatcher("WEB-INF/login-cliente.jsp").forward(request, response);
             } else {
                 request.setAttribute("msgErro", "Houve um erro inesperado");
                 response.sendRedirect(request.getContextPath() + "/cadastrar-cliente");

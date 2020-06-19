@@ -55,6 +55,7 @@ public class EnderecoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
 
         HttpSession sessao = request.getSession();
         Cliente cliente = (Cliente) sessao.getAttribute("usuario");
@@ -81,10 +82,6 @@ public class EnderecoServlet extends HttpServlet {
                 return;
             } else if (numero.equals("")) {
                 request.setAttribute("msgErro", "Numero Campo Vazio");
-                request.getRequestDispatcher("WEB-INF/enderecos.jsp").forward(request, response);
-                return;
-            } else if (complemento.equals("")) {
-                request.setAttribute("msgErro", "Complemento Campo Vazio");
                 request.getRequestDispatcher("WEB-INF/enderecos.jsp").forward(request, response);
                 return;
             } else if (bairro.equals("")) {

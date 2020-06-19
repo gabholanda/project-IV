@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-     <head>
+    <head>
         <meta charset="utf-8">
         <title>Sports TADS </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +50,7 @@
         <div id="wrapper" class="container">
             <section class="navbar main-menu">
                 <div class="navbar-inner main-menu">				
-                   <a href="${pageContext.request.contextPath}/land" class="logo pull-left logo-size"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
+                    <a href="${pageContext.request.contextPath}/land" class="logo pull-left logo-size"><i class="fas fa-shopping-cart"></i> Sports TADS</a>
                     <nav id="menu" class="pull-right">
                         <ul>
 
@@ -116,6 +116,19 @@
                                                 </div>
                                                 <c:remove scope="session" var="msg" />
                                             </c:if>
+
+                                            
+                                            <c:if test="${msgErro != null}">
+                                                <div class="alert alert-danger">
+                                                    <c:out value="${msgErro}" />
+                                                </div>
+                                            </c:if>
+                                            
+                                            <c:if test="${criadoAttr}">
+                                                <div class="alert alert-success">
+                                                    Cadastrado com sucesso!
+                                                </div>
+                                            </c:if>
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -170,7 +183,7 @@
                 <span>Copyright 2013 bootstrappage template  All right reserved.</span>
             </section>
         </div>
-	<script src="${pageContext.request.contextPath}/themes/js/common.js"></script>
+        <script src="${pageContext.request.contextPath}/themes/js/common.js"></script>
         <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
     </body>
 </html>

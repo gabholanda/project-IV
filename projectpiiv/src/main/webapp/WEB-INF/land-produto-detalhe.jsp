@@ -131,6 +131,7 @@
                                         <label class="checkbox">
                                           <input type="checkbox" value=""> Be sure to include why it's great
                                         </label> -->
+                                        <c:if test="${produtosAttr.getTipo() == 'Tenis'}">
                                         <label><strong>Tamanho:</strong></label>
                                         <select class="form-control">
                                             <option>36</option>
@@ -143,6 +144,17 @@
                                             <option>43</option>
                                             <option>44</option>
                                         </select>
+                                        </c:if>
+                                        <c:if test="${produtosAttr.getTipo() == 'Camiseta'}">
+                                        <label><strong>Tamanho:</strong></label>
+                                        <select class="form-control">
+                                            <option>PP</option>
+                                            <option>P</option>
+                                            <option>M</option>
+                                            <option>G</option>
+                                            <option>GG</option>
+                                        </select>
+                                        </c:if>
                                         <p>&nbsp;</p>
                                         <label><strong>Qtd:</strong></label>
                                         
