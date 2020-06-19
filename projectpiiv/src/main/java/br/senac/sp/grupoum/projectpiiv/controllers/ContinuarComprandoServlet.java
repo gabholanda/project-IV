@@ -25,8 +25,15 @@ public class ContinuarComprandoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession sessao = request.getSession();
         
+        
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        HttpSession sessao = request.getSession();
 
         if (sessao.getAttribute("produtosAttr") == null) {
             sessao.setAttribute("produtosAttr", new ArrayList<ItemVenda>());
@@ -39,7 +46,7 @@ public class ContinuarComprandoServlet extends HttpServlet {
 
             if (request.getParameter("id") != null) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                int qtd = Integer.parseInt(request.getParameter("qtdProduto"));
+                int qtd = Integer.parseInt(request.getParameter("qtdProduto_" + id));
                 System.out.println(qtd);
                 Produto produto = ProdutoDAO.pesquisarPorId(id);
 
@@ -47,7 +54,6 @@ public class ContinuarComprandoServlet extends HttpServlet {
                     int existe = existe(itensCarrinho, id);
                     if (existe >= 0) {
                         itensCarrinho.get(existe).setQuantidade(qtd);
-
                     } else {
 
                         ItemVenda item = new ItemVenda(produto, qtd);
@@ -80,21 +86,13 @@ public class ContinuarComprandoServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/carrinho");
         
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-    }
     
-    private int existe(ArrayList<ItemVenda> itensCarrinho, int id) {
-
+    private int existe(ArrayList<ItemVenda> itensCarrinho, int id) {    
         for (int i = 0; i < itensCarrinho.size(); i++) {
             if (itensCarrinho.get(i).getProduto() != null) {
                 if(itensCarrinho.get(i).getProduto().getId() == id) {
-                    
+                    return i;
                 }
-                return i;
             }
         }
         return -1;

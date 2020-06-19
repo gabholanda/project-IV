@@ -43,6 +43,23 @@
                         <c:out value="${msgErro}" />
                     </div>
                 </c:if>
+
+                <c:if test="${sessionScope.msg != null}">
+                    <div class="alert alert-success">
+                        <c:out value="${sessionScope.msg}" />
+                    </div>
+                    <c:remove scope="session" var="msg" />
+                </c:if>
+                <c:if test="${msgErro != null}">
+                    <div class="alert alert-danger">
+                        <c:out value="${msgErro}" />
+                    </div>
+                </c:if>
+                <c:if test="${criadoAttr}">
+                    <div class="alert alert-success">
+                        Cadastrado com sucesso!
+                    </div>
+                </c:if>
                 <!-- Login Form -->
                 <form method="post" action="${pageContext.request.contextPath}/login">
                     <input type="text" id="usuario" class="fadeIn second" name="usuario" placeholder="login" required>
@@ -59,7 +76,7 @@
 
             </div>
         </div>
-                    
+
     </body>
     <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1803175e4f.js" crossorigin="anonymous"></script>

@@ -31,7 +31,7 @@
     <header>
 
         <nav class="navbar navbar-expand-lg navbar-light nav-color">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/admin">Loja Esportiva</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/estoquista">Loja Esportiva</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -81,7 +81,48 @@
                                         <td ><c:out value="${vendaAttr.getDataVenda()}"/></td>
                                 <form action="${pageContext.request.contextPath}/estoquista/atualizar-status" method="post" class="form-stacked">
                                     <input type="hidden" value="${vendaAttr.getId()}" name="idVenda" id="idVenda">
-                                    <td> <input type="text" name="status" id="status " value="${vendaAttr.getStatusCompra()}"></td>
+                                    <td>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Status:</label>
+                                            <select class="form-control form-control-sm col-sm-8" name="status" id="status">
+                                                <c:choose>
+                                                    <c:when test="${vendaAttr.getStatusCompra() == 'Aguardando Confirmação de Pagamento'}">
+                                                        <option selected>Aguardando Confirmação de Pagamento</option>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <option>Aguardando Confirmação de Pagamento</option>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                        
+                                                <c:choose>
+                                                    <c:when test="${vendaAttr.getStatusCompra() == 'Pagamento Confirmado'}">
+                                                         <option selected>Pagamento Confirmado</option>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                         <option>Pagamento Confirmado</option>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                        
+                                                <c:choose>
+                                                    <c:when test="${vendaAttr.getStatusCompra() == 'Pedido Enviado'}">
+                                                        <option selected>Pedido Enviado</option>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <option>Pedido Enviado</option>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                        
+                                                <c:choose>
+                                                    <c:when test="${vendaAttr.getStatusCompra() == 'Pedido Entregue'}">
+                                                        <option selected>Pedido Entregue</option>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <option>Pedido Entregue</option>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </select>
+                                        </div>
+                                    </td>
                                     <td><button type="submit" class="btn btn-inverse large">Alterar</button></td>
                                 </form>
 

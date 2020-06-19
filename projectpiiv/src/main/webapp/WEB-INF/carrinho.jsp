@@ -116,7 +116,7 @@
                                             <td><button type="button" class="btn btn-primary" data-toggle="modal"
                                                         data-target="#p${produto.getProduto().getId()}">Excluir</button></td>
 
-                                    <form class="form-inline" method="get" action="${pageContext.request.contextPath}/continuar-comprando">
+                                    <form class="form-inline" method="post" action="${pageContext.request.contextPath}/continuar-comprando">
                                         <td>
                                             <input type="hidden" name="id" value="${produto.getProduto().getId()}">
 
@@ -126,36 +126,36 @@
                                         <td>
                                             <c:out value="${produto.getProduto().getNome()}" />
                                         </td>
-                                        <td><input name="qtdProduto" type="number" placeholder="1" class="input-mini" id="qtdProduto${loop.index}"
-                                                   min="0" data-bind="qtdProduto" value="${produto.getQuantidade()}" onClick="teste('qtdProduto${loop.index}', 'preco${loop.index}', 'totalProd${loop.index}')"></td>
-                                        <td> <input type="text" class="input-mini " id="preco${loop.index}" data-bind="preco" value="${produto.getProduto().getPreco()}">
+                                        <td><input name="qtdProduto_${produto.getProduto().getId()}" type="number" placeholder="1" class="input-mini" id="qtdProduto_${produto.getProduto().getId()}"
+                                                   min="0" data-bind="qtdProduto_${produto.getProduto().getId()}" value="${produto.getQuantidade()}" onClick="teste('qtdProduto_${produto.getProduto().getId()}', 'preco_${produto.getProduto().getId()}', 'totalProd_${produto.getProduto().getId()}')"></td>
+                                        <td> <input type="text" class="input-mini " id="preco_${produto.getProduto().getId()}" data-bind="preco_${produto.getProduto().getId()}" value="${produto.getProduto().getPreco()}">
                                         </td>
-                                        <td><input type="text" class="input-mini totalProd" id="totalProd${loop.index}" data-bind="totalProd" value="${produto.vlrTotalItem()}" />
+                                        <td><input type="text" class="input-mini totalProd" id="totalProd_${produto.getProduto().getId()}" data-bind="totalProd_${produto.getProduto().getId()}" value="${produto.vlrTotalItem()}" />
                                         </td>
                                         </tr>
                                     </form>
-                                <div class="modal fade" id="p${produto.getProduto().getId()}" tabindex="-1"
-                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
-                                                        Tem certeza que deseja excluir o produto
-                                                        <c:out value="${produto.getProduto().getNome()}" />
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <form action="${pageContext.request.contextPath}/excluirItem"
-                                                              method="post">
-                                                            <button class="btn btn-success" type="submit" name="id"
-                                                                    id="confirmDeleteButton"
-                                                                    value="${produto.getProduto().getId()}">Confirmar</button>
-                                                        </form>
+                                    <div class="modal fade" id="p${produto.getProduto().getId()}" tabindex="-1"
+                                         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    Tem certeza que deseja excluir o produto
+                                                    <c:out value="${produto.getProduto().getNome()}" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="${pageContext.request.contextPath}/excluirItem"
+                                                          method="post">
+                                                        <button class="btn btn-success" type="submit" name="id"
+                                                                id="confirmDeleteButton"
+                                                                value="${produto.getProduto().getId()}">Confirmar</button>
+                                                    </form>
 
-                                                        <button type="button" class="btn btn-danger"
-                                                                data-dismiss="modal">Cancelar</button>
-                                                    </div>
+                                                    <button type="button" class="btn btn-danger"
+                                                            data-dismiss="modal">Cancelar</button>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </c:forEach>
                             </c:if>
                             <c:if test="${empty produtosAttr}">
@@ -265,28 +265,28 @@
 
 
         <script>
-                                                           function teste(qtd, preco, total) {
-                                                               var quant = document.getElementById(qtd).value;
-                                                               var prec = document.getElementById(preco).value;
-                                                               var tot = document.getElementById(total).value;
+            function teste(qtd, preco, total) {
+                var quant = document.getElementById(qtd).value;
+                var prec = document.getElementById(preco).value;
+                var tot = document.getElementById(total).value;
 
-                                                               tot = quant * prec
+                tot = quant * prec
 
-                                                               document.getElementById(total).value = tot;
-                                                               soma();
-                                                           }
+                document.getElementById(total).value = tot;
+                soma();
+            }
 
-                                                           function soma() {
-                                                               var valores = document.getElementsByClassName('totalProd');
-                                                               var total = 0;
+            function soma() {
+                var valores = document.getElementsByClassName('totalProd');
+                var total = 0;
 
-                                                               for (var i = 0; i < valores.length; i++) {
-                                                                   valor = document.getElementById(valores[i].id).value
-                                                                   total = parseInt(total) + parseInt(valor);
-                                                               }
+                for (var i = 0; i < valores.length; i++) {
+                    valor = document.getElementById(valores[i].id).value
+                    total = parseInt(total) + parseInt(valor);
+                }
 
-                                                               document.getElementById('total').value = total;
-                                                           }
+                document.getElementById('total').value = total;
+            }
         </script>
 
     </body>
